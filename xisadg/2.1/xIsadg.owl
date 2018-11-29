@@ -24,6 +24,17 @@ xisadg:ArchivalDescription
   rdfs:subClassOf rdfs:Resource ;
   sh:property [
       rdf:type sh:PropertyShape ;
+      sh:path xisadg:hasPointOfTime ;
+      rdfs:comment "CC (Century)" ;
+      rdfs:comment "YYYY-MM-DDThh:mm; YYYY-MM-DDThh:mm:ss" ;
+      rdfs:comment "YYYY; YYYY-MM; YYYY-MM-DD" ;
+      rdfs:comment "unknown" ;
+      owl:equivalentProperty dcterms:created ;
+      sh:datatype xsd:string ;
+      sh:pattern "^unknown$|^[0-9]{2}$|^([0-9]{4})$|^([0-9]{4}\\-((0[1-9])|(1[012])))$|^([0-9]{4}\\-((0[1-9])|(1[012]))\\-(([012][0-9])|(3[01])))$|^([0-9]{4}\\-((0[1-9])|(1[012]))\\-(([012][0-9])|(3[01]))T(([01][0-9])|(2[0-3])):([0-5][0-9]))$|^([0-9]{4}\\-((0[1-9])|(1[012]))\\-(([012][0-9])|(3[01]))T(([01][0-9])|(2[0-3])):([0-5][0-9]):([0-5][0-9]))$" ;
+    ] ;
+  sh:property [
+      rdf:type sh:PropertyShape ;
       sh:path xisadg:hasTitle ;
       sh:datatype xsd:string ;
       sh:minCount 1 ;
@@ -46,7 +57,15 @@ xisadg:hasContext
   rdfs:comment "context area"@en ;
   rdfs:label "2 context" ;
 .
-
+xisadg:hasDates
+  rdf:type rdf:Property ;
+  rdfs:comment "Data/e: Identificare e segnalare la/e data/e dell'unità di descrizione"@it ;
+  rdfs:comment "Date(s): To identify and record the date(s) of the unit of description"@en ;
+  rdfs:comment "Date: Identifier et donner la (les) date(s) de lunité de description"@fr ;
+  rdfs:comment "Entstehungszeitraum / Laufzeit: Identifizierung des Entstehungsdatums bzw. -zeitraums der in der Verzeichnungseinheit enthaltenen Unterlagen"@de ;
+  rdfs:lable "1.3 dates" ;
+  rdfs:subPropertyOf xisadg:hasIdentity ;
+.
 xisadg:hasIdentity
   rdf:type rdf:Property ;
   rdfs:comment "Area dell'identificazione"@it ;
@@ -56,7 +75,15 @@ xisadg:hasIdentity
   rdfs:label "1 identity" ;
   rdfs:subPropertyOf xisadg:hasStatement ;
 .
-
+xisadg:hasPointOfTime
+  rdf:type rdf:Property ;
+  rdfs:comment "Point of Time / Date"@en ;
+  rdfs:domain xisadg:ArchivalDescription ;
+  rdfs:lable "1.3 dates" ;
+  rdfs:range xsd:string ;
+  rdfs:subPropertyOf xisadg:hasDates ;
+  owl:equivalentProperty dcterms:created ;
+.
 xisadg:hasTitle
   rdfs:comment "Denominazione o titolo: Denominare l'unità di descrizione"@it ;
   rdfs:comment "Intitulé / analyse: Dénommer l'unité de description"@fr ;
