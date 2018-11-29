@@ -22,6 +22,12 @@ xisadg:ArchivalDescription
   rdfs:comment "global element for an ISADG-description of an description unit"@en ;
   rdfs:comment "élement globale pour la description d'une unité de description"@fr ;
   rdfs:subClassOf rdfs:Resource ;
+  sh:property [
+      rdf:type sh:PropertyShape ;
+      sh:path xisadg:hasTitle ;
+      sh:datatype xsd:string ;
+      sh:minCount 1 ;
+    ] ;
 .
 
 xisadg:hasArchivalDescription
@@ -49,4 +55,16 @@ xisadg:hasIdentity
   rdfs:comment "identity statement area"@en ;
   rdfs:label "1 identity" ;
   rdfs:subPropertyOf xisadg:hasStatement ;
+.
+
+xisadg:hasTitle
+  rdfs:comment "Denominazione o titolo: Denominare l'unità di descrizione"@it ;
+  rdfs:comment "Intitulé / analyse: Dénommer l'unité de description"@fr ;
+  rdfs:comment "Titel: Benennung der Verzeichnungseinheit"@de ;
+  rdfs:comment "Title: To name the unit of description"@en ;
+  rdfs:domain xisadg:ArchivalDescription ;
+  rdfs:lable "1.2 title" ;
+  rdfs:range xsd:string ;
+  rdfs:subPropertyOf xisadg:hasIdentity ;
+  owl:equivalentProperty dcterms:title ;
 .
