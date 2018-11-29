@@ -32,3 +32,21 @@ xisadg:hasArchivalDescription
   rdfs:subPropertyOf dcterms:hasPart ;
 .
 
+xisadg:hasContext
+  rdf:type rdf:Property ;
+  rdfs:comment "Area delle informazioni sul contesto"@it ;
+  rdfs:comment "Kontext"@de ;
+  rdfs:comment "Zone du contexte"@fr ;
+  rdfs:comment "context area"@en ;
+  rdfs:label "2 context" ;
+.
+
+xisadg:hasIdentity
+  rdf:type rdf:Property ;
+  rdfs:comment "Area dell'identificazione"@it ;
+  rdfs:comment "Identifikation"@de ;
+  rdfs:comment "Zone d'identification"@fr ;
+  rdfs:comment "identity statement area"@en ;
+  rdfs:label "1 identity" ;
+  rdfs:subPropertyOf xisadg:hasStatement ;
+.
