@@ -1,5 +1,6 @@
 @prefix dc: <http://purl.org/dc/elements/1.1/> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
@@ -24,6 +25,18 @@ xisadg:ArchivalDescription
   rdfs:subClassOf rdfs:Resource ;
   sh:property [
       rdf:type sh:PropertyShape ;
+      sh:path xisadg:hasCreator ;
+      sh:or (
+          [
+            sh:datatype xsd:string ;
+          ]
+          [
+            sh:nodeKind sh:IRI ;
+          ]
+        ) ;
+    ] ;
+  sh:property [
+      rdf:type sh:PropertyShape ;
       sh:path xisadg:hasPointOfTime ;
       rdfs:comment "CC (Century)" ;
       rdfs:comment "YYYY-MM-DDThh:mm; YYYY-MM-DDThh:mm:ss" ;
@@ -40,7 +53,17 @@ xisadg:ArchivalDescription
       sh:minCount 1 ;
     ] ;
 .
-
+xisadg:Creator
+  rdf:type rdfs:Class ;
+  rdf:type sh:NodeShape ;
+  rdfs:comment "Denominazione del/dei soggetto/i produttore/i: Identificare il soggetto (o i soggetti) produttori dell'unità di descrizione"@it ;
+  rdfs:comment "Name der Provenienzstelle: Identifizierung der Provenienzstelle(n), bei der (denen) die Verzeichnungseinheit entstanden ist"@de ;
+  rdfs:comment "Name of creator(s): To identify the creator (or creators) of the unit of description"@en ;
+  rdfs:comment "Nom du producteur: Identifier le ou les producteurs de l'unité de description"@fr ;
+  rdfs:subClassOf rdfs:Resource ;
+  owl:equivalentClass dcterms:Agent ;
+  owl:equivalentClass foaf:Agent ;
+.
 xisadg:hasArchivalDescription
   rdf:type owl:IrreflexiveProperty ;
   rdf:type owl:TransitiveProperty ;
@@ -56,6 +79,18 @@ xisadg:hasContext
   rdfs:comment "Zone du contexte"@fr ;
   rdfs:comment "context area"@en ;
   rdfs:label "2 context" ;
+.
+xisadg:hasCreator
+  rdfs:comment "Denominazione del/dei soggetto/i produttore/i: Identificare il soggetto (o i soggetti) produttori dell'unità di descrizione"@it ;
+  rdfs:comment "Name der Provenienzstelle: Identifizierung der Provenienzstelle(n), bei der (denen) die Verzeichnungseinheit entstanden ist"@de ;
+  rdfs:comment "Name of creator(s): To identify the creator (or creators) of the unit of description"@en ;
+  rdfs:comment "Nom du producteur: Identifier le ou les producteurs de l'unité de description"@fr ;
+  rdfs:domain xisadg:ArchivalDescription ;
+  rdfs:label "2.1 creator" ;
+  rdfs:range xsd:string ;
+  rdfs:range xisadg:Creator ;
+  rdfs:subPropertyOf xisadg:hasContext ;
+  owl:equivalentProperty dcterms:creator ;
 .
 xisadg:hasDates
   rdf:type rdf:Property ;
