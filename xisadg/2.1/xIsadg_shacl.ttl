@@ -1,0 +1,1355 @@
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xisadg: <https://github.com/KOST-CECO/ontologies/tree/master/xisadg/2.1/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix dash: <http://datashapes.org/dash#> .
+@prefix dcam: <http://purl.org/dc/dcam/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix swa: <http://topbraid.org/swa#> .
+@prefix tosh: <http://topbraid.org/tosh#> .
+
+###########################################################################
+#    Ontology                                                             #
+###########################################################################
+
+###  https://github.com/KOST-CECO/ontologies/blob/master/xisadg
+<https://github.com/KOST-CECO/ontologies/blob/master/xisadg> a owl:Ontology ;
+  dct:creator "Koordinationsstelle für die dauerhafte Archivierung elektronischer Unterlagen (KOST)"@de ,
+    "centre de coordination pour l'archivage à long terme de documents électroniques (CECO)"@fr ;
+  dct:description "Ontologie für xIsadg (XML Schema basierend auf ISAD(G) - General International Standard Archival Description)"@de ,
+    "Ontology for xIsadg (XML Schema based on ISAD(G) - General International Standard Archival Description)"@en ;
+  dct:title "xIsadg Ontologie"@de ,
+    "The xIsadg Ontology"@en ;
+  owl:versionInfo "Created with rdfEditor, WebVOWL, TopBraid Composer & Protégé" ;
+.
+
+###########################################################################
+#    Beschreibung der Verzeichnungseinheit                                #
+###########################################################################
+
+# ========== ArchivalDescription ========== #
+###  https://github.com/KOST-CECO/ontologies/blob/master/xisadg#ArchivalDescription
+xisadg:ArchivalDescription a rdfs:Class ; 
+  rdfs:comment "Globales Element für die Beschreibung einer Verzeichnungseinheit"@de ,
+    "global element for an ISADG-description of an description unit"@en ,
+    "élement globale pour la description d'une unité de description"@fr ;
+  ###-------- SHACL (Shapes Contraints Classes) --------###
+  a sh:NodeShape ;
+  # 1 <xs:element name="identity" type="isad:identityType">
+  sh:property [ a sh:PropertyShape ;
+    sh:path xisadg:hasIdentity ;
+    sh:class xisadg:Identity ;
+    sh:minCount 1 ; sh:maxCount 1 ;
+  ] ;
+  # 2 <xs:element name="context" type="isad:contextType" minOccurs="0">
+  sh:property [ a sh:PropertyShape ;
+    sh:path xisadg:hasContext ;
+    sh:class xisadg:Context ;
+    sh:minCount 0 ; sh:maxCount 1 ;
+  ] ;
+  # 3 <xs:element name="contentStructure" type="isad:contentStructureType" minOccurs="0">
+  sh:property [ a sh:PropertyShape ;
+    sh:path xisadg:hasContentStructure ;
+    sh:class xisadg:ContentStructure ;
+    sh:minCount 0 ; sh:maxCount 1 ;
+  ] ;
+  # 4 <xs:element name="conditionsAccessUse" type="isad:conditionsAccessUseType" minOccurs="0">
+  sh:property [ a sh:PropertyShape ;
+    sh:path xisadg:hasConditionsAccessUse ;
+    sh:class xisadg:ConditionsAccessUse ;
+    sh:minCount 0 ; sh:maxCount 1 ;
+  ] ;
+  # 5 <xs:element name="alliedMaterials" type="isad:alliedMaterialsType" minOccurs="0">
+  sh:property [ a sh:PropertyShape ;
+    sh:path xisadg:hasAlliedMaterials ;
+    sh:class xisadg:AlliedMaterials ;
+    sh:minCount 0 ; sh:maxCount 1 ;
+  ] ;
+  # 6 <xs:element name="notes" type="isad:notesType" minOccurs="0">
+  sh:property [ a sh:PropertyShape ;
+    sh:path xisadg:hasNotes ;
+    sh:class xisadg:Notes ;
+    sh:minCount 0 ; sh:maxCount 1 ;
+  ] ;
+  # 7 <xs:element name="descriptionControl" type="isad:descriptionControlType" minOccurs="0" maxOccurs="unbounded">
+  sh:property [ a sh:PropertyShape ;
+    sh:path xisadg:hasDescriptionControl ;
+    sh:class xisadg:DescriptionControl ;
+    sh:minCount 0 ; sh:maxCount "unbounded";
+    # default SHACL cardinality constraint is [0..*] 
+  ] ;
+  #   <xs:element name="additionalReference" type="isad:additionalReferenceType" minOccurs="0">
+  sh:property [ a sh:PropertyShape ;
+    sh:path xisadg:hasAdditionalReference ;
+    sh:class xisadg:AdditionalReference ;
+    sh:minCount 0 ; sh:maxCount 1 ;
+  ] ;
+  #   <xs:element name="additionalData" type="isad:additionalDataType" minOccurs="0">
+  sh:property [ a sh:PropertyShape ;
+    sh:path xisadg:hasAdditionalData ;
+    sh:class xisadg:AdditionalData ;
+    sh:minCount 0 ; sh:maxCount 1 ;
+  ] ;
+  .
+
+  #---------- 1) hasIdentity ----------#
+  ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadg#hasIdentity
+  xisadg:hasIdentity a rdf:Property ;
+    rdfs:comment "1) Area dell'identificazione"@it ,
+      "1) Identifikation"@de ,
+      "1) Zone d'identification"@fr ,
+      "1) identity statement area"@en ;
+    rdfs:domain xisadg:ArchivalDescription ;
+    rdfs:range xisadg:Identity ;
+  .
+    ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadg#Identity
+    xisadg:Identity a rdfs:Class ;
+      rdfs:comment "1) Area dell'identificazione"@it ,
+        "1) Identifikation"@de ,
+        "1) Zone d'identification"@fr ,
+        "1) identity statement area"@en ;
+      ###-------- SHACL (Shapes Contraints Classes) --------###
+      a sh:NodeShape ;
+      # <xs:element ref="isad:referenceCode"/>
+      sh:property [ a sh:PropertyShape ;
+        sh:path xisadg:hasReferenceCode ;
+        sh:datatype xsd:string ;
+        sh:minCount 1 ; sh:maxCount 1 ;
+      ] ;
+      # <xs:element ref="isad:title" maxOccurs="unbounded"/>
+      sh:property [ a sh:PropertyShape ;
+        sh:path xisadg:hasTitle ;
+        sh:datatype xsd:string ;
+        sh:minCount 1 ; sh:maxCount "unbounded";
+      ] ;
+      # <xs:element ref="isad:dates" minOccurs="0" maxOccurs="unbounded"/>
+      sh:or (
+        [ sh:property [ a sh:PropertyShape ;
+          sh:path xisadg:hasDateRange ;
+          sh:class xisadg:DateRange ;
+          sh:minCount 0 ; sh:maxCount 1 ; 
+      ] ] 
+        [ sh:property [ a sh:PropertyShape ;
+          sh:path xisadg:hasDatePoint ;
+          sh:nodeKind sh:Literal ; 
+          # sh:datatype xisadg:dateType nicht verwenden, da dies ein Sammlung diverser datatype ist
+          sh:minCount 0 ; sh:maxCount 1 ; 
+      ] ] 
+      )
+    .
+      ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadg#hasReferenceCode
+      xisadg:hasReferenceCode a rdf:Property ;
+        rdfs:comment "1.1) Segnatura/e o codice/i identificativo/i: Identificare univocamente l'unità di descrizione e stabilire un collegamento con la descrizione che la rappresenta"@it ,
+          "1.1) Référence: identifier de manière unique l'unité de description et établir un lien avec la description qui la représente"@fr ,
+          "1.1) Signatur(en): Identifizierung des Archivs und Verknüpfung des Archivguts mit der zugehörigen Verzeichnung"@de ,
+          "1.1) Reference code(s): To identify uniquely the unit of description and to provide a link to the description that represents it"@en ;
+        rdfs:domain xisadg:Identity ;
+        rdfs:range xsd:anyURI ; 
+      .
+      ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadg#hasTitle
+      xisadg:hasTitle a rdf:Property ;
+        rdfs:comment "1.2) Denominazione o titolo: Denominare l'unità di descrizione"@it ,
+          "1.2) Intitulé / analyse: Dénommer l'unité de description"@fr ,
+          "1.2) Titel: Benennung der Verzeichnungseinheit"@de ,
+          "1.2) Title: To name the unit of description"@en ;
+        rdfs:domain xisadg:Identity ;
+        rdfs:range xsd:string ; 
+        rdfs:subPropertyOf dct:title ;
+      .
+      ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadg#hasDateRange
+      xisadg:hasDateRange a rdf:Property ;
+        rdfs:comment "1.3) Data/e: Identificare e segnalare la/e data/e dell'unità di descrizione"@it ,
+          "1.3) Date(s): To identify and record the date(s) of the unit of description"@en ,
+          "1.3) Date: Identifier et donner la (les) date(s) de lunité de description"@fr ,
+          "1.3) Entstehungszeitraum / Laufzeit: Identifizierung des Entstehungsdatums bzw. -zeitraums der in der Verzeichnungseinheit enthaltenen Unterlagen"@de ;
+        rdfs:domain xisadg:Identity ;
+        rdfs:range xisadg:DateRange ; 
+        rdfs:subPropertyOf dct:date, dct:created ;
+      .
+      ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadg#hasDatePoint
+      xisadg:hasDatePoint a rdf:Property ;
+        rdfs:comment "1.3) Data/e: Identificare e segnalare la/e data/e dell'unità di descrizione"@it ,
+          "1.3) Date(s): To identify and record the date(s) of the unit of description"@en ,
+          "1.3) Date: Identifier et donner la (les) date(s) de lunité de description"@fr ,
+          "1.3) Entstehungszeitraum / Laufzeit: Identifizierung des Entstehungsdatums bzw. -zeitraums der in der Verzeichnungseinheit enthaltenen Unterlagen"@de ;
+        rdfs:domain xisadg:Identity ;
+        rdfs:range xisadg:dateType ; 
+        rdfs:subPropertyOf dct:created ;
+      .
+
+  #---------- 2) Context ----------#
+  ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadg#hasContext
+  xisadg:hasContext a rdf:Property ;
+    rdfs:comment "Area delle informazioni sul contesto"@it ,
+      "2) Kontext"@de ,
+      "2) Zone du contexte"@fr ,
+      "2) context area"@en ;
+    rdfs:domain xisadg:ArchivalDescription ;
+    rdfs:range xisadg:Context ;
+  .
+    ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadg#Context
+    xisadg:Context a rdfs:Class ;
+      rdfs:comment "Area delle informazioni sul contesto"@it ,
+        "2) Kontext"@de ,
+        "2) Zone du contexte"@fr ,
+        "2) context area"@en ;
+      ###-------- SHACL (Shapes Contraints Classes) --------###
+      a sh:NodeShape ;
+      # <xs:element ref="isad:creator" minOccurs="0" maxOccurs="unbounded"/>
+      sh:property [ a sh:PropertyShape ;
+        sh:path xisadg:hasCreator ;
+        sh:class xisadg:Agent ;
+        sh:minCount 0 ; sh:maxCount "unbounded";
+      ] ;
+      # <xs:element ref="isad:adminBioHistory" minOccurs="0" maxOccurs="unbounded"/>
+      sh:property [ a sh:PropertyShape ;
+        sh:path xisadg:hasAdminBioHistory ;
+        sh:class xisadg:AgentCv ;
+        sh:minCount 0 ; sh:maxCount "unbounded";
+      ] ;
+      # <xs:element ref="isad:archivalHistory" minOccurs="0" maxOccurs="unbounded"/>
+      sh:property [ a sh:PropertyShape ;
+        sh:path xisadg:hasArchivalHistory ;
+        sh:datatype xsd:string ;
+        sh:minCount 0 ; sh:maxCount "unbounded";
+      ] ;
+      # <xs:element ref="isad:acqInfo" minOccurs="0" maxOccurs="unbounded"/>
+      sh:property [ a sh:PropertyShape ;
+        sh:path xisadg:hasAcqInfo ;
+         sh:class xisadg:Agent ;
+        sh:minCount 0 ; sh:maxCount "unbounded";
+      ] ;
+    .
+      ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadg#hasCreator
+      xisadg:hasCreator a rdf:Property ;
+        rdfs:comment "2.1) Denominazione del/dei soggetto/i produttore/i: Identificare il soggetto (o i soggetti) produttori dell'unità di descrizione"@it ,
+          "2.1) Name der Provenienzstelle: Identifizierung der Provenienzstelle(n), bei der (denen) die Verzeichnungseinheit entstanden ist"@de ,
+          "2.1) Name of creator(s): To identify the creator (or creators) of the unit of description"@en ,
+          "2.1) Nom du producteur: Identifier le ou les producteurs de l'unité de description"@fr ;
+        rdfs:domain xisadg:Context ;
+        rdfs:range xisadg:Agent ; 
+        rdfs:subPropertyOf dct:creator ;
+      .
+        ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadg#Agent
+        xisadg:Agent a rdfs:Class ;
+          rdfs:comment "Agent include person, organization, and software"@en ;
+          rdfs:subClassOf dct:Agent ;
+        .
+          ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadg#hasAgentName
+          xisadg:hasAgentName a rdf:Property ;
+            rdfs:comment "Agent Name"@de ;
+            rdfs:domain xisadg:Agent ; 
+            rdfs:range xsd:string ; 
+          .
+          ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadg#hasAgentId
+          xisadg:hasAgentId a rdf:Property ;
+            rdfs:comment "Agent ID"@de ;
+            rdfs:domain xisadg:Agent ; 
+            rdfs:range xsd:anyURI ; 
+          .
+          ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadg#hasAgentCv
+          xisadg:hasAgentCv a rdf:Property ;
+            rdfs:comment "Agent CV"@de ;
+            rdfs:domain xisadg:Agent ; 
+            rdfs:range xisadg:AgentCv ; 
+          .
+      ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadg#hasAdminBioHistory
+      xisadg:hasAdminBioHistory a rdf:Property ;
+        rdfs:comment "2.2) Stori istituzionale/amministrativa, nota biografica: Fornire una storia istituzionale/amministrativa o un profilo biografico del soggetto produttore (o i soggetti produttori), per collocare la documentazione nel proprio contesto e facilitarne la comprensione"@it ,
+          "2.2) Verwaltungsgeschichte/Biographische Angaben: Information über Verwaltungsgeschichte der Provenienzstelle bzw. die Biographie, wenn es sich um natürliche Personen handelt, zum besseren Verständnis des zur Verzeichnungseinheit gehörenden Kontextes"@de ,
+          "2.2) Administrative / Biographical history: To provide an administrative history of, or biographical details on, the creator (or creators) of the unit of description to place the material in context and make it better understood"@en ,
+          "2.2) Histoire administrative / Notice biographique: Fournir un historique ou une biographie de ou des producteurs de l'unité de description afin de situer les documents dans leur contexte et de les rendre plus intelligibles"@fr ;
+        rdfs:domain xisadg:Context ;
+        rdfs:range xisadg:AgentCv ; 
+      .
+        ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadg#AgentCv
+        xisadg:AgentCv a rdfs:Class ;
+          rdfs:comment "Verwaltungsgeschichte/Biographische Angaben der Provenienzstelle"@de ;
+        .
+          ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadg#hasAgentCvDatesComment
+          xisadg:hasAgentCvDatesComment a rdf:Property ;
+            rdfs:comment "Comment to Date"@en ;
+            rdfs:domain xisadg:AgentCv ;
+            rdfs:range xsd:string ;
+          .
+          ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadg#hasAgentCvDateRange
+          xisadg:hasAgentCvDateRange a rdf:Property ;
+            rdfs:comment "Data/e"@it ,
+              "Date(s)"@en ,
+              "Date"@fr ,
+              "Datum"@de ;
+            rdfs:domain xisadg:AgentCv ; 
+            rdfs:range xisadg:DateRange ; 
+          .
+          ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadg#hasAgentCvDatePoint
+          xisadg:hasAgentCvDatePoint a rdf:Property ;
+            rdfs:comment "Data/e"@it ,
+              "Date(s)"@en ,
+              "Date"@fr ,
+              "Datum"@de ;
+            rdfs:domain xisadg:AgentCv ; 
+            rdfs:range xisadg:dateType ; 
+          .
+          ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadg#hasAgentCvId
+          xisadg:hasAgentCvId a rdf:Property ;
+            rdfs:comment "CV ID"@en ;
+            rdfs:domain xisadg:AgentCv ;
+            rdfs:range xsd:anyURI ;
+          .
+      ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadg#hasArchivalHistory
+      xisadg:hasArchivalHistory a rdf:Property ;
+        rdfs:comment "2.3) Storia archivistica: Fornire le informazioni sulla storia dell'unità di descrizione che sono significative ai fini dell'autenticità, integrità e interpretazione della documentazione"@it ,
+          "2.3) Bestandesgeschichte: Information über den Wechsel der Eigentums- und Besitzverhältnisse der Verzeichnungseinheit, die für deren Authentizität, Integrität, Vollständigkeit und Interpretation von wesentlicher Bedeutung sind"@de ,
+          "2.3) Archival history: To provide information on the unit of description that is significant for its authenticity, integrity and interpretation"@en ,
+          "2.3) Historique de la conservation: Fournir sur l'histoire de l'nité de description les renseignements importants qui contribuent à son interprétation et qui prouvent son authenticité et sont intégrité"@fr ;
+        rdfs:domain xisadg:Context ;
+        rdfs:range xsd:string ; 
+      .
+      ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadg#hasAcqInfo
+      xisadg:hasAcqInfo a rdf:Property ;
+        rdfs:comment "2.4) Modalità di acquisizione o versamento: Identificare il soggetto dal quale è stata acquisita o che ha versato la documentazione"@it ,
+          "2.4) Abgebende Stelle: Darstellung der Umstände, die mit der direkten Übernahme der Verzeichnungseinheit von der abgebenden Stelle verbunden sind"@de ,
+          "2.4) Immediate source of acquisition or transfer: To identify the immediate source of acquisition or transfer"@en ,
+          "2.4) Modalités d'entrée: Identifier les circonstances de l'entrée dans les archives"@fr ;
+        rdfs:domain xisadg:Context ;
+        rdfs:range xisadg:Agent ; 
+      .
+
+  #---------- 3) hasContentStructure ----------#
+  ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadg#hasContentStructure
+  xisadg:hasContentStructure a rdf:Property ;
+    rdfs:comment "3) Area delle informazioni relative al contenuto e alla struttura"@it ,
+      "3) Inhalt und innere Ordnung"@de ,
+      "3) Zone du contenu et de la structure"@fr ,
+      "3) content and structure area"@en ;
+    rdfs:domain xisadg:ArchivalDescription ;
+    rdfs:range xisadg:ContentStructure ;
+  .
+    ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadg#ContentStructure
+    xisadg:ContentStructure a rdfs:Class ;
+      rdfs:comment "3) Area delle informazioni relative al contenuto e alla struttura"@it ,
+        "3) Inhalt und innere Ordnung"@de ,
+        "3) Zone du contenu et de la structure"@fr ,
+        "3) content and structure area"@en ;
+      ###-------- SHACL (Shapes Contraints Classes) --------###
+      a sh:NodeShape ;
+      # <xs:element ref="isad:appraisalDestruction" minOccurs="0" maxOccurs="unbounded"/>
+      sh:property [ a sh:PropertyShape ;
+        sh:path xisadg:hasAppraisalDestruction ;
+        sh:datatype xsd:string ;
+        sh:minCount 0 ; sh:maxCount "unbounded";
+      ] ;
+      # <xs:element ref="isad:accruals" minOccurs="0" maxOccurs="unbounded"/>
+      sh:property [ a sh:PropertyShape ;
+        sh:path xisadg:hasAccruals ;
+        sh:datatype xsd:string ;
+        sh:minCount 0 ; sh:maxCount "unbounded";
+      ] ;
+      # <xs:element ref="isad:arrangement" minOccurs="0" maxOccurs="unbounded"/>
+      sh:property [ a sh:PropertyShape ;
+        sh:path xisadg:hasArrangement ;
+        sh:class xisadg:Arrangement ;
+		sh:minCount 0 ; sh:maxCount "unbounded";
+      ] ;
+    .
+      ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadg#hasAppraisalDestruction
+      xisadg:hasAppraisalDestruction a rdf:Property ;
+        rdfs:comment "3.2) Procedure, tempi e criteri di valutazione e scarto: Fornire le informazioni relative a tutte le operazioni e di valutazione e di scarto e alle relative epoche"@it ,
+          "3.2) Bewertung und Kassation: Bereitstellung von Informationen über jede vorgenommene Bewertung und Kassation"@de ,
+          "3.2) Appraisal, destruction and scheduling information: To provide information on any appraisal, destruction and scheduling action"@en ,
+          "3.2) Evaluation, tris et éliminations, sort final: Fournir des resneignements sur l'évaluation, les oprérations detri ou d'élimination et le sort final des documents"@fr ;
+        rdfs:domain xisadg:ContentStructure ;
+        rdfs:range xsd:string ; 
+      .
+      ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadg#hasAccruals
+      xisadg:hasAccruals a rdf:Property ;
+        rdfs:comment "3.3) Incrementi previsti: Informare l'utente su previsti accrescimenti dell'unità di descrizione"@it ,
+          "3.3) Neuzugänge: Angaben für den Benutzer über mögliche Veränderungen im Umfang der Verzeichnungseinheit"@de ,
+          "3.3) Accruals: To inform the user of foreseen additions to the unit of description"@en ,
+          "3.3) Accroissements: Informer l'usager de possibles entrées complétant l'unité de description"@fr ;
+        rdfs:domain xisadg:ContentStructure ;
+        rdfs:range xsd:string ; 
+      .
+      ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadg#hasArrangement
+      xisadg:hasArrangement a rdf:Property ;
+        rdfs:comment "3.4) Criteri di ordinamento: Fornire informazioni sulla struttura interna, l'organizzazione e/o il sistema di classificazione dell'unità di descrizione"@it ,
+          "3.4) Ordnung und Klassifikation: Bereitstellung von Informationen über die Ordnung und Klassifikation der Verzeichnungseinheit"@de ,
+          "3.4) System of arrangement: To provide information on the internal structure, the order and/or the system of classification of the unit of description"@en ,
+          "3.4) Mode de classement: Fournir des renseignements sur la structure, l'ordre ou le plan de classement de l'unité de description"@fr ;
+        rdfs:domain xisadg:ContentStructure ;
+        rdfs:range xisadg:Arrangement ; 
+      .
+        ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadg#Arrangement
+        xisadg:Arrangement a rdfs:Class ;
+          rdfs:comment "3.4) Criteri di ordinamento: Fornire informazioni sulla struttura interna, l'organizzazione e/o il sistema di classificazione dell'unità di descrizione"@it ,
+            "3.4) Ordnung und Klassifikation: Bereitstellung von Informationen über die Ordnung und Klassifikation der Verzeichnungseinheit"@de ,
+            "3.4) System of arrangement: To provide information on the internal structure, the order and/or the system of classification of the unit of description"@en ,
+            "3.4) Mode de classement: Fournir des renseignements sur la structure, l'ordre ou le plan de classement de l'unité de description"@fr ;
+        .
+          ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadg#hasArrangementComment
+          xisadg:hasArrangementComment a rdf:Property ;
+            rdfs:comment "Comment"@en ;
+            rdfs:domain xisadg:Arrangement ;
+            rdfs:range xsd:string ;
+          .
+          ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadg#hasArrangementDateRange
+          xisadg:hasArrangementDateRange a rdf:Property ;
+            rdfs:comment "Data/e"@it ,
+              "Date(s)"@en ,
+              "Date"@fr ,
+              "Datum"@de ;
+            rdfs:domain xisadg:Arrangement ; 
+            rdfs:range xisadg:DateRange ; 
+          .
+          ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadg#hasArrangementDatePoint
+          xisadg:hasArrangementDatePoint a rdf:Property ;
+            rdfs:comment "Data/e"@it ,
+              "Date(s)"@en ,
+              "Date"@fr ,
+              "Datum"@de ;
+            rdfs:domain xisadg:Arrangement ; 
+            rdfs:range xisadg:dateType ; 
+          .
+
+  #---------- 4) ConditionsAccessUse ----------#
+  ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadg#hasConditionsAccessUse
+  xisadg:hasConditionsAccessUse a rdf:Property ;
+    rdfs:comment "4) Area delle informazioni relative alle condizioni di accesso ed utilizzazione"@it ,
+      "4) Zugangs- und Benutzungsbestimmungen"@de ,
+      "4) Zone des conditions d'accès et d'utilisation"@fr ,
+      "4) conditions of access and use area"@en ;
+    rdfs:domain xisadg:ArchivalDescription ;
+    rdfs:range xisadg:ConditionsAccessUse ;
+  .
+    ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadg#ConditionsAccessUse
+    xisadg:ConditionsAccessUse a rdfs:Class ;
+      rdfs:comment "4) Area delle informazioni relative alle condizioni di accesso ed utilizzazione"@it ,
+        "4) Zugangs- und Benutzungsbestimmungen"@de ,
+        "4) Zone des conditions d'accès et d'utilisation"@fr ,
+        "4) conditions of access and use area"@en ;
+      ###-------- SHACL (Shapes Contraints Classes) --------###
+      a sh:NodeShape ;
+      # <xs:element ref="isad:accessConditions" minOccurs="0"/>
+      sh:property [ a sh:PropertyShape ;
+        sh:path xisadg:hasAccessConditions ;
+        sh:class xisadg:AccessConditions ;
+        sh:minCount 0 ; sh:maxCount 1;
+      ] ;
+      # <xs:element ref="isad:reproConditions" minOccurs="0" maxOccurs="unbounded"/>
+      sh:property [ a sh:PropertyShape ;
+        sh:path xisadg:hasReproConditions ;
+        sh:nodeKind sh:IRI ;
+        sh:minCount 0 ; sh:maxCount "unbounded";
+      ] ;
+      # <xs:element ref="isad:languageScripts" minOccurs="0" maxOccurs="unbounded"/>
+      sh:property [ a sh:PropertyShape ;
+        sh:path xisadg:hasLanguageScripts ;
+        sh:datatype xsd:string ;
+        sh:minCount 0 ; sh:maxCount "unbounded";
+      ] ;
+      # <xs:element ref="isad:findingAids" minOccurs="0" maxOccurs="unbounded"/>
+      sh:property [ a sh:PropertyShape ;
+        sh:path xisadg:hasFindingAids ;
+        sh:datatype xsd:string ;
+        sh:minCount 0 ; sh:maxCount "unbounded";
+      ] ;
+    .
+	  ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadg#hasAccessConditions
+	  xisadg:hasAccessConditions a rdf:Property ;
+		rdfs:comment "4.1) Condizioni che regolano l'accesso: Fornire informazioni sulla condizione giuridica e su altre forme di regolamentazione che limitano o condizionano l'acesso all'unità di descrizione"@it ,
+		  "4.1) Zugangsbestimmungen: Angabe derjenigen Bestimmungen, die den Zugang zur Verzeichnungseinheit einschränken oder beeinflussen"@de ,
+		  "4.1) Conditions governing access: To provide information on the legal status or other regulations that restrict or affect access to the unit of description"@en ,
+		  "4.1) Conditions d'accès: Fournir des renseignements sur le statut juridique et sur les autres dispositions de toute nature qui restreignent ou affectent l'accès à l'unité des descriptions"@fr ;
+		rdfs:domain xisadg:ConditionsAccessUse ;
+		rdfs:range xisadg:AccessConditions ; 
+		rdfs:subPropertyOf dct:accessRights ;
+	  .
+		###  https://github.com/KOST-CECO/ontologies/blob/master/xisadg#AccessConditions
+		xisadg:AccessConditions a rdfs:Class ;
+		  rdfs:comment "4.1) Condizioni che regolano l'accesso: Fornire informazioni sulla condizione giuridica e su altre forme di regolamentazione che limitano o condizionano l'acesso all'unità di descrizione"@it ,
+			"4.1) Zugangsbestimmungen: Angabe derjenigen Bestimmungen, die den Zugang zur Verzeichnungseinheit einschränken oder beeinflussen"@de ,
+			"4.1) Conditions governing access: To provide information on the legal status or other regulations that restrict or affect access to the unit of description"@en ,
+			"4.1) Conditions d'accès: Fournir des renseignements sur le statut juridique et sur les autres dispositions de toute nature qui restreignent ou affectent l'accès à l'unité des descriptions"@fr ;
+		  rdfs:subClassOf dct:RightsStatement ;
+          ###-------- SHACL (Shapes Contraints Classes) --------###
+          a sh:NodeShape ;
+          # <xs:element ref="isad:hasPrivacyProtection" minOccurs="0" maxOccurs="unbounded"/>
+          sh:property [ a sh:PropertyShape ;
+            sh:path xisadg:hasPrivacyProtection ;
+            sh:datatype xsd:boolean ;
+            sh:minCount 0 ; sh:maxCount 1;
+          ] ;
+          # <xs:element ref="isad:openToThePublic" minOccurs="0" maxOccurs="unbounded"/>
+          sh:property [ a sh:PropertyShape ;
+            sh:path xisadg:hasOpenToThePublic ;
+            sh:datatype xsd:string ;
+            sh:pattern "^undefined|public|not_public$" ;
+            sh:minCount 0 ; sh:maxCount 1;
+          ] ;
+          # <xs:element ref="isad:classification" minOccurs="0" maxOccurs="unbounded"/>
+          sh:property [ a sh:PropertyShape ;
+            sh:path xisadg:hasClassification ;
+            sh:datatype xsd:string ;
+            sh:pattern "^unclassified|confidential|secret|in_house|other$" ;
+            sh:minCount 0 ; sh:maxCount 1;
+          ] ;
+          # otherAccessConditions
+          sh:property [ a sh:PropertyShape ;
+            sh:path xisadg:hasOtherAccessConditions ;
+            sh:datatype xsd:string ;
+            sh:minCount 0 ; sh:maxCount "unbounded";
+          ] ;
+          # <xs:element ref="isad:accessConditionsNotes" minOccurs="0" maxOccurs="unbounded"/>
+          sh:property [ a sh:PropertyShape ;
+            sh:path xisadg:hasAccessConditionsNotes ;
+            sh:datatype xsd:string ;
+            sh:minCount 0 ; sh:maxCount "unbounded";
+          ] ;
+          # <xs:element ref="isad:retentionPeriod" minOccurs="0" maxOccurs="unbounded"/>
+          sh:property [ a sh:PropertyShape ;
+            sh:path xisadg:hasRetentionPeriod ;
+            sh:datatype xsd:integer ;
+            sh:minCount 0 ; sh:maxCount 1;
+          ] ;
+          # <xs:element ref="isad:retentionPeriodConditions" minOccurs="0" maxOccurs="unbounded"/>
+          sh:property [ a sh:PropertyShape ;
+            sh:path xisadg:hasRetentionPeriodConditions ;
+            sh:datatype xsd:string ;
+            sh:minCount 0 ; sh:maxCount "unbounded";
+          ] ;
+          # <xs:element ref="isad:retentionPeriodNotes" minOccurs="0" maxOccurs="unbounded"/>
+          sh:property [ a sh:PropertyShape ;
+            sh:path xisadg:hasRetentionPeriodNotes ;
+            sh:datatype xsd:string ;
+            sh:minCount 0 ; sh:maxCount "unbounded";
+          ] ;
+		.
+		  ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadg#hasPrivacyProtection
+		  xisadg:hasPrivacyProtection a rdf:Property ;
+			rdfs:comment "Condizioni che regolano l'accesso: "@it ,
+			  "Zugangsbestimmungen: Datenschutz (Angabe, ob in der Verzeichnungseinheit besonders schützenswerte Personendaten vorhanden sind oder nicht)"@de ,
+			  "Conditions governing access: "@en ,
+			  "Conditions d'accès: "@fr ;
+			rdfs:domain xisadg:AccessConditions ;
+			rdfs:range xsd:boolean ; 
+		  .
+		  ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadg#hasOpenToThePublic
+		  xisadg:hasOpenToThePublic a rdf:Property ;
+			rdfs:comment "Condizioni che regolano l'accesso: "@it ,
+			  "Zugangsbestimmungen: Öffentlichkeitsstatus (Angabe über die Zugänglichkeit der Verzeichnungseinheit gemäss den geltenden Informationsfreiheits- resp. Öffentlichkeitsgesetzen)"@de ,
+			  "Conditions governing access: "@en ,
+			  "Conditions d'accès: "@fr ;
+			rdfs:domain xisadg:AccessConditions ;
+			rdfs:range xsd:string ;
+			# SHACL sh:pattern "^undefined|public|not_public$" ;
+		  .
+		  ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadg#hasClassification
+		  xisadg:hasClassification a rdf:Property ;
+			rdfs:comment "Condizioni che regolano l'accesso: "@it ,
+			  "Zugangsbestimmungen: Klassifizierungskategorie (Angabe zur Geheimhaltung/Klassifikation der Verzeichnungseinheit)"@de ,
+			  "Conditions governing access: "@en ,
+			  "Conditions d'accès: "@fr ;
+			rdfs:domain xisadg:AccessConditions ;
+			rdfs:range xsd:string ; 
+			# SHACL sh:pattern "^unclassified|confidential|secret|in_house|other$" ;
+		  .
+		  ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadg#hasOtherAccessConditions
+		  xisadg:hasOtherAccessConditions a rdf:Property ;
+			rdfs:comment "Condizioni che regolano l'accesso: "@it ,
+			  "Zugangsbestimmungen: Weitere Zugangs- und Nutzungsbedingungen (Angabe über weitere Zugangs- und Nutzungsbedingungen; NICHT Repro-Bestimmungen)"@de ,
+			  "Conditions governing access: "@en ,
+			  "Conditions d'accès: "@fr ;
+			rdfs:domain xisadg:AccessConditions ;
+			rdfs:range xsd:string ; 
+		  .
+		  ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadg#hasAccessConditionsNotes
+		  xisadg:hasAccessConditionsNotes a rdf:Property ;
+			rdfs:comment "Condizioni che regolano l'accesso: "@it ,
+			  "Zugangsbestimmungen: Bemerkungen zu Zugangs- und Nutzungsbedingungen"@de ,
+			  "Conditions governing access: "@en ,
+			  "Conditions d'accès: "@fr ;
+			rdfs:domain xisadg:AccessConditions ;
+			rdfs:range xsd:string ; 
+		  .
+		  ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadg#hasRetentionPeriod
+		  xisadg:hasRetentionPeriod a rdf:Property ;
+			rdfs:comment "Condizioni che regolano l'accesso: "@it ,
+			  "Zugangsbestimmungen: Schutzfrist (Dauer der Schutzfrist in Jahren)"@de ,
+			  "Conditions governing access: "@en ,
+			  "Conditions d'accès: "@fr ;
+			rdfs:domain xisadg:AccessConditions ;
+			rdfs:range xsd:integer ; 
+		  .
+		  ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadg#hasRetentionPeriodConditions
+		  xisadg:hasRetentionPeriodConditions a rdf:Property ;
+			rdfs:comment "Condizioni che regolano l'accesso: "@it ,
+			  "Zugangsbestimmungen: Schutzfristenkategorie bzw. Artikel der gesetzlichen Grundlage für die Schutzfrist festhält"@de ,
+			  "Conditions governing access: "@en ,
+			  "Conditions d'accès: "@fr ;
+			rdfs:domain xisadg:AccessConditions ;
+			rdfs:range xsd:string ; 
+		  .
+		  ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadg#hasRetentionPeriodNotes
+		  xisadg:hasRetentionPeriodNotes a rdf:Property ;
+			rdfs:comment "Condizioni che regolano l'accesso: "@it ,
+			  "Zugangsbestimmungen: Weiter Informationen zur Schutzfrist, z.B. Aktenzeichen des Formulars „Meldung von Unterlagen mit besonderer Schutzfrist und öffentlich zugänglichen Unterlagen“, in dem die für die Ablieferung vereinbarten Schutzfristen festgehalten sind"@de ,
+			  "Conditions governing access: "@en ,
+			  "Conditions d'accès: "@fr ;
+			rdfs:domain xisadg:AccessConditions ;
+			rdfs:range xsd:string ; 
+		  .
+	  ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadg#hasReproConditions
+	  xisadg:hasReproConditionsUri a rdf:Property ;
+		rdfs:comment "4.2) Condizioni che regolano la riproduzione: Segnalare tutte le limitazioni alla riproduzione dell'unità di descrizione"@it ,
+		  "4.2) Reproduktionsbestimmungen: Information über Beschränkungen bei der Reproduktion der Verzeichnungseinheit."@de ,
+		  "4.2) Conditions governing reproduction: To identify any restrictions on reproduction of the unit of description"@en ,
+		  "4.2) Conditions de reproduction: Signaler toute restriction relative à la reproduction de l'unité de description"@fr ;
+		rdfs:domain xisadg:ConditionsAccessUse ;
+		rdfs:range xsd:anyURI ; 
+		rdfs:subPropertyOf dct:rights ;
+	  .
+	  ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadg#hasLanguageScripts
+	  xisadg:hasLanguageScripts a rdf:Property ;
+		rdfs:comment "4.3) Lingua/scrittura della documentazione: Segnalare la/le lingua/e, la/le scrittura/e o i sistemi di simboli utilizzati nell'unità di descrizione"@it ,
+		  "4.3) Sprache/Schrift: Identifizierung der in der Verzeichnungseinheit enthaltenen Sprache(n), Schriftarten und Zeichensysteme"@de ,
+		  "4.3) Language / scripts of material: To identify the language(s), script(s) and symbol systems employed in the unit of description"@en ,
+		  "4.3) Langue et écriture des documents: Identifier la ou les langues, les systèmes d'écriture et de symboles utilisés dans l'unité de description"@fr ;
+		rdfs:domain xisadg:ConditionsAccessUse ;
+		rdfs:range xsd:string ; 
+		rdfs:subPropertyOf dc:language ;
+		# hasLanguageScripts ist KEINE rdfs:subPropertyOf dct:language ;
+		# Dies weil bei dct:language der range eine Ressource ist und nicht ein Literal
+	  .
+	  ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadg#hasFindingAids
+	  xisadg:hasFindingAids a rdf:Property ;
+		rdfs:comment "4.5) Strumenti di ricera: Segnalare tutti gli strumenti di ricera relativi all'unità di descrizione"@it ,
+		  "4.5) Findhilfsmittel: Identifizierung aller für die Verzeichnungseinheit vorhandenen Findhilfsmittel"@de ,
+		  "4.5) Findng Aids: To identify any finding aids to the unit of description"@en ,
+		  "4.5) Instruments de recherche: Signaler tout instrument de recherche intéressant l'unité de description"@fr ;
+		rdfs:domain xisadg:ConditionsAccessUse ;
+		rdfs:range xsd:string ; 
+	  .
+
+  # ---------- 5) AlliedMaterials ---------- #
+  ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadg#hasAlliedMaterials
+  xisadg:hasAlliedMaterials a rdf:Property ;
+    rdfs:comment "5) Area delle informazioni relative a documentazione collegata"@it ,
+      "5) Sachverwandte Unterlagen"@de ,
+      "5) Zone des sources complémentaires"@fr ,
+      "5) allied materials area"@en ;
+    rdfs:domain xisadg:ArchivalDescription ;
+    rdfs:range xisadg:AlliedMaterials ;
+  .
+    ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadg#AlliedMaterials
+    xisadg:AlliedMaterials a rdfs:Class ;
+    rdfs:comment "5) Area delle informazioni relative a documentazione collegata"@it ,
+      "5) Sachverwandte Unterlagen"@de ,
+      "5) Zone des sources complémentaires"@fr ,
+      "5) allied materials area"@en ;
+      ###-------- SHACL (Shapes Contraints Classes) --------###
+      a sh:NodeShape ;
+      # <xs:element ref="isad:relatedUnits" minOccurs="0" maxOccurs="unbounded"/>
+      sh:property [ a sh:PropertyShape ;
+        sh:path xisadg:hasRelatedUnitsUri ;
+        sh:nodeKind sh:BlankNodeOrIRI ;
+        sh:minCount 0 ; sh:maxCount "unbounded";
+      ] ;
+      sh:property [ a sh:PropertyShape ;
+        sh:path xisadg:hasRelatedUnitsAd ;
+        sh:class xisadg:ArchivalDescription ;
+        sh:minCount 0 ; sh:maxCount "unbounded";
+      ] ;
+      sh:property [ a sh:PropertyShape ;
+        sh:path xisadg:hasRelatedUnits ;
+        sh:datatype xsd:string ;
+        sh:minCount 0 ; sh:maxCount "unbounded";
+      ] ;
+      # <xs:element ref="isad:publication" minOccurs="0" maxOccurs="unbounded"/>
+      sh:property [ a sh:PropertyShape ;
+        sh:path xisadg:hasPublicationUri ;
+        sh:nodeKind sh:IRI ;
+        sh:minCount 0 ; sh:maxCount "unbounded";
+      ] ;
+      sh:property [ a sh:PropertyShape ;
+        sh:path xisadg:hasPublicationUri ;
+        sh:datatype xsd:string ;
+        sh:minCount 0 ; sh:maxCount "unbounded";
+      ] ;
+    .
+	  ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadg#hasRelatedUnitsUri
+	  xisadg:hasRelatedUnitsUri a rdf:Property;
+		rdfs:comment "5.3) Verwandte Verzeichnungseinheiten: Ermittlung von verwandten Verzeichnungseinheiten im selben Archiv oder in anderen Archiven"@de ,
+		  "5.3) Related units of description: To identify related units of description"@en ,
+		  "5.3) Sources complémentaires: Signaler les sources complémentaires"@fr ,
+		  "5.3) Unità di descrizione collegate: Segnalare l'esistenza di unità di descrizione collgeate"@it ;
+		rdfs:domain xisadg:AlliedMaterials ;
+		rdfs:range xsd:anyURI ;
+	  .
+	  ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadg#hasRelatedUnitsAd
+	  xisadg:hasRelatedUnitsAd a owl:IrreflexiveProperty ;
+		rdfs:comment "5.3) Verwandte Verzeichnungseinheiten: Ermittlung von verwandten Verzeichnungseinheiten im selben Archiv oder in anderen Archiven"@de ,
+		  "5.3) Related units of description: To identify related units of description"@en ,
+		  "5.3) Sources complémentaires: Signaler les sources complémentaires"@fr ,
+		  "5.3) Unità di descrizione collegate: Segnalare l'esistenza di unità di descrizione collgeate"@it ;
+		rdfs:domain xisadg:AlliedMaterials ;
+		rdfs:range xisadg:ArchivalDescription ;
+	  .
+	  ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadg#hasRelatedUnits
+	  xisadg:hasRelatedUnits a rdf:Property;
+		rdfs:comment "5.3) Verwandte Verzeichnungseinheiten: Ermittlung von verwandten Verzeichnungseinheiten im selben Archiv oder in anderen Archiven"@de ,
+		  "5.3) Related units of description: To identify related units of description"@en ,
+		  "5.3) Sources complémentaires: Signaler les sources complémentaires"@fr ,
+		  "5.3) Unità di descrizione collegate: Segnalare l'esistenza di unità di descrizione collgeate"@it ;
+		rdfs:domain xisadg:AlliedMaterials ;
+		rdfs:range xsd:string ;
+	  .
+	  ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadg#hasPublicationUri
+	  xisadg:hasPublicationUri a rdf:Property ;
+		rdfs:comment "5.4) Veröffentlichungen: Ermittlung von Veröffentlichungen, die unter Benutzung oder Auswertung der Verzeichnungseinheit entstanden sind"@de ,
+		  "5.4) Publication Note: To identify any publications that are about or are based on the use, study, or analysis of the unit of descripton"@en ,
+		  "5.4) Bibliographie: Identifier toutes les publications qui sont relatives à l'unité de description, qui l'utilisent ou qui l'étudient"@fr ,
+		  "5.4) Bibliografia: Identificare tutte le publicazioni che si riferiscano all'unità di descrizione o siano basate sullo studio, l'analisi od una qualche altra forma di utilizzazione die essa"@it ;
+		rdfs:domain xisadg:AlliedMaterials ;
+		rdfs:range xsd:anyURI ; 
+	  .
+	  ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadg#hasPublication
+	  xisadg:hasPublication a rdf:Property ;
+		rdfs:comment "5.4) Veröffentlichungen: Ermittlung von Veröffentlichungen, die unter Benutzung oder Auswertung der Verzeichnungseinheit entstanden sind"@de ,
+		  "5.4) Publication Note: To identify any publications that are about or are based on the use, study, or analysis of the unit of descripton"@en ,
+		  "5.4) Bibliographie: Identifier toutes les publications qui sont relatives à l'unité de description, qui l'utilisent ou qui l'étudient"@fr ,
+		  "5.4) Bibliografia: Identificare tutte le publicazioni che si riferiscano all'unità di descrizione o siano basate sullo studio, l'analisi od una qualche altra forma di utilizzazione die essa"@it ;
+		rdfs:domain xisadg:AlliedMaterials ;
+		rdfs:range xsd:string ; 
+	  .
+
+  # ---------- 6) hasNotes ---------- #
+  ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadg#hasNotes
+  xisadg:hasNotes a rdf:Property ;
+    rdfs:comment "6) Note: Fornire informazioni particolari ed informazioni che non possono essere inserite in nessuna delle altre aree"@it ,
+      "6) Allgemeine Anmerkungen: Bereitstellung von Spezialinformationen und Angaben, die in keinem der anderen Bereiche angebracht werden können"@de ,
+      "6) Note: To provide information that cannot be accommodated in any of the other areas"@en ,
+      "6) Notes: Fournir des renseignements qui ne peuvent pas être donnés dans aucune des autres zones"@fr ;
+    rdfs:domain xisadg:ArchivalDescription ;
+    rdfs:range xisadg:Notes ;
+  .
+    ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadg#Notes
+    xisadg:Notes a rdfs:Class ;
+      rdfs:comment "6) Area delle note"@it ,
+        "6) Anmerkungen"@de ,
+        "6) Zone de note"@fr ,
+        "6) notes area"@en ;
+      ###-------- SHACL (Shapes Contraints Classes) --------###
+      a sh:NodeShape ;
+      # <xs:element ref="isad:note" minOccurs="0" maxOccurs="unbounded"/>
+      sh:property [ a sh:PropertyShape ;
+        sh:path xisadg:hasNote ;
+        sh:datatype xsd:string ;
+        sh:minCount 0 ; sh:maxCount "unbounded";
+      ] ;
+    .
+      ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadg#hasNote
+      xisadg:hasNote a rdf:Property ;
+        rdfs:comment "6.1) Area delle note"@it ,
+          "6.1) Anmerkungen"@de ,
+          "6.1) Zone de note"@fr ,
+          "6.1) notes area"@en ;
+        rdfs:domain xisadg:Notes ;
+        rdfs:range xsd:string ; 
+      .
+
+  # ---------- 7) DescriptionControl ---------- #
+  ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadg#hasDescriptionControl
+  xisadg:hasDescriptionControl a rdf:Property ;
+    rdfs:comment "7) Area di controllo della descrizione"@it ,
+      "7) Verzeichnungskontrolle"@de ,
+      "7) Zone du contrôle de la description"@fr ,
+      "7) description control area"@en ;
+    rdfs:domain xisadg:ArchivalDescription ;
+    rdfs:range xisadg:DescriptionControl ; 
+  .
+    ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadg#DescriptionControl
+    xisadg:DescriptionControl a rdfs:Class ;
+      rdfs:comment "7) Area di controllo della descrizione"@it ,
+        "7) Verzeichnungskontrolle"@de ,
+        "7) Zone du contrôle de la description"@fr ,
+        "7) description control area"@en ;
+      ###-------- SHACL (Shapes Contraints Classes) --------###
+      a sh:NodeShape ;
+      # <xs:element ref="isad:archivistsNote" minOccurs="0" maxOccurs="unbounded"/>
+      sh:property [ a sh:PropertyShape ;
+        sh:path xisadg:hasArchivistsNote ;
+        sh:datatype xsd:string ;
+        sh:minCount 0 ; sh:maxCount "unbounded";
+      ] ;
+      # <xs:element ref="isad:rulesConventions" minOccurs="0" maxOccurs="unbounded"/>
+      sh:property [ a sh:PropertyShape ;
+        sh:path xisadg:hasRulesConventions ;
+        sh:datatype xsd:string ;
+        sh:minCount 0 ; sh:maxCount "unbounded";
+      ] ;
+      # <xs:element ref="isad:descriptionDates" minOccurs="0" maxOccurs="unbounded"/>
+      sh:property [ a sh:PropertyShape ;
+        sh:path xisadg:hasDescriptionDates ;
+        sh:datatype xsd:date ;
+        sh:minCount 0 ; sh:maxCount "unbounded";
+      ] ;
+   .
+      ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadg#hasArchivistsNote
+      xisadg:hasArchivistsNote a rdf:Property ;
+        rdfs:comment "7.1) Nota dell'archivista: Spiegare come e da chi è stata elaborata la descrizione"@it ,
+          "7.1) Informationen des Bearbeiters: Erläuterungen zur Verzeichnung und über den oder die Bearbeiter"@de ,
+          "7.1) Archivist's note: To explain how the description was prepared and by whom"@en ,
+          "7.1) Notes de l'archiviste: Expliquer comment et par qui la description a été établie"@fr ;
+        rdfs:domain xisadg:DescriptionControl ;
+        rdfs:range xsd:string ; 
+      .
+      ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadg#hasRulesConventions
+      xisadg:hasRulesConventions a rdf:Property ;
+        rdfs:comment "7.2) Norme o convenzioni: Identificare le regole e le convenzioni sulle quali è basta la descrizione"@it ,
+          "7.2) Rules or conventions: To identify the protocols on which the description is based"@en ,
+          "7.2) Verzeichnungsgrundsätze: Benennung der bei der Verzeichnung angewandten Normen, Regeln und Grundsätze"@de ,
+          "7.2) Règles ou conventions: Identifier les règles ou les conventions internationales, nationales ou locales suivies pour établir la description"@fr ;
+        rdfs:domain xisadg:DescriptionControl ;
+        rdfs:range xsd:string ; 
+      .
+      ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadg#hasDescriptionDates
+      xisadg:hasDescriptionDates a rdf:Property ;
+        rdfs:comment "7.3) Data/e della descrizione: Indicare la/le data/e nella quale la descrizione è stata elaborata e/o modificata"@it ,
+          "7.3) Datum oder Zeitraum der Verzeichung: Alle Daten, die sich auf die Erstellung oder Veränderung der Verzeichnung beziehen, sind anzugeben"@de ,
+          "7.3) Datum oder Zeitraum der Verzeichung: Alle Daten, die sich auf die Erstellung oder Veränderung der Verzeichnung beziehen, sind anzugeben"@en ,
+          "7.3) Date(s) de la description: Indiquer à quelle date la description a été préparée et / ou révisée"@fr ;
+        rdfs:domain xisadg:DescriptionControl ;
+        rdfs:range xsd:date ; 
+      .
+
+  # ---------- Additional) Reference ---------- #
+  ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadg#hasAdditionalReference
+  xisadg:hasAdditionalReference a rdf:Property ;
+    rdfs:comment "Zusätzliche Referenzierungen und Identifikatoren"@de ,
+      "Zone des réferences supplémentaires"@fr ,
+      "additional reference area"@en ;
+    rdfs:domain xisadg:ArchivalDescription ;
+    rdfs:range xisadg:AdditionalReference ; 
+  .
+    ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadg#AdditionalReference
+    xisadg:AdditionalReference a rdfs:Class ;
+      rdfs:comment "Zusätzliche Referenzierungen und Identifikatoren"@de ,
+        "Zone des réferences supplémentaires"@fr ,
+        "additional reference area"@en ;
+      ###-------- SHACL (Shapes Contraints Classes) --------###
+      a sh:NodeShape ;
+      # <xs:element ref="isad:recordReference" minOccurs="0" maxOccurs="unbounded"/>
+      sh:property [ a sh:PropertyShape ;
+        sh:path xisadg:hasRecordReference ;
+        sh:datatype xsd:string ;
+        sh:minCount 0 ; sh:maxCount "unbounded";
+      ] ;
+    .
+      ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadg#hasRecordReference
+      xisadg:hasRecordReference a rdf:Property ;
+        rdfs:comment "Name der Provenienzsteinheit entstanden ist"@de ;
+        rdfs:domain xisadg:AdditionalReference ;
+        rdfs:range xsd:string ; 
+      .
+
+  # ---------- Additional) Data ---------- #
+  ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadg#hasAdditionalData
+  xisadg:hasAdditionalData a rdf:Property ;
+    rdfs:comment "Zusatzdaten"@de ,
+      "Zone des données supplémentaires"@fr ,
+      "additional data area"@en ;
+    rdfs:domain xisadg:ArchivalDescription ;
+    rdfs:range xisadg:AdditionalData ; 
+  .
+    ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadg#AdditionalData
+    xisadg:AdditionalData a rdfs:Class ;
+      rdfs:comment "Zusatzdaten"@de ,
+        "Zone des données supplémentaires"@fr ,
+        "additional data area"@en ;
+      ###-------- SHACL (Shapes Contraints Classes) --------###
+      a sh:NodeShape ;
+      # <xs:element ref="isad:mdWrap" minOccurs="0" maxOccurs="unbounded"/>
+      sh:property [ a sh:PropertyShape ;
+        sh:path xisadg:hasMdWrap ;
+        sh:datatype xsd:string ;
+        sh:minCount 0 ; sh:maxCount "unbounded";
+      ] ;
+      # <xs:element ref="isad:xmlData" minOccurs="0" maxOccurs="unbounded"/>
+      sh:property [ a sh:PropertyShape ;
+        sh:path xisadg:hasXmlData ;
+        sh:datatype xsd:string ;
+        sh:minCount 0 ; sh:maxCount "unbounded";
+      ] ;
+    .
+      ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadg#hasMdWrap
+      xisadg:hasMdWrap a rdf:Property ;
+        rdfs:comment "Zusätzliche Metadaten in Form eines Schlüssel-Werte-Paares.</"@de ,
+          "property: A wrapper element to contain key-value pair metadata."@en ;
+        rdfs:domain xisadg:AdditionalData ;
+        rdfs:range xsd:string ; 
+      .
+      ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadg#hasXmlData
+      xisadg:hasXmlData a rdf:Property ;
+        rdfs:comment "zusätzliche Metadaten gemäss einer externen Metadatendefinition in Form eines XML-Schemas."@de ,
+          "special metadata according to an external metadata schema"@en ;
+        rdfs:domain xisadg:AdditionalData ;
+        rdfs:range xsd:string ; 
+      .
+
+  # ---------- hasArchivalDescription ---------- #
+  ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadg#hasArchivalDescription
+  xisadg:hasArchivalDescription a owl:IrreflexiveProperty ;
+    rdfs:domain xisadg:ArchivalDescription ;
+    rdfs:range xisadg:ArchivalDescription ;
+  .
+    ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadg#Fonds
+    xisadg:Fonds a rdfs:Class ; 
+      rdfs:comment "Level of description: Fonds"@en ,
+        "Livello di descrizione: Fondo"@it ,
+        "Niveau de description: Fonds"@fr ,
+        "Verzeichnungsstufe: Bestand (Menge aller Ablieferungen einer Provenienz)"@de ;
+      rdfs:subClassOf xisadg:ArchivalDescription ;
+      ###-------- SHACL (Shapes Contraints Classes) --------### 
+      a sh:NodeShape ;
+      sh:property [
+        a sh:PropertyShape ;
+        sh:path xisadg:hasArchivalDescription ;
+        sh:or (
+          [ sh:class xisadg:File ; ]
+          [ sh:class xisadg:Item ; ]
+          [ sh:class xisadg:Series ; ]
+          [ sh:class xisadg:SubFile ; ]
+          [ sh:class xisadg:SubSeries ; ]
+          [ sh:class xisadg:SubFonds ; ]
+        ) ;
+      ] ;
+    .
+    ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadg#SubFonds
+    xisadg:SubFonds a rdfs:Class ;
+      rdfs:comment "Level of description: Sub-fonds"@en ,
+        "Livello di descrizione: Sub-fondo"@it ,
+        "Niveau de description: Sous-fonds"@fr ,
+        "Verzeichnungsstufe: Teilbestand (Ablieferung einer Provenienz)"@de ;
+      rdfs:subClassOf xisadg:ArchivalDescription ;
+      ###-------- SHACL (Shapes Contraints Classes) --------###
+      a sh:NodeShape ;
+      sh:property [
+        a sh:PropertyShape ;
+        sh:path xisadg:hasArchivalDescription ;
+        sh:or (
+          [ sh:class xisadg:File ; ]
+          [ sh:class xisadg:Item ; ]
+          [ sh:class xisadg:Series ; ]
+          [ sh:class xisadg:SubFile ; ]
+          [ sh:class xisadg:SubSeries ; ]
+          [ sh:class xisadg:SubFonds ; ]
+        ) ;
+      ] ;
+    .
+    ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadg#Series
+    xisadg:Series a rdfs:Class ;
+      rdfs:comment "Level of description: Series"@en ,
+        "Livello di descrizione: Serie"@it ,
+        "Niveau de description: Série organique"@fr ,
+        "Verzeichnungsstufe: Serie (Entspricht einer Ordnungssystemposition resp. einer Rubrik im Ordnungssystem)"@de ;
+      rdfs:subClassOf xisadg:ArchivalDescription ;
+      ###-------- SHACL (Shapes Contraints Classes) --------###
+      a sh:NodeShape ;
+      sh:property [
+        a sh:PropertyShape ;
+        sh:path xisadg:hasArchivalDescription ;
+        sh:or (
+          [ sh:class xisadg:File ; ]
+          [ sh:class xisadg:Item ; ]
+          [ sh:class xisadg:SubFile ; ]
+          [ sh:class xisadg:SubSeries ; ]
+        ) ;
+      ] ;
+    .
+    ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadg#SubSeries
+    xisadg:SubSeries a rdfs:Class ;
+      rdfs:comment "Level of description: Sub-series"@en ,
+        "Livello di descrizione: Sotto-serie"@it ,
+        "Niveau de description: Sous-série organique"@fr ,
+        "Verzeichnungsstufe: Teilserie (Entspricht einer Ordnungssystemposition resp. einer Rubrik im Ordnungssystem, die einer anderen Ordnungssystemposition untergeordnet ist)"@de ;
+      rdfs:subClassOf xisadg:ArchivalDescription ;
+      ###-------- SHACL (Shapes Contraints Classes) --------###
+      a sh:NodeShape ;
+      sh:property [
+        a sh:PropertyShape ;
+        sh:path xisadg:hasArchivalDescription ;
+        sh:or (
+          [ sh:class xisadg:File ; ]
+          [ sh:class xisadg:Item ; ]
+          [ sh:class xisadg:SubFile ; ]
+          [ sh:class xisadg:SubSeries ; ]
+        ) ;
+      ] ;
+    .
+    ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadg#File
+    xisadg:File a rdfs:Class ; 
+      rdfs:comment "Level of description: File"@en ,
+        "Livello di descrizione: Fascicolo"@it ,
+        "Niveau de description: Dossier"@fr ,
+        "Verzeichnungsstufe: Dossier (Einer Rubrik im Ordnungssystem zugeordnete sachliche Einheit, die im Geschäftsgang entstanden ist)"@de ;
+      rdfs:subClassOf xisadg:ArchivalDescription ;
+      ###-------- SHACL (Shapes Contraints Classes) --------###
+      a sh:NodeShape ;
+      sh:property [
+        a sh:PropertyShape ;
+        sh:path xisadg:hasArchivalDescription ;
+        sh:or (
+          [ sh:class xisadg:Item ; ]
+          [ sh:class xisadg:SubFile ; ]
+        ) ;
+      ] ;
+    .
+    ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadg#SubFile
+    xisadg:SubFile a rdfs:Class ;
+      rdfs:comment "Level of description: Sub-file"@en ,
+        "Livello di descrizione: Sub-fascicolo"@it ,
+        "Niveau de description: Sous-dossier"@fr ,
+        "Verzeichnungsstufe: Teildossier (Bestandteil eines Dossiers und diesem untergeordnet)"@de ;
+      rdfs:subClassOf xisadg:ArchivalDescription ;
+      ###-------- SHACL (Shapes Contraints Classes) --------###
+      a sh:NodeShape ;
+      sh:property [
+          a sh:PropertyShape ;
+          sh:path xisadg:hasArchivalDescription ;
+          sh:or (
+              [ sh:class xisadg:Item ; ]
+              [ sh:class xisadg:SubFile ; ]
+            ) ;
+        ] ;
+    .
+    ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadg#Item
+    xisadg:Item a rdfs:Class ;
+      rdfs:comment "Level of description: Item"@en ,
+        "Livello di descrizione: Unità documentaria"@it ,
+        "Niveau de description: Pièce"@fr ,
+        "Verzeichnungsstufe: Dokument (Bestandteil eines Dossiers oder Teildossiers und diesem untergeordnet)"@de ;
+      rdfs:subClassOf xisadg:ArchivalDescription ;
+    .
+
+# ========== DateRange ========== #
+###  https://github.com/KOST-CECO/ontologies/blob/master/xisadg#DateRange
+xisadg:DateRange a rdfs:Class ;
+  rdfs:comment "From Date, To Date"@en ;
+.
+  ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadg#hasDateFrom
+  xisadg:hasFromDate a rdf:Property ;
+    rdfs:comment "From Date"@en ;
+    rdfs:domain xisadg:DateRange ;
+    rdfs:range xisadg:dateType ;
+  .
+  ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadg#hasDateTo
+  xisadg:hasToDate a rdf:Property ;
+    rdfs:comment "To Date"@en ;
+    rdfs:domain xisadg:DateRange ;
+    rdfs:range xisadg:dateType ;
+  .
+
+# ========== dateType ========== #
+###  https://github.com/KOST-CECO/ontologies/blob/master/xisadg#dateType
+xisadg:dateType a owl:DatatypeProperty ;
+  rdfs:comment "CC (Century); YYYY-MM-DDThh:mm; YYYY-MM-DDThh:mm:ss; YYYY; YYYY-MM; YYYY-MM-DD; unknown" ;
+  owl:oneOf ( xisadg:centuryType xisadg:dateTimeReducedType xsd:dateTime xsd:gYear xsd:gYearMonth xsd:date "unknown" ) ;
+.
+  ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadg#centuryType
+  xisadg:centuryType a owl:DatatypeProperty ;
+    rdfs:comment "CC (Century)" ;
+    owl:withRestrictions ( [ xsd:pattern "^[0-9]{2}$"^^xsd:string ] ) ;
+  .
+  ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadg#dateTimeReducedType
+  xisadg:dateTimeReducedType a owl:DatatypeProperty ;
+    rdfs:comment "YYYY-MM-DDThh:mm" ;
+    owl:withRestrictions ( [ xsd:pattern "^((000[1-9])|(00[1-9][0-9])|(0[1-9][0-9]{2})|([1-9][0-9]{3}))-((0[1-9])|(1[012]))-((0[1-9])|([12][0-9])|(3[01]))T(([01][0-9])|(2[0-3]))(:[0-5][0-9])$"^^xsd:string ] ) ;
+  .
+
+###########################################################################
+#    Beschreibung der materiellen Ausprägung                              #
+#    ---------------------------------------                              #
+#    Materialität: Ist nicht allgemeingültig für die                      #
+#    Verzeichnungseinheit sondern ist bei jeder materiellen               #
+#    Ausprägung anders.                                                   #
+###########################################################################
+
+# ========== MaterialExpression ========== #
+###  https://github.com/KOST-CECO/ontologies/blob/master/xisadg#hasMaterialExpressionMe
+xisadg:hasMaterialExpressionMe a owl:IrreflexiveProperty ;
+  rdfs:domain xisadg:MaterialExpression ; 
+  rdfs:range xisadg:MaterialExpression ;
+.
+###  https://github.com/KOST-CECO/ontologies/blob/master/xisadg#hasMaterialExpressionAd
+xisadg:hasMaterialExpressionAd a rdf:Property ;
+  rdfs:domain xisadg:ArchivalDescription ; 
+  rdfs:range xisadg:MaterialExpression ;
+.
+  ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadg#MaterialExpression
+  xisadg:MaterialExpression a rdfs:Class ; 
+    rdfs:comment "Globales Element für die Beschreibung einer materiellen Ausprägung"@de ,
+      "global element for a description of a material expression"@en ,
+      "élément global pour la description d'une expression matérielle"@fr ;
+    ###-------- SHACL (Shapes Contraints Classes) --------###
+    a sh:NodeShape ;
+    # <xs:element ref="isad:extentMedium" minOccurs="0"/>
+    sh:property [ a sh:PropertyShape ;
+      sh:path xisadg:hasExtentMediumSt ;
+      sh:datatype xsd:string ;
+      sh:minCount 0 ; sh:maxCount 1;
+    ] ;
+    sh:property [ a sh:PropertyShape ;
+      sh:path xisadg:hasExtentMedium ;
+      sh:class xisadg:ExtentMedium ;
+      sh:minCount 0 ; sh:maxCount 1;
+    ] ;
+    # <xs:element ref="isad:scopeContent" minOccurs="0"/>
+    sh:property [ a sh:PropertyShape ;
+      sh:path xisadg:hasScope ;
+      sh:datatype xsd:string ;
+      sh:minCount 0 ; sh:maxCount 1;
+    ] ;
+    sh:property [ a sh:PropertyShape ;
+      sh:path xisadg:hasContentSt ;
+      sh:datatype xsd:string ;
+      sh:minCount 0 ; sh:maxCount 1;
+    ] ;
+    sh:property [ a sh:PropertyShape ;
+      sh:path xisadg:hasContent ;
+      sh:class dct:MediaType ;
+      sh:minCount 0 ; sh:maxCount 1;
+    ] ;
+    # <xs:element ref="isad:physTech" minOccurs="0" maxOccurs="unbounded"/>
+    sh:property [ a sh:PropertyShape ;
+      sh:path xisadg:hasPhysTech ;
+      sh:datatype xsd:string ;
+      sh:pattern "^digital|analog|hybrid|not_defined$" ;
+      sh:minCount 0 ; sh:maxCount "unbounded";
+    ] ;
+    # <xs:element ref="isad:existenceLocationOriginals" minOccurs="0" maxOccurs="unbounded"/>
+    sh:property [ a sh:PropertyShape ;
+      sh:path xisadg:hasExistenceLocationOriginalsSt ;
+      sh:datatype xsd:string ;
+      sh:minCount 0 ; sh:maxCount "unbounded";
+    ] ;
+    sh:property [ a sh:PropertyShape ;
+      sh:path xisadg:hasExistenceLocationOriginals ;
+      sh:class xisadg:StorageLocation ;
+      sh:minCount 0 ; sh:maxCount "unbounded";
+    ] ;
+    # <xs:element ref="isad:existenceLocationCopies" minOccurs="0" maxOccurs="unbounded"/>
+    sh:property [ a sh:PropertyShape ;
+      sh:path xisadg:hasExistenceLocationCopies ;
+      sh:class xisadg:MaterialExpression ;
+      sh:minCount 0 ; sh:maxCount "unbounded";
+    ] ;
+    # <xs:element ref="isad:aipReference" minOccurs="0"/>
+    sh:property [ a sh:PropertyShape ;
+      sh:path xisadg:hasAipReferenceUri ;
+      sh:class xisadg:MaterialExpression ;
+      sh:minCount 0 ; sh:maxCount 1;
+    ] ;
+    sh:property [ a sh:PropertyShape ;
+      sh:path xisadg:hasAipReference ;
+      sh:datatype xsd:string ;
+      sh:minCount 0 ; sh:maxCount 1;
+    ] ;
+    ### <xs:choice minOccurs="0" maxOccurs="unbounded">
+      ### <xs:element ref="isad:primaryDataLocator" minOccurs="0"/>
+      ### <xs:element ref="isad:secondaryDataLocator" minOccurs="0"/>
+      sh:or (
+        [ sh:property [ a sh:PropertyShape ;
+          sh:path xisadg:hasPrimaryDataLocatorUri ;
+          sh:class xisadg:MaterialExpression ;
+          sh:minCount 0 ; sh:maxCount 1 ; 
+      ] ] 
+        [ sh:property [ a sh:PropertyShape ;
+          sh:path xisadg:hasPrimaryDataLocator ;
+          sh:datatype xsd:string ;
+          sh:minCount 0 ; sh:maxCount 1 ; 
+      ] ] 
+        [ sh:property [ a sh:PropertyShape ;
+          sh:path xisadg:hasSecondaryDataLocatorUri ;
+          sh:class xisadg:MaterialExpression ;
+          sh:minCount 0 ; sh:maxCount 1 ; 
+      ] ] 
+        [ sh:property [ a sh:PropertyShape ;
+          sh:path xisadg:hasSecondaryDataLocator ;
+          sh:datatype xsd:string ;
+          sh:minCount 0 ; sh:maxCount 1 ; 
+      ] ] 
+      )
+  .
+    ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadg#hasExtentMediumSt
+    xisadg:hasExtentMediumSt a rdf:Property ;
+      rdfs:comment "1.5) Consistenza e supporto dell'unità di descrizione (quantità, volume, dimensione fisica): Identificare e descrivere (a) la consistenza materiale o logica, (b) il supporto dell'unità di descrizione"@it ,
+        "1.5) Importance matérielle et support de l'unité de description (quantité, volume ou dimensions): Déterminer et donner (a) l'importance matérielle de l'unité de description, (b) le support de l'unité de description"@fr ,
+        "1.5) Umfang (Menge oder Abmessungen): Identifizierung (a) des physischen Umfangs und (b) der Art des Materials der Verzeichnungseinheit"@de ,
+        "1.5) Extent and medium of the unit of description (quantity, bulk, or size): To identify and describe (a) the physical or logical extent and (b) the medium of the unit of description"@en ;
+      rdfs:domain xisadg:MaterialExpression ;
+      rdfs:range xsd:string ; 
+    .
+    ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadg#hasExtentMedium
+    xisadg:hasExtentMedium a rdf:Property ;
+      rdfs:comment "1.5) Consistenza e supporto dell'unità di descrizione (quantità, volume, dimensione fisica): Identificare e descrivere (a) la consistenza materiale o logica, (b) il supporto dell'unità di descrizione"@it ,
+        "1.5) Importance matérielle et support de l'unité de description (quantité, volume ou dimensions): Déterminer et donner (a) l'importance matérielle de l'unité de description, (b) le support de l'unité de description"@fr ,
+        "1.5) Umfang (Menge oder Abmessungen): Identifizierung (a) des physischen Umfangs und (b) der Art des Materials der Verzeichnungseinheit"@de ,
+        "1.5) Extent and medium of the unit of description (quantity, bulk, or size): To identify and describe (a) the physical or logical extent and (b) the medium of the unit of description"@en ;
+      rdfs:domain xisadg:MaterialExpression ;
+      rdfs:range xisadg:ExtentMedium ; 
+    .
+      ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadg#ExtentMedium
+      xisadg:ExtentMedium a rdfs:Class ; 
+        rdfs:comment "1.5) Consistenza e supporto dell'unità di descrizione (quantità, volume, dimensione fisica): Identificare e descrivere (a) la consistenza materiale o logica, (b) il supporto dell'unità di descrizione"@it ,
+          "1.5) Importance matérielle et support de l'unité de description (quantité, volume ou dimensions): Déterminer et donner (a) l'importance matérielle de l'unité de description, (b) le support de l'unité de description"@fr ,
+          "1.5) Umfang (Menge oder Abmessungen): Identifizierung (a) des physischen Umfangs und (b) der Art des Materials der Verzeichnungseinheit"@de ,
+          "1.5) Extent and medium of the unit of description (quantity, bulk, or size): To identify and describe (a) the physical or logical extent and (b) the medium of the unit of description"@en ;
+        # TODO: stimmt das? owl:equivalentClass dct:SizeOrDuration ;
+      .
+        ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadg#hasExtentMediumDataSize
+        xisadg:hasExtentMediumDataSize a rdf:Property ;
+          rdfs:comment "Umfang (a): Identifizierung des physischen Umfangs (Menge und Abmessung). Gesamtes Datenvolumen, Laufmeter oder Umfang"@de ;
+          rdfs:domain xisadg:ExtentMedium ;
+          rdfs:range xsd:string ; # TODO xisadg:sizeType ; 
+        .
+        ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadg#hasExtentMediumDataQuantity
+        xisadg:hasExtentMediumDataQuantity a rdf:Property ;
+          rdfs:comment "Umfang (a): Identifizierung des physischen Umfangs (Menge und Abmessung). Anzahl der Dateien oder Anzahl Archivalien gemäss isad:medium"@de ;
+          rdfs:domain xisadg:ExtentMedium ;
+          rdfs:range xsd:integer ;
+        .
+        ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadg#hasExtentMediumMedium
+        xisadg:hasExtentMediumMedium a rdf:Property ;
+          rdfs:comment "Archivalienart (b): Identifizierung der Art des Materials der Verzeichnungseinheit"@de ;
+          rdfs:domain xisadg:ExtentMedium ;
+          rdfs:range xsd:string ;
+        .
+        ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadg#hasExtentMediumDescription
+        xisadg:hasExtentMediumDescription a rdf:Property ;
+          rdfs:comment "Umfang als Freitext (c): wie in eCH-0160 im Element Umfang definiert, kann hier übernommen werden"@de ;
+          rdfs:domain xisadg:ExtentMedium ;
+          rdfs:range xsd:string ;
+        .
+    ####  3.1 Form (Formatkategorie / Dateiformat) und Inhalt (Hauptgegenstand) wurde auseinander genommen
+    ####  ************************************************************************************************
+    ####  https://github.com/KOST-CECO/ontologies/blob/master/xisadg#hasScopeContent
+    #xisadg:hasScopeContent
+    # a rdf:Property ;
+    #  rdfs:comment "Ambiti e contenuto: Permettere agli utenti di valutare la potenziale rilevanza dell'unità di descrizione"@it ,
+    #    "Form und Inhalt: Feststellung von Hauptgegenstand und Form der Verzeichnungseinheit, um Benutzern eine Beurteilung ihrer Relevanz zu ermöglichen"@de ,
+    #    "Scope and content: To enable users to judge the potential relevance of the unit of description"@en ,
+    #    "Présentation du contenu: Permettre aux usagers d'apprécier l'intérêt de l'unité de description"@fr ;
+    #  rdfs:subPropertyOf xisadg:hasContentStructure ;
+    #.
+    ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadg#hasScope
+    xisadg:hasScope a rdf:Property ;
+      # TODO: comment anpassen (Trennung)
+      rdfs:comment "3.1) Ambiti: Permettere agli utenti di valutare la potenziale rilevanza dell'unità di descrizione"@it ,
+        "3.1) Form: Feststellung von Hauptgegenstand der Verzeichnungseinheit, um Benutzern eine Beurteilung ihrer Relevanz zu ermöglichen"@de ,
+        "3.1) Scope: To enable users to judge the potential relevance of the unit of description"@en ,
+        "3.1) Présentation: Permettre aux usagers d'apprécier l'intérêt de l'unité de description"@fr ;
+      rdfs:domain xisadg:MaterialExpression ;
+      rdfs:range xsd:string ; 
+    .
+    ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadg#hasContentSt
+    xisadg:hasContentSt a rdf:Property ;
+      # TODO: comment anpassen (Trennung)
+      rdfs:comment "3.1) Contenuto: Permettere agli utenti di valutare la potenziale rilevanza dell'unità di descrizione"@it ,
+        "3.1) Inhalt: Feststellung von Form der Verzeichnungseinheit, um Benutzern eine Beurteilung ihrer Relevanz zu ermöglichen"@de ,
+        "3.1) Content: To enable users to judge the potential relevance of the unit of description"@en ,
+        "3.1) Contenu: Permettre aux usagers d'apprécier l'intérêt de l'unité de description"@fr ;
+      rdfs:domain xisadg:MaterialExpression ;
+      rdfs:range xsd:string ; 
+    .
+    ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadg#hasContent
+    xisadg:hasContent a rdf:Property ;
+      # TODO: comment anpassen (Trennung)
+      rdfs:comment "3.1) Contenuto: Permettere agli utenti di valutare la potenziale rilevanza dell'unità di descrizione"@it ,
+        "3.1) Inhalt: Feststellung von Form der Verzeichnungseinheit, um Benutzern eine Beurteilung ihrer Relevanz zu ermöglichen"@de ,
+        "3.1) Content: To enable users to judge the potential relevance of the unit of description"@en ,
+        "3.1) Contenu: Permettre aux usagers d'apprécier l'intérêt de l'unité de description"@fr ;
+      rdfs:domain xisadg:MaterialExpression ;
+      rdfs:range dct:MediaType ; 
+    .
+    ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadg#hasPhysTech
+    xisadg:hasPhysTech a rdf:Property ;
+      rdfs:comment "4.4) Caratteristiche materiali e requisiti technici: Fornire informazioni su tutte le caratteristiche materiali e i requisiti technici che siano rilevanti ai fini dell'utilizzazione dell'unità di descrizione"@it ,
+        "4.4) Physische Beschaffenheit und technische Anforderungen: Bereitstellung von Informationen über wichtige physische Besonderheiten oder technische Anforderungen, die die Benutzung der Verzeichnungseinheit beeinflussen"@de ,
+        "4.4) Physical characteristics and technical requirements: To provide information about any important physical characteristics or technical requirements that affect the use of the unit of description"@en ,
+        "4.4) Caractéristique matérielles et contraintes techniques: Fournir des renseignements sur toute caractéristique matérielle ou contrainte techniques importante qui a des conséquences sur l'utilisation de l'unité de description"@fr ;
+      rdfs:domain xisadg:MaterialExpression ;
+      rdfs:range xsd:string ; 
+      # SHACL sh:pattern "^digital|analog|hybrid|not_defined$" ;
+    .
+    ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadg#hasExistenceLocationOriginalsSt
+    xisadg:hasExistenceLocationOriginalsSt a rdf:Property ;
+      rdfs:comment "5.1) Aufbewahrungsort der Orginale: Nachweise über die aufbewahrende Institution, die Zugänglichkeit oder die Vernichtung der Originale, falls es sich bei der Verzeichnungseinheit um eine Reproduktion handelt"@de ,
+        "5.1) Existence and location of originals: To indicate the existence, location, availability and/or destruction of originals where the unit of description consists of copies"@en ,
+        "5.1) Existence et lieu de conservation des originaux: Quand l'unité de description est une reproduction, indiquer si les documents originaux existent encore, et s'il y a lieu, leur lieu de conservation et leurs conditions d'accès"@fr ,
+        "5.1) Esistenza e localizzazione degli originali: Indicare l'esistenza, la localizzazione, la disponibilità e/o la distruzione degli originali nel caso in cui l'unità di descrizione consista di copie"@it ;
+      rdfs:domain xisadg:MaterialExpression ;
+      rdfs:range xsd:string ; 
+    .
+    ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadg#hasExistenceLocationOriginals
+    xisadg:hasExistenceLocationOriginals a rdf:Property ;
+      rdfs:comment "5.1) Aufbewahrungsort der Orginale: Nachweise über die aufbewahrende Institution, die Zugänglichkeit oder die Vernichtung der Originale, falls es sich bei der Verzeichnungseinheit um eine Reproduktion handelt"@de ,
+        "5.1) Existence and location of originals: To indicate the existence, location, availability and/or destruction of originals where the unit of description consists of copies"@en ,
+        "5.1) Existence et lieu de conservation des originaux: Quand l'unité de description est une reproduction, indiquer si les documents originaux existent encore, et s'il y a lieu, leur lieu de conservation et leurs conditions d'accès"@fr ,
+        "5.1) Esistenza e localizzazione degli originali: Indicare l'esistenza, la localizzazione, la disponibilità e/o la distruzione degli originali nel caso in cui l'unità di descrizione consista di copie"@it ;
+      rdfs:domain xisadg:MaterialExpression ;
+      rdfs:range xisadg:StorageLocation ; 
+    .
+      ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadg#StorageLocation
+      xisadg:StorageLocation a rdfs:Class ;
+        # TODO rdfs:comment ""@it , ""@de , ""@en , ""@fr ;
+      .
+    ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadg#hasExistenceLocationCopies
+    xisadg:hasExistenceLocationCopies a owl:IrreflexiveProperty ;
+      rdfs:comment "5.2) Kopien bzw. Reproduktionen: Verweis auf Kopien bzw. Reproduktionen der Verzeichnungseinheit und ihre Verfügbarkeit"@de ,
+        "5.2) Existence and location of copies: To indicate the existence, location and availbility of copies of the unit of desciption"@en ,
+        "5.2) Existence et lieu de conservation de copies: Signaler l'existence, le lieu de conservation et la disponibilité de copies de l'unité de description"@fr ,
+        "5.2) Esistenza e localizzazione di copie: Indicare l'esistenza, la localizzazione e la disponibilità di copie dell'unità di descrizione"@it ;
+      rdfs:domain xisadg:MaterialExpression ;
+      rdfs:range xisadg:MaterialExpression ; 
+    .
+    ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadg#hasAipReferenceUri
+    xisadg:hasAipReferenceUri a rdf:Property ;
+      rdfs:comment "AIP-Referenz: Eindeutiger Identifikator des AIP im digitalen Magazin des Archivs"@de ;
+      rdfs:domain xisadg:MaterialExpression ;
+      rdfs:range xsd:anyURI ; 
+    .
+    ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadg#hasAipReference
+    xisadg:hasAipReference a rdf:Property ;
+      rdfs:comment "AIP-Referenz: Eindeutiger Identifikator des AIP im digitalen Magazin des Archivs"@de ;
+      rdfs:domain xisadg:MaterialExpression ;
+      rdfs:range xsd:string ; 
+    .
+    ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadg#hasPrimaryDataLocatorUri
+    xisadg:hasPrimaryDataLocatorUri a rdf:Property ;
+      rdfs:comment "Referenz auf eine Primärdatei in Form einer URL - auch relativer Pfad ist möglich."@de ;
+      rdfs:domain xisadg:MaterialExpression ;
+      rdfs:range xsd:anyURI ; 
+    .
+    ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadg#hasPrimaryDataLocator
+    xisadg:hasPrimaryDataLocator a rdf:Property ;
+      rdfs:comment "Referenz auf eine Primärdatei in Form einer URL - auch relativer Pfad ist möglich."@de ;
+      rdfs:domain xisadg:MaterialExpression ;
+      rdfs:range xsd:string ; 
+    .
+    ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadg#hasSecondaryDataLocatorUri
+    xisadg:hasSecondaryDataLocatorUri a rdf:Property ;
+      rdfs:comment "Referenz auf einen Objekteintrag in der premis- oder lmer-Datei des AIP, damit von dort auf die Primärdatei zugegriffen werden kann, in Form eines xpointer-Eintrags"@de ;
+      rdfs:domain xisadg:MaterialExpression ;
+      rdfs:range xsd:anyURI ; 
+    .
+    ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadg#hasSecondaryDataLocator
+    xisadg:hasSecondaryDataLocator a rdf:Property ;
+      rdfs:comment "Referenz auf einen Objekteintrag in der premis- oder lmer-Datei des AIP, damit von dort auf die Primärdatei zugegriffen werden kann, in Form eines xpointer-Eintrags"@de ;
+      rdfs:domain xisadg:MaterialExpression ;
+      rdfs:range xsd:string ; 
+    .
