@@ -3,7 +3,7 @@
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix xisadg: <https://github.com/KOST-CECO/ontologies/tree/master/xisadg/2.1/> .
+@prefix xisadg: <https://github.com/KOST-CECO/ontologies/blob/master/xisadg#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 @prefix sh: <http://www.w3.org/ns/shacl#> .
