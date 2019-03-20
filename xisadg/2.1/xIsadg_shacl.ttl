@@ -95,6 +95,12 @@ xisadg:ArchivalDescription a rdfs:Class ;
     sh:class xisadg:AdditionalData ;
     sh:minCount 0 ; sh:maxCount 1 ;
   ] ;
+  #   <xs:element name="archivalDescription" minOccurs="0" maxOccurs="unbounded">
+  sh:property [ a sh:PropertyShape ;
+    sh:path xisadg:hasArchivalDescription ;
+    sh:class xisadg:ArchivalDescription ;
+    sh:minCount 0 ; sh:maxCount "unbounded" ;
+  ] ;
   .
 
   #---------- 1) hasIdentity ----------#
@@ -133,13 +139,13 @@ xisadg:ArchivalDescription a rdfs:Class ;
           sh:path xisadg:hasDateRange ;
           sh:class xisadg:DateRange ;
           sh:minCount 0 ; sh:maxCount 1 ; 
-      ] ] 
+        ] ] 
         [ sh:property [ a sh:PropertyShape ;
           sh:path xisadg:hasDatePoint ;
           sh:nodeKind sh:Literal ; 
           # sh:datatype xisadg:dateType nicht verwenden, da dies ein Sammlung diverser datatype ist
           sh:minCount 0 ; sh:maxCount 1 ; 
-      ] ] 
+        ] ] 
       )
     .
       ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadg#hasReferenceCode
@@ -239,6 +245,26 @@ xisadg:ArchivalDescription a rdfs:Class ;
         xisadg:Agent a rdfs:Class ;
           rdfs:comment "Agent include person, organization, and software"@en ;
           rdfs:subClassOf dct:Agent ;
+          ###-------- SHACL (Shapes Contraints Classes) --------###
+          a sh:NodeShape ;
+          # <xs:element ref="isad:creator" minOccurs="0" maxOccurs="unbounded"/>
+          sh:property [ a sh:PropertyShape ;
+            sh:path xisadg:hasAgentName ;
+            sh:datatype xsd:string ;
+            sh:minCount 1 ; sh:maxCount "unbounded";
+          ] ;
+          # <xs:element ref="isad:adminBioHistory" minOccurs="0" maxOccurs="unbounded"/>
+          sh:property [ a sh:PropertyShape ;
+            sh:path xisadg:hasAgentId ;
+            sh:nodeKinde sh:IRI ;
+            sh:minCount 0 ; sh:maxCount "unbounded";
+          ] ;
+          # <xs:element ref="isad:archivalHistory" minOccurs="0" maxOccurs="unbounded"/>
+          sh:property [ a sh:PropertyShape ;
+            sh:path xisadg:hasAgentCv ;
+            sh:class xisadg:AgentCv ;
+            sh:minCount 0 ; sh:maxCount "unbounded";
+          ] ;
         .
           ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadg#hasAgentName
           xisadg:hasAgentName a rdf:Property ;
@@ -270,31 +296,76 @@ xisadg:ArchivalDescription a rdfs:Class ;
         ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadg#AgentCv
         xisadg:AgentCv a rdfs:Class ;
           rdfs:comment "Verwaltungsgeschichte/Biographische Angaben der Provenienzstelle"@de ;
+          ###-------- SHACL (Shapes Contraints Classes) --------###
+          a sh:NodeShape ;
+          sh:property [ a sh:PropertyShape ;
+            sh:path xisadg:hasAgentCvEntry ;
+            sh:class xisadg:AgentCvEntry ;
+            sh:minCount 0 ; sh:maxCount "unbounded";
+          ] ;
+          sh:property [ a sh:PropertyShape ;
+            sh:path xisadg:hasAgentCvId ;
+            sh:nodeKinde sh:IRI ;
+            sh:minCount 0 ; sh:maxCount "unbounded";
+          ] ;
         .
-          ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadg#hasAgentCvDatesComment
-          xisadg:hasAgentCvDatesComment a rdf:Property ;
-            rdfs:comment "Comment to Date"@en ;
+          ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadg#hasAgentCvEntry
+          xisadg:hasAgentCvEntry a rdf:Property ;
+            rdfs:comment ""@it ,
+              "Biographischer Eintrag"@de ,
+              ""@en ,
+              ""@fr ;
             rdfs:domain xisadg:AgentCv ;
-            rdfs:range xsd:string ;
+            rdfs:range xisadg:AgentCvEntry ; 
           .
-          ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadg#hasAgentCvDateRange
-          xisadg:hasAgentCvDateRange a rdf:Property ;
-            rdfs:comment "Data/e"@it ,
-              "Date(s)"@en ,
-              "Date"@fr ,
-              "Datum"@de ;
-            rdfs:domain xisadg:AgentCv ; 
-            rdfs:range xisadg:DateRange ; 
-          .
-          ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadg#hasAgentCvDatePoint
-          xisadg:hasAgentCvDatePoint a rdf:Property ;
-            rdfs:comment "Data/e"@it ,
-              "Date(s)"@en ,
-              "Date"@fr ,
-              "Datum"@de ;
-            rdfs:domain xisadg:AgentCv ; 
-            rdfs:range xisadg:dateType ; 
-          .
+            ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadg#AgentCvEntry
+            xisadg:AgentCvEntry a rdfs:Class ;
+              rdfs:comment "Biographischer Eintrag"@de ;
+              ###-------- SHACL (Shapes Contraints Classes) --------###
+              a sh:NodeShape ;
+              sh:property [ a sh:PropertyShape ;
+                sh:path xisadg:hasAgentCvDatesComment ;
+                sh:datatype xsd:string ;
+                sh:minCount 1 ; sh:maxCount "unbounded";
+              ] ;
+              sh:or (
+                [ sh:property [ a sh:PropertyShape ;
+                  sh:path xisadg:hasAgentCvDateRange ;
+                  sh:class xisadg:DateRange ;
+                  sh:minCount 0 ; sh:maxCount 1 ; 
+                ] ] 
+                [ sh:property [ a sh:PropertyShape ;
+                  sh:path xisadg:hasAgentCvDatePoint ;
+                  sh:nodeKind sh:Literal ; 
+                  # sh:datatype xisadg:dateType nicht verwenden, da dies ein Sammlung diverser datatype ist
+                  sh:minCount 0 ; sh:maxCount 1 ; 
+                ] ] 
+              )
+            .
+              ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadg#hasAgentCvDatesComment
+              xisadg:hasAgentCvDatesComment a rdf:Property ;
+                rdfs:comment "Comment to Date"@en ;
+                rdfs:domain xisadg:AgentCvEntry ;
+                rdfs:range xsd:string ;
+              .
+              ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadg#hasAgentCvDateRange
+              xisadg:hasAgentCvDateRange a rdf:Property ;
+                rdfs:comment "Data/e"@it ,
+                  "Date(s)"@en ,
+                  "Date"@fr ,
+                  "Datum"@de ;
+                rdfs:domain xisadg:AgentCvEntry ; 
+                rdfs:range xisadg:DateRange ; 
+              .
+              ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadg#hasAgentCvDatePoint
+              xisadg:hasAgentCvDatePoint a rdf:Property ;
+                rdfs:comment "Data/e"@it ,
+                  "Date(s)"@en ,
+                  "Date"@fr ,
+                  "Datum"@de ;
+                rdfs:domain xisadg:AgentCvEntry ; 
+                rdfs:range xisadg:dateType ; 
+              .
           ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadg#hasAgentCvId
           xisadg:hasAgentCvId a rdf:Property ;
             rdfs:comment "CV ID"@en ;
@@ -390,6 +461,26 @@ xisadg:ArchivalDescription a rdfs:Class ;
             "3.4) Ordnung und Klassifikation: Bereitstellung von Informationen über die Ordnung und Klassifikation der Verzeichnungseinheit"@de ,
             "3.4) System of arrangement: To provide information on the internal structure, the order and/or the system of classification of the unit of description"@en ,
             "3.4) Mode de classement: Fournir des renseignements sur la structure, l'ordre ou le plan de classement de l'unité de description"@fr ;
+          ###-------- SHACL (Shapes Contraints Classes) --------###
+          a sh:NodeShape ;
+          sh:property [ a sh:PropertyShape ;
+            sh:path xisadg:hasArrangementComment ;
+            sh:datatype xsd:string ;
+            sh:minCount 0 ; sh:maxCount "unbounded";
+          ] ;
+          sh:or (
+            [ sh:property [ a sh:PropertyShape ;
+              sh:path xisadg:hasArrangementDateRange ;
+              sh:class xisadg:DateRange ;
+              sh:minCount 0 ; sh:maxCount 1 ; 
+            ] ] 
+            [ sh:property [ a sh:PropertyShape ;
+              sh:path xisadg:hasArrangementDatePoint ;
+              sh:nodeKind sh:Literal ; 
+              # sh:datatype xisadg:dateType nicht verwenden, da dies ein Sammlung diverser datatype ist
+              sh:minCount 0 ; sh:maxCount 1 ; 
+            ] ] 
+          )
         .
           ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadg#hasArrangementComment
           xisadg:hasArrangementComment a rdf:Property ;
@@ -1040,6 +1131,22 @@ xisadg:ArchivalDescription a rdfs:Class ;
 ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadg#DateRange
 xisadg:DateRange a rdfs:Class ;
   rdfs:comment "From Date, To Date"@en ;
+  ###-------- SHACL (Shapes Contraints Classes) --------###
+  a sh:NodeShape ;
+  sh:and (
+    [ sh:property [ a sh:PropertyShape ;
+      sh:path xisadg:hasFromDate ;
+      sh:nodeKind sh:Literal ;
+      # sh:datatype xisadg:dateType nicht verwenden, da dies ein Sammlung diverser datatype ist
+      sh:minCount 1 ; sh:maxCount 1 ; 
+    ] ] 
+    [ sh:property [ a sh:PropertyShape ;
+      sh:path xisadg:hasToDate ;
+      sh:nodeKind sh:Literal ;
+      # sh:datatype xisadg:dateType nicht verwenden, da dies ein Sammlung diverser datatype ist
+      sh:minCount 1 ; sh:maxCount 1 ; 
+    ] ] 
+  )
 .
   ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadg#hasDateFrom
   xisadg:hasFromDate a rdf:Property ;
@@ -1167,22 +1274,22 @@ xisadg:hasMaterialExpressionAd a rdf:Property ;
           sh:path xisadg:hasPrimaryDataLocatorUri ;
           sh:class xisadg:MaterialExpression ;
           sh:minCount 0 ; sh:maxCount 1 ; 
-      ] ] 
+        ] ] 
         [ sh:property [ a sh:PropertyShape ;
           sh:path xisadg:hasPrimaryDataLocator ;
           sh:datatype xsd:string ;
           sh:minCount 0 ; sh:maxCount 1 ; 
-      ] ] 
+        ] ] 
         [ sh:property [ a sh:PropertyShape ;
           sh:path xisadg:hasSecondaryDataLocatorUri ;
           sh:class xisadg:MaterialExpression ;
           sh:minCount 0 ; sh:maxCount 1 ; 
-      ] ] 
+        ] ] 
         [ sh:property [ a sh:PropertyShape ;
           sh:path xisadg:hasSecondaryDataLocator ;
           sh:datatype xsd:string ;
           sh:minCount 0 ; sh:maxCount 1 ; 
-      ] ] 
+        ] ] 
       )
   .
     ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadg#hasExtentMediumSt
@@ -1210,6 +1317,28 @@ xisadg:hasMaterialExpressionAd a rdf:Property ;
           "1.5) Umfang (Menge oder Abmessungen): Identifizierung (a) des physischen Umfangs und (b) der Art des Materials der Verzeichnungseinheit"@de ,
           "1.5) Extent and medium of the unit of description (quantity, bulk, or size): To identify and describe (a) the physical or logical extent and (b) the medium of the unit of description"@en ;
         # TODO: stimmt das? owl:equivalentClass dct:SizeOrDuration ;
+        ###-------- SHACL (Shapes Contraints Classes) --------###
+        a sh:NodeShape ;
+        sh:property [ a sh:PropertyShape ;
+          sh:path xisadg:hasExtentMediumDataSize ;
+          sh:datatype xsd:string ;
+          sh:minCount 0 ; sh:maxCount 1;
+        ] ;
+        sh:property [ a sh:PropertyShape ;
+          sh:path xisadg:hasExtentMediumDataQuantity ;
+          sh:datatype xsd:string ;
+          sh:minCount 0 ; sh:maxCount 1;
+        ] ;
+        sh:property [ a sh:PropertyShape ;
+          sh:path xisadg:hasExtentMediumMedium ;
+          sh:datatype xsd:string ;
+          sh:minCount 0 ; sh:maxCount "unbounded";
+        ] ;
+        sh:property [ a sh:PropertyShape ;
+          sh:path xisadg:hasExtentMediumDescription ;
+          sh:datatype xsd:string ;
+          sh:minCount 0 ; sh:maxCount "unbounded";
+        ] ;
       .
         ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadg#hasExtentMediumDataSize
         xisadg:hasExtentMediumDataSize a rdf:Property ;
