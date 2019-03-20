@@ -153,30 +153,43 @@ xisadg:ArchivalDescription a rdfs:Class ;
         xisadg:AgentCv a rdfs:Class ;
           rdfs:comment "Verwaltungsgeschichte/Biographische Angaben der Provenienzstelle"@de ;
         .
-          ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadg#hasAgentCvDatesComment
-          xisadg:hasAgentCvDatesComment a rdf:Property ;
-            rdfs:comment "Comment to Date"@en ;
+          ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadg#hasAgentCvEntry
+          xisadg:hasAgentCvEntry a rdf:Property ;
+            rdfs:comment ""@it ,
+              "Biographischer Eintrag"@de ,
+              ""@en ,
+              ""@fr ;
             rdfs:domain xisadg:AgentCv ;
-            rdfs:range xsd:string ;
+            rdfs:range xisadg:AgentCvEntry ; 
           .
-          ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadg#hasAgentCvDateRange
-          xisadg:hasAgentCvDateRange a rdf:Property ;
-            rdfs:comment "Data/e"@it ,
-              "Date(s)"@en ,
-              "Date"@fr ,
-              "Datum"@de ;
-            rdfs:domain xisadg:AgentCv ; 
-            rdfs:range xisadg:DateRange ; 
-          .
-          ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadg#hasAgentCvDatePoint
-          xisadg:hasAgentCvDatePoint a rdf:Property ;
-            rdfs:comment "Data/e"@it ,
-              "Date(s)"@en ,
-              "Date"@fr ,
-              "Datum"@de ;
-            rdfs:domain xisadg:AgentCv ; 
-            rdfs:range xisadg:dateType ; 
-          .
+            ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadg#AgentCvEntry
+            xisadg:AgentCvEntry a rdfs:Class ;
+              rdfs:comment "Biographischer Eintrag"@de ;
+            .
+              ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadg#hasAgentCvDatesComment
+              xisadg:hasAgentCvDatesComment a rdf:Property ;
+                rdfs:comment "Comment to Date"@en ;
+                rdfs:domain xisadg:AgentCvEntry ;
+                rdfs:range xsd:string ;
+              .
+              ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadg#hasAgentCvDateRange
+              xisadg:hasAgentCvDateRange a rdf:Property ;
+                rdfs:comment "Data/e"@it ,
+                  "Date(s)"@en ,
+                  "Date"@fr ,
+                  "Datum"@de ;
+                rdfs:domain xisadg:AgentCvEntry ; 
+                rdfs:range xisadg:DateRange ; 
+              .
+              ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadg#hasAgentCvDatePoint
+              xisadg:hasAgentCvDatePoint a rdf:Property ;
+                rdfs:comment "Data/e"@it ,
+                  "Date(s)"@en ,
+                  "Date"@fr ,
+                  "Datum"@de ;
+                rdfs:domain xisadg:AgentCvEntry ; 
+                rdfs:range xisadg:dateType ; 
+              .
           ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadg#hasAgentCvId
           xisadg:hasAgentCvId a rdf:Property ;
             rdfs:comment "CV ID"@en ;
