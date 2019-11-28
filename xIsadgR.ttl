@@ -741,14 +741,8 @@ xisadgr:DatePoint a rdfs:Class ;
 ###########################################################################
 
 # ========== MaterialExpression ========== #
-###  https://github.com/KOST-CECO/ontologies/blob/master/xisadgr#hasMaterialExpressionMe
-xisadgr:hasMaterialExpressionMe a rdf:Property ; 
-  a owl:IrreflexiveProperty ;
-  rdfs:domain xisadgr:MaterialExpression ; 
-  rdfs:range xisadgr:MaterialExpression ;
-.
-###  https://github.com/KOST-CECO/ontologies/blob/master/xisadgr#hasMaterialExpressionAd
-xisadgr:hasMaterialExpressionAd a rdf:Property ;
+###  https://github.com/KOST-CECO/ontologies/blob/master/xisadgr#hasMaterialExpression
+xisadgr:hasMaterialExpression a rdf:Property ;
   rdfs:domain xisadgr:ArchivalDescription ; 
   rdfs:range xisadgr:MaterialExpression ;
 .
@@ -759,6 +753,25 @@ xisadgr:hasMaterialExpressionAd a rdf:Property ;
       "élément global pour la description d'une expression matérielle"@fr ,
       "global element for a description of a material expression"@en ;
   .
+    ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadgr#hasMaterialExpressionRepresentation
+    xisadgr:hasMaterialExpressionRepresentation a rdf:Property ; 
+      a owl:IrreflexiveProperty ;
+      rdfs:domain xisadgr:MaterialExpression ; 
+      rdfs:range xisadgr:MaterialExpression ;
+    .
+    ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadgr#hasMaterialExpressionVersion
+    xisadgr:hasMaterialExpressionVersion a rdf:Property ; 
+      a owl:IrreflexiveProperty ;
+      rdfs:domain xisadgr:MaterialExpression ; 
+      rdfs:range xisadgr:MaterialExpression ;
+    .
+    ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadgr#hasMaterialExpressionDate
+    xisadgr:hasMaterialExpressionDate a rdf:Property ;
+      rdfs:comment 
+        "Datum der Materiellen Ausprägung"@de ;
+      rdfs:domain xisadgr:MaterialExpression ;
+      rdfs:range xisadgr:DatePoint ; 
+    .
     ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadgr#hasExtentMediumSt
     xisadgr:hasExtentMediumSt a rdf:Property ;
       rdfs:comment 
@@ -1065,7 +1078,7 @@ xisadgr:hasMaterialExpressionAd a rdf:Property ;
 # ========== datePointType ========== #
 ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadgr#datePointType
 xisadgr:datePointType a owl:DatatypeProperty ;
-  rdfs:label "dateType" ;
+  rdfs:label "datePointType" ;
   rdfs:comment "CC (Century); YYYY-MM-DDThh:mm; YYYY-MM-DDThh:mm:ss; YYYY; YYYY-MM; YYYY-MM-DD; unknown" ;
   owl:oneOf ( xsd:dateTime xsd:gYear xsd:gYearMonth xsd:date "unknown" xisadgr:centuryType xisadgr:dateTimeReducedType ) ;
 .
@@ -1158,6 +1171,11 @@ xisadgr:ArchivalDescriptionShape a sh:NodeShape ;
     sh:path xisadgr:hasAdditionalData ;
     sh:class xisadgr:AdditionalData ;
     sh:minCount 0 ; sh:maxCount 1 ;
+  ] ;
+  sh:property [ 
+    sh:path xisadgr:hasMaterialExpression ;
+    sh:class xisadgr:MaterialExpression ;
+    sh:minCount 0 ; 
   ] ;
   sh:property [ 
     sh:path xisadgr:hasArchivalDescription ;
@@ -1493,6 +1511,21 @@ xisadgr:ArchivalDescriptionShape a sh:NodeShape ;
   ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadgr#MaterialExpressionShape
   xisadgr:MaterialExpressionShape a sh:NodeShape ; 
     sh:targetClass xisadgr:MaterialExpression ;
+    sh:property [ 
+      sh:path xisadgr:hasMaterialExpressionRepresentation ;
+      sh:class xisadgr:MaterialExpression ;
+      sh:minCount 0 ; 
+    ] ;
+    sh:property [ 
+      sh:path xisadgr:hasMaterialExpressionVersion ;
+      sh:class xisadgr:MaterialExpression ;
+      sh:minCount 0 ; 
+    ] ;
+    sh:property [ 
+      sh:path xisadgr:hasMaterialExpressionDate ;
+      sh:class xisadgr:DatePoint ;
+      sh:minCount 0 ; 
+    ] ;
     sh:property [ 
       sh:path xisadgr:hasExtentMediumSt ;
       sh:datatype xsd:string ;
