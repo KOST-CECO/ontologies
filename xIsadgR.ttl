@@ -76,15 +76,6 @@ xisadgr:ArchivalDescription a rdfs:Class ;
         "Livello di descrizione: Fondo"@it ;
       rdfs:subClassOf xisadgr:ArchivalDescription ;
     .
-    ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadgr#SubFonds
-    xisadgr:SubFonds a rdfs:Class ;
-      rdfs:comment 
-        "Verzeichnungsstufe: Teilbestand (Ablieferung einer Provenienz)"@de ,
-        "Niveau de description: Sous-fonds"@fr ,
-        "Level of description: Sub-fonds"@en ,
-        "Livello di descrizione: Sub-fondo"@it ;
-      rdfs:subClassOf xisadgr:ArchivalDescription ;
-    .
     ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadgr#Series
     xisadgr:Series a rdfs:Class ;
       rdfs:comment 
@@ -94,15 +85,6 @@ xisadgr:ArchivalDescription a rdfs:Class ;
         "Livello di descrizione: Serie"@it ;
       rdfs:subClassOf xisadgr:ArchivalDescription ;
     .
-    ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadgr#SubSeries
-    xisadgr:SubSeries a rdfs:Class ;
-      rdfs:comment 
-        "Verzeichnungsstufe: Teilserie (Entspricht einer Ordnungssystemposition resp. einer Rubrik im Ordnungssystem, die einer anderen Ordnungssystemposition untergeordnet ist)"@de ,
-        "Niveau de description: Sous-série organique"@fr ,
-        "Level of description: Sub-series"@en ,
-        "Livello di descrizione: Sotto-serie"@it ;
-      rdfs:subClassOf xisadgr:ArchivalDescription ;
-    .
     ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadgr#File
     xisadgr:File a rdfs:Class ; 
       rdfs:comment 
@@ -110,15 +92,6 @@ xisadgr:ArchivalDescription a rdfs:Class ;
         "Niveau de description: Dossier"@fr ,
         "Level of description: File"@en ,
         "Livello di descrizione: Fascicolo"@it ;
-      rdfs:subClassOf xisadgr:ArchivalDescription ;
-    .
-    ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadgr#SubFile
-    xisadgr:SubFile a rdfs:Class ;
-      rdfs:comment 
-        "Verzeichnungsstufe: Teildossier (Bestandteil eines Dossiers und diesem untergeordnet)"@de ,
-        "Niveau de description: Sous-dossier"@fr ,
-        "Level of description: Sub-file"@en ,
-        "Livello di descrizione: Sub-fascicolo"@it ;
       rdfs:subClassOf xisadgr:ArchivalDescription ;
     .
     ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadgr#Item
@@ -368,13 +341,13 @@ xisadgr:ArchivalDescription a rdfs:Class ;
       xisadgr:hasScope a rdf:Property ;
         # TODO: comment anpassen (Trennung)
         rdfs:comment 
+          "text image audio video structured_data other hybrid (Freitext erlaubt)" ,
           "3.1) Form des Inhalts der Verzeichnungseinheit, um Benutzern eine Beurteilung ihrer Relevanz zu ermöglichen"@de ,
           "3.1) Présentation: Permettre aux usagers d'apprécier l'intérêt de l'unité de description"@fr ,
           "3.1) Scope: To enable users to judge the potential relevance of the unit of description"@en ,
           "3.1) Ambiti: Permettere agli utenti di valutare la potenziale rilevanza dell'unità di descrizione"@it ;
         rdfs:domain xisadgr:ContentStructure ;
         rdfs:range xsd:string ; 
-        # SHACL sh:pattern "^text|image|audio|video|structured_data|other|hybrid$" ;        
       .
       ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadgr#hasContent
       xisadgr:hasContent a rdf:Property ;
@@ -738,13 +711,19 @@ xisadgr:DateRange a rdfs:Class ;
 # ========== DatePoint ========== #
 ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadgr#DatePoint
 xisadgr:DatePoint a rdfs:Class ;
-  rdfs:comment "From Date, To Date"@en ;
+  rdfs:comment "Date Point"@en ;
 .
   ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadgr#hasDatePoint
   xisadgr:hasDatePoint a rdf:Property ;
     rdfs:comment "Date Point"@en ;
     rdfs:domain xisadgr:DatePoint ;
     rdfs:range xisadgr:datePointType ;
+  .
+  ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadgr#hasDatePointNote
+  xisadgr:hasDatePointNote a rdf:Property ;
+    rdfs:comment "Date Point Note"@en ;
+    rdfs:domain xisadgr:DatePoint ;
+    rdfs:range xsd:string ;
   .
   ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadgr#hasDatePointApprox
   xisadgr:hasDatePointApprox a rdf:Property ;
@@ -1088,7 +1067,7 @@ xisadgr:hasMaterialExpressionAd a rdf:Property ;
 xisadgr:datePointType a owl:DatatypeProperty ;
   rdfs:label "dateType" ;
   rdfs:comment "CC (Century); YYYY-MM-DDThh:mm; YYYY-MM-DDThh:mm:ss; YYYY; YYYY-MM; YYYY-MM-DD; unknown" ;
-  owl:oneOf ( xisadgr:centuryType xisadgr:dateTimeReducedType xsd:dateTime xsd:gYear xsd:gYearMonth xsd:date "unknown" ) ;
+  owl:oneOf ( xsd:dateTime xsd:gYear xsd:gYearMonth xsd:date "unknown" xisadgr:centuryType xisadgr:dateTimeReducedType ) ;
 .
   ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadgr#centuryType
   xisadgr:centuryType a owl:DatatypeProperty ;
@@ -1218,24 +1197,7 @@ xisadgr:ArchivalDescriptionShape a sh:NodeShape ;
           [ sh:class xisadgr:File ; ]
           [ sh:class xisadgr:Item ; ]
           [ sh:class xisadgr:Series ; ]
-          [ sh:class xisadgr:SubFile ; ]
-          [ sh:class xisadgr:SubSeries ; ]
-          [ sh:class xisadgr:SubFonds ; ]
-        ) ;
-      ] ;
-    .
-    ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadgr#SubFondsShape
-    xisadgr:SubFondsShape a sh:NodeShape ; 
-      sh:targetClass xisadgr:SubFonds ;
-      sh:property [
-        sh:path xisadgr:hasArchivalDescription ;
-        sh:or (
-          [ sh:class xisadgr:File ; ]
-          [ sh:class xisadgr:Item ; ]
-          [ sh:class xisadgr:Series ; ]
-          [ sh:class xisadgr:SubFile ; ]
-          [ sh:class xisadgr:SubSeries ; ]
-          [ sh:class xisadgr:SubFonds ; ]
+          [ sh:class xisadgr:Fonds ; ]
         ) ;
       ] ;
     .
@@ -1247,21 +1209,7 @@ xisadgr:ArchivalDescriptionShape a sh:NodeShape ;
         sh:or (
           [ sh:class xisadgr:File ; ]
           [ sh:class xisadgr:Item ; ]
-          [ sh:class xisadgr:SubFile ; ]
-          [ sh:class xisadgr:SubSeries ; ]
-        ) ;
-      ] ;
-    .
-    ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadgr#SubSeriesShape
-    xisadgr:SubSeriesShape a sh:NodeShape ; 
-      sh:targetClass xisadgr:SubSeries ;
-      sh:property [
-        sh:path xisadgr:hasArchivalDescription ;
-        sh:or (
-          [ sh:class xisadgr:File ; ]
-          [ sh:class xisadgr:Item ; ]
-          [ sh:class xisadgr:SubFile ; ]
-          [ sh:class xisadgr:SubSeries ; ]
+          [ sh:class xisadgr:Series ; ]
         ) ;
       ] ;
     .
@@ -1272,20 +1220,9 @@ xisadgr:ArchivalDescriptionShape a sh:NodeShape ;
         sh:path xisadgr:hasArchivalDescription ;
         sh:or (
           [ sh:class xisadgr:Item ; ]
-          [ sh:class xisadgr:SubFile ; ]
+          [ sh:class xisadgr:File ; ]
         ) ;
       ] ;
-    .
-    ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadgr#SubFileShape
-    xisadgr:SubFileShape a sh:NodeShape ; 
-      sh:targetClass xisadgr:SubFile ;
-      sh:property [
-          sh:path xisadgr:hasArchivalDescription ;
-          sh:or (
-              [ sh:class xisadgr:Item ; ]
-              [ sh:class xisadgr:SubFile ; ]
-            ) ;
-        ] ;
     .
     ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadgr#ItemShape
     xisadgr:ItemShape a sh:NodeShape ; 
@@ -1410,7 +1347,6 @@ xisadgr:ArchivalDescriptionShape a sh:NodeShape ;
       sh:property [ 
         sh:path xisadgr:hasScope ;
         sh:datatype xsd:string ;
-        sh:pattern "^text|image|audio|video|structured_data|other|hybrid$" ;
         sh:minCount 0 ; 
       ] ;
       sh:property [ 
@@ -1743,6 +1679,27 @@ xisadgr:DateRangeShape a sh:NodeShape ;
       sh:path xisadgr:hasToDate ;
       sh:class xisadgr:DatePoint ;
       sh:minCount 1 ; sh:maxCount 1 ; 
+    ] ] 
+  )
+.
+###  https://github.com/KOST-CECO/ontologies/blob/master/xisadgr#DatePointShape
+xisadgr:DatePointShape a sh:NodeShape ;
+  sh:targetClass xisadgr:DatePoint ;
+  sh:and (
+    [ sh:property [ 
+      sh:path xisadgr:hasDatePoint ;
+      sh:datatype xisadgr:datePointType ;
+      sh:minCount 1 ; sh:maxCount 1 ; 
+    ] ] 
+    [ sh:property [ 
+      sh:path xisadgr:hasDatePointNote ;
+      sh:datatype xsd:string ;
+      sh:minCount 0 ; 
+    ] ] 
+    [ sh:property [ 
+      sh:path xisadgr:hasDatePointApprox ;
+      sh:datatype xsd:boolean ;
+      sh:minCount 0 ; sh:maxCount 1 ; 
     ] ] 
   )
 .
