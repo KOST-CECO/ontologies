@@ -249,43 +249,57 @@ xisadgr:ArchivalDescription a rdfs:Class ;
       .
         ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadgr#AgentCv
         xisadgr:AgentCv a rdfs:Class ;
-          rdfs:comment "Verwaltungsgeschichte/Biographische Angaben der Provenienzstelle"@de ;
+          rdfs:comment 
+            "2.2) Verwaltungsgeschichte/Biographische Angaben: Information über Verwaltungsgeschichte der Provenienzstelle bzw. die Biographie, wenn es sich um natürliche Personen handelt, zum besseren Verständnis des zur Verzeichnungseinheit gehörenden Kontextes"@de ,
+            "2.2) Histoire administrative / Notice biographique: Fournir un historique ou une biographie de ou des producteurs de l'unité de description afin de situer les documents dans leur contexte et de les rendre plus intelligibles"@fr ,
+            "2.2) Administrative / Biographical history: To provide an administrative history of, or biographical details on, the creator (or creators) of the unit of description to place the material in context and make it better understood"@en ,
+            "2.2) Stori istituzionale/amministrativa, nota biografica: Fornire una storia istituzionale/amministrativa o un profilo biografico del soggetto produttore (o i soggetti produttori), per collocare la documentazione nel proprio contesto e facilitarne la comprensione"@it ;
         .
           ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadgr#hasAgentCvEntry
           xisadgr:hasAgentCvEntry a rdf:Property ;
             rdfs:comment 
-              "Biographischer Eintrag"@de ,
-              ""@fr ,
-              ""@en ,
-              ""@it ;
+              "2.2) Verwaltungsgeschichte/Biographische Angaben: "@de ,
+              "2.2) Histoire administrative / Notice biographique: "@fr ,
+              "2.2) Administrative / Biographical history: "@en ,
+              "2.2) Stori istituzionale/amministrativa, nota biografica: "@it ;
             rdfs:domain xisadgr:AgentCv ;
             rdfs:range xisadgr:AgentCvEntry ; 
           .
             ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadgr#AgentCvEntry
             xisadgr:AgentCvEntry a rdfs:Class ;
-              rdfs:comment "Biographischer Eintrag"@de ;
+            rdfs:comment 
+              "2.2) Verwaltungsgeschichte/Biographische Angaben: "@de ,
+              "2.2) Histoire administrative / Notice biographique: "@fr ,
+              "2.2) Administrative / Biographical history: "@en ,
+              "2.2) Stori istituzionale/amministrativa, nota biografica: "@it ;
             .
               ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadgr#hasAgentCvDatesComment
               xisadgr:hasAgentCvDatesComment a rdf:Property ;
-                rdfs:comment "Comment to Date"@en ;
+              rdfs:comment 
+                "2.2) Verwaltungsgeschichte/Biographische Angaben: Anmerkungen, Notiz, Kommentar"@de ,
+                "2.2) Histoire administrative / Notice biographique: Commentaires, note"@fr ,
+                "2.2) Administrative / Biographical history: Comments, note"@en ,
+                "2.2) Stori istituzionale/amministrativa, nota biografica: Commenti, nota"@it ;
                 rdfs:domain xisadgr:AgentCvEntry ;
                 rdfs:range xsd:string ;
               .
               ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadgr#hasAgentCvDateRange
               xisadgr:hasAgentCvDateRange a rdf:Property ;
-                rdfs:comment "Data/e"@it ,
-                  "Date(s)"@en ,
-                  "Date"@fr ,
-                  "Datum"@de ;
+                rdfs:comment 
+                  "2.2) Verwaltungsgeschichte/Biographische Angaben: Zeitraum"@de ,
+                  "2.2) Histoire administrative / Notice biographique: période de temps"@fr ,
+                  "2.2) Administrative / Biographical history: time period"@en ,
+                  "2.2) Stori istituzionale/amministrativa, nota biografica: periodo di tempo"@it ;
                 rdfs:domain xisadgr:AgentCvEntry ; 
                 rdfs:range xisadgr:DateRange ; 
               .
               ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadgr#hasAgentCvDatePoint
               xisadgr:hasAgentCvDatePoint a rdf:Property ;
-                rdfs:comment "Data/e"@it ,
-                  "Date(s)"@en ,
-                  "Date"@fr ,
-                  "Datum"@de ;
+                rdfs:comment 
+                  "2.2) Verwaltungsgeschichte/Biographische Angaben: Datum, Zeitpunkt"@de ,
+                  "2.2) Histoire administrative / Notice biographique: Date"@fr ,
+                  "2.2) Administrative / Biographical history: Date"@en ,
+                  "2.2) Stori istituzionale/amministrativa, nota biografica: Data"@it ;
                 rdfs:domain xisadgr:AgentCvEntry ; 
                 rdfs:range xisadgr:DatePoint ; 
               .
@@ -400,27 +414,31 @@ xisadgr:ArchivalDescription a rdfs:Class ;
         .
           ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadgr#hasArrangementComment
           xisadgr:hasArrangementComment a rdf:Property ;
-            rdfs:comment "Comment"@en ;
+            rdfs:comment 
+              "3.4) Ordnung und Klassifikation: Anmerkungen, Notiz, Kommentar"@de ,
+              "3.4) Mode de classement: Commentaires, note"@fr ,
+              "3.4) System of arrangement: Comments, note"@en ,
+              "3.4) Criteri di ordinamento: Commenti, nota"@it ;
             rdfs:domain xisadgr:Arrangement ;
             rdfs:range xsd:string ;
           .
           ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadgr#hasArrangementDateRange
           xisadgr:hasArrangementDateRange a rdf:Property ;
             rdfs:comment 
-              "Datum"@de ,
-              "Date"@fr ,
-              "Date(s)"@en ,
-              "Data/e"@it ;
+              "3.4) Ordnung und Klassifikation: Zeitraum"@de ,
+              "3.4) Mode de classement: période de temps"@fr ,
+              "3.4) System of arrangement: time period"@en ,
+              "3.4) Criteri di ordinamento: periodo di tempo"@it ;
             rdfs:domain xisadgr:Arrangement ; 
             rdfs:range xisadgr:DateRange ; 
           .
           ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadgr#hasArrangementDatePoint
           xisadgr:hasArrangementDatePoint a rdf:Property ;
             rdfs:comment 
-              "Datum"@de ,
-              "Date"@fr ,
-              "Date(s)"@en ,
-              "Data/e"@it ;
+              "3.4) Ordnung und Klassifikation: Datum, Zeitpunkt"@de ,
+              "3.4) Mode de classement: Date"@fr ,
+              "3.4) System of arrangement: Date"@en ,
+              "3.4) Criteri di ordinamento: Data"@it ;
             rdfs:domain xisadgr:Arrangement ; 
             rdfs:range xisadgr:DatePoint ; 
           .
@@ -676,7 +694,7 @@ xisadgr:ArchivalDescription a rdfs:Class ;
       ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadgr#hasMdWrap
       xisadgr:hasMdWrap a rdf:Property ;
         rdfs:comment 
-          "Zusätzliche Metadaten in Form eines Schlüssel-Werte-Paares.</"@de ,
+          "Zusätzliche Metadaten in Form eines Schlüssel-Werte-Paares."@de ,
           "property: A wrapper element to contain key-value pair metadata."@en ;
         rdfs:domain xisadgr:AdditionalData ;
         rdfs:range xsd:string ; 
@@ -794,44 +812,52 @@ xisadgr:hasMaterialExpression a rdf:Property ;
     .
       ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadgr#ExtentMedium
       xisadgr:ExtentMedium a rdfs:Class ; 
+        rdfs:label "ExtentMedium [dct:MediaTypeOrExtent]" ;
         rdfs:comment 
           "1.5) Umfang (Menge oder Abmessungen): Identifizierung (a) des physischen Umfangs und (b) der Art des Materials der Verzeichnungseinheit"@de ,
           "1.5) Importance matérielle et support de l'unité de description (quantité, volume ou dimensions): Déterminer et donner (a) l'importance matérielle de l'unité de description, (b) le support de l'unité de description"@fr ,
           "1.5) Extent and medium of the unit of description (quantity, bulk, or size): To identify and describe (a) the physical or logical extent and (b) the medium of the unit of description"@en ,
           "1.5) Consistenza e supporto dell'unità di descrizione (quantità, volume, dimensione fisica): Identificare e descrivere (a) la consistenza materiale o logica, (b) il supporto dell'unità di descrizione"@it ;
-        # TODO: stimmt das? owl:equivalentClass dct:SizeOrDuration ;
+        rdfs:subClassOf dct:MediaTypeOrExtent ;
       .
         ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadgr#hasExtentMediumDataSize
         xisadgr:hasExtentMediumDataSize a rdf:Property ;
-          rdfs:comment "Umfang (a): Identifizierung des physischen Umfangs (Menge und Abmessung). Gesamtes Datenvolumen, Laufmeter oder Umfang"@de ;
+          rdfs:comment 
+            "KB, MB, GB, TB, cm, lm, g, kg, m3, vol, pcs, box (Freitext erlaubt)" ,
+            "1.5) Umfang (a): Identifizierung des physischen Umfangs (Einheit). Kilobyte (kB), Megabyte (MB), Gigabyte (GB), Terabyte (TB), Centimeter (cm), Laufmeter (lm), Gramm (g), Kilogramm (kg), Kubikmeter (m3), Band Volume (vol), Stücke (pcs), Schachtel (box), andere als Freitext"@de ;
           rdfs:domain xisadgr:ExtentMedium ;
-          rdfs:range xsd:string ; # TODO xisadgr:sizeType ; 
+          rdfs:range xsd:string ;  
         .
         ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadgr#hasExtentMediumDataQuantity
         xisadgr:hasExtentMediumDataQuantity a rdf:Property ;
-          rdfs:comment "Umfang (a): Identifizierung des physischen Umfangs (Menge und Abmessung). Anzahl der Dateien oder Anzahl Archivalien gemäss isad:medium"@de ;
+          rdfs:comment "1.5) Umfang (a): Identifizierung des physischen Umfangs (Menge und Abmessung). Anzahl der Dateien oder Anzahl Archivalien gemäss isad:medium"@de ;
           rdfs:domain xisadgr:ExtentMedium ;
           rdfs:range xsd:integer ;
         .
         ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadgr#hasExtentMediumMedium
         xisadgr:hasExtentMediumMedium a rdf:Property ;
-          rdfs:comment "Archivalienart (b): Identifizierung der Art des Materials der Verzeichnungseinheit"@de ;
+          rdfs:comment "1.5) Archivalienart (b): Identifizierung der Art des Materials der Materiellen Ausprägung (Freitext)"@de ;
           rdfs:domain xisadgr:ExtentMedium ;
           rdfs:range xsd:string ;
         .
+        ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadgr#hasMediaType
+        xisadgr:hasMediaType a rdf:Property ;
+          rdfs:comment "1.5) Archivalienart (b): MediaType dieser Materiellen Ausprägung"@de ;
+          rdfs:domain xisadgr:MaterialExpression ;
+          rdfs:range xisadgr:MediaType ; 
+        .
+          ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadgr#MediaType
+          xisadgr:MediaType a rdf:Class ;
+            rdfs:label "MediaType [dct:MediaType]" ;
+            rdfs:comment "1.5) Archivalienart (b): MediaType dieser Materiellen Ausprägung"@de ;
+            owl:equivalentClass dct:MediaType ;            
+          .
         ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadgr#hasExtentMediumDescription
         xisadgr:hasExtentMediumDescription a rdf:Property ;
-          rdfs:comment "Umfang als Freitext (c): wie in eCH-0160 im Element Umfang definiert, kann hier übernommen werden"@de ;
+          rdfs:comment "1.5) Umfang als Freitext (c): wie in eCH-0160 im Element Umfang definiert, kann hier übernommen werden"@de ;
           rdfs:domain xisadgr:ExtentMedium ;
           rdfs:range xsd:string ;
         .
-    ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadgr#hasMediaType
-    xisadgr:hasMediaType a rdf:Property ;
-      rdfs:comment 
-        "MediaType dieser Materiellen Ausprägung"@de ;
-      rdfs:domain xisadgr:MaterialExpression ;
-      rdfs:range dct:MediaType ; 
-    .
 	###  https://github.com/KOST-CECO/ontologies/blob/master/xisadgr#hasAccessConditions
 	xisadgr:hasAccessConditions a rdf:Property ;
 	  rdfs:label "hasAccessConditions [dct:accessRights]" ;
@@ -1537,11 +1563,6 @@ xisadgr:ArchivalDescriptionShape a sh:NodeShape ;
       sh:minCount 0 ; sh:maxCount 1;
     ] ;
     sh:property [ 
-      sh:path xisadgr:hasMediaType ;
-      sh:class dct:MediaType ;
-      sh:minCount 0 ; 
-    ] ;
-    sh:property [ 
       sh:path xisadgr:hasAccessConditions ;
       sh:class xisadgr:AccessConditions ;
       sh:minCount 0 ; sh:maxCount 1;
@@ -1626,6 +1647,11 @@ xisadgr:ArchivalDescriptionShape a sh:NodeShape ;
         sh:property [ 
           sh:path xisadgr:hasExtentMediumMedium ;
           sh:datatype xsd:string ;
+          sh:minCount 0 ; 
+        ] ;
+        sh:property [ 
+          sh:path xisadgr:hasMediaType ;
+          sh:class xisadgr:MediaType ;
           sh:minCount 0 ; 
         ] ;
         sh:property [ 
@@ -1718,21 +1744,19 @@ xisadgr:DateRangeShape a sh:NodeShape ;
 ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadgr#DatePointShape
 xisadgr:DatePointShape a sh:NodeShape ;
   sh:targetClass xisadgr:DatePoint ;
-  sh:and (
-    [ sh:property [ 
-      sh:path xisadgr:hasDatePoint ;
-      sh:datatype xisadgr:datePointType ;
-      sh:minCount 1 ; sh:maxCount 1 ; 
-    ] ] 
-    [ sh:property [ 
-      sh:path xisadgr:hasDatePointNote ;
-      sh:datatype xsd:string ;
-      sh:minCount 0 ; 
-    ] ] 
-    [ sh:property [ 
-      sh:path xisadgr:hasDatePointApprox ;
-      sh:datatype xsd:boolean ;
-      sh:minCount 0 ; sh:maxCount 1 ; 
-    ] ] 
-  )
+  sh:property [ 
+    sh:path xisadgr:hasDatePoint ;
+    sh:datatype xisadgr:datePointType ;
+    sh:minCount 1 ; sh:maxCount 1 ; 
+  ] ; 
+  sh:property [ 
+    sh:path xisadgr:hasDatePointNote ;
+    sh:datatype xsd:string ;
+    sh:minCount 0 ; 
+  ] ; 
+  sh:property [ 
+    sh:path xisadgr:hasDatePointApprox ;
+    sh:datatype xsd:boolean ;
+    sh:minCount 0 ; sh:maxCount 1 ; 
+  ] ; 
 .
