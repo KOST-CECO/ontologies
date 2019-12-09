@@ -1,0 +1,211 @@
+@prefix stabs: <https://github.com/KOST-CECO/RDF/blob/master/samples/stabs/> .
+@prefix kostceco-mt: <https://github.com/KOST-CECO/RDF/blob/master/samples/mediatype/> .
+@prefix xisadgr: <https://github.com/KOST-CECO/ontologies/blob/master/xisadgr#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+###########################################################################
+#    xIsadgR Beispiel: Archiv der Familie Ochs                            #
+###########################################################################
+
+###  http://query.staatsarchiv.bs.ch/query/detail.aspx?ID=128060
+stabs:pa-633 a xisadgr:Fonds ; #1.4
+  xisadgr:hasIdentity [ a xisadgr:Identity ; # 1
+    xisadgr:hasReferenceCode "PA 633" ; # 1.1
+    xisadgr:hasTitle "Archiv der Familie Ochs genannt His" ; # 1.2
+    xisadgr:hasCreatedDateRange [ a xisadgr:DateRange ; # 1.3 
+      xisadgr:hasFromDate [ a xisadgr:DatePoint ;
+        xisadgr:hasDatePoint "13"^^xisadgr:datePointType ;
+      ] ;
+      xisadgr:hasToDate [ a xisadgr:DatePoint ;
+        xisadgr:hasDatePoint "2008"^^xisadgr:datePointType ; # Schutzfristende: 31.12.2038
+      ] ;
+    ] ; # 1.3
+  ] ; # 1
+  xisadgr:hasContext [ a xisadgr:Context ; # 2
+    xisadgr:hasCreator [ a xisadgr:Agent ;
+      xisadgr:hasAgentName "Familie Ochs/His" ; # 2.1
+    ] ; 
+    xisadgr:hasAdminBioHistory [ a xisadgr:AgentCv ; # 2.2
+      xisadgr:hasAgentCvDatesComment "Die Familiengeschichte ist ausstehend." ; 
+    ] ; # 2.2
+  ] ; # 2
+  xisadgr:hasAlliedMaterials [ a xisadgr:AlliedMaterials ; # 5
+    xisadgr:hasRelatedUnitsUri <https://query.staatsarchiv.bs.ch/query/detail.aspx?ID=1138449> ; #5.3
+  ] ; # 5
+  xisadgr:hasDescriptionControl [ a xisadgr:DescriptionControl ; # 7
+    xisadgr:hasRulesConventions "Detailliert" ; # 7.2
+    xisadgr:hasDescriptioDates "2001-06-08"^^xsd:date ; # 7.3
+  ] ; # 7
+  xisadgr:hasMaterialExpression [ a xisadgr:MaterialExpression ;
+    xisadgr:hasAccessConditions stabs:pa-633-AccessConditions ; # 4.1
+  ] ;
+  xisadgr:hasArchivalDescription stabs:pa-633c ;
+.
+
+stabs:pa-633-AccessConditions a xisadgr:AccessConditions ; # 4.1
+  xisadgr:hasOpenToThePublic "public" ; 
+  xisadgr:hasOtherAccessConditions "Depositum" ; 
+  xisadgr:hasAccessConditionsNotes "Es gelten besondere Benutzungsbestimmungen." ; 
+  xisadgr:hasAccessConditionsNotes "Erforderliche Bewilligung: Staatsarchivar/Stv" ; 
+  xisadgr:hasAccessConditionsNotes "Physische Benützbarkeit: uneingeschränkt" ;
+  xisadgr:hasRetentionPeriod "30"^^xsd:integer ;
+. # 4.1
+
+###  http://query.staatsarchiv.bs.ch/query/detail.aspx?ID=128063
+stabs:pa-633c a xisadgr:Fonds ; # 1.4
+  xisadgr:hasIdentity [ a xisadgr:Identity ; # 1
+    xisadgr:hasReferenceCode "PA 633c" ; # 1.1
+    xisadgr:hasTitle "Nachlass Peter Ochs-Vischer (1752-1821)" ; # 1.2
+    xisadgr:hasCreatedDateRange [ a xisadgr:DateRange ; # 1.3
+      xisadgr:hasFromDate [ a xisadgr:DatePoint ;
+        xisadgr:hasDatePoint "18"^^xisadgr:datePointType ;
+        xisadgr:hasDatePointApprox "true"^^xsd:boolean ;
+      ] ;
+      xisadgr:hasToDate [ a xisadgr:DatePoint ;
+        xisadgr:hasDatePoint "19"^^xisadgr:datePointType ; # Schutzfristende: 31.12.1930
+        xisadgr:hasDatePointApprox "true"^^xsd:boolean ;
+      ] ;
+    ] ; # 1.3
+  ] ; # 1
+  xisadgr:hasContext [ a xisadgr:Context ; # 2
+    xisadgr:hasCreator [ a xisadgr:Agent ;
+      xisadgr:hasAgentName "Familie Ochs/His" ; # 2.1
+    ] ; 
+    xisadgr:hasArchivalHistory "Die Bestandesgeschichte ist ausstehend." ; # 2.3
+  ] ; # 2
+  xisadgr:hasConditionsAccessUse [ a xisadgr:ConditionsAccessUse ; # 4
+    xisadgr:hasFindingAids "Repertorium PA 633c siehe separate Bände Rep. D 9.1 und D 9.2 und Zentralkatalog." ; # 4.5
+  ] ; # 4
+  xisadgr:hasDescriptionControl [ a xisadgr:DescriptionControl ; # 7
+    xisadgr:hasRulesConventions "Detailliert" ; # 7.2
+    xisadgr:hasDescriptioDates "2001-06-08"^^xsd:date ; # 7.3
+  ] ; # 7
+  xisadgr:hasMaterialExpression [ a xisadgr:MaterialExpression ;
+    xisadgr:hasAccessConditions stabs:pa-633-AccessConditions ; # 4.1
+  ] ;
+  xisadgr:hasArchivalDescription stabs:pa-633c-a ;
+.
+
+###  http://query.staatsarchiv.bs.ch/query/detail.aspx?ID=587138
+stabs:pa-633c-a a xisadgr:Series ; # 1.4
+  xisadgr:hasIdentity [ a xisadgr:Identity ; # 1
+    xisadgr:hasReferenceCode "PA 633c A" ; # 1.1
+    xisadgr:hasTitle "Peter Ochs" ; # 1.2
+  ] ; # 1
+  xisadgr:hasMaterialExpression [ a xisadgr:MaterialExpression ;
+    xisadgr:hasAccessConditions stabs:pa-633-AccessConditions ; # 4.1
+  ] ;
+  xisadgr:hasArchivalDescription stabs:pa-633c-a-1 ;
+.
+
+##  http://query.staatsarchiv.bs.ch/query/detail.aspx?ID=587139
+stabs:pa-633c-a-1 a xisadgr:Series ; # 1.4
+  xisadgr:hasIdentity [ a xisadgr:Identity ; # 1
+    xisadgr:hasReferenceCode "PA 633c A 1" ; # 1.1
+    xisadgr:hasTitle "Biographisches/Privates" ; # 1.2
+  ] ; # 1
+  xisadgr:hasMaterialExpression [ a xisadgr:MaterialExpression ;
+    xisadgr:hasAccessConditions stabs:pa-633-AccessConditions ; # 4.1
+  ] ;
+  xisadgr:hasArchivalDescription stabs:pa-633c-a-11 ;
+.
+
+###  http://query.staatsarchiv.bs.ch/query/detail.aspx?ID=587140
+stabs:pa-633c-a-11 a xisadgr:Series ; # 1.4
+  xisadgr:hasIdentity [ a xisadgr:Identity ; # 1
+    xisadgr:hasReferenceCode "PA 633c A 1.1" ; # 1.1
+    xisadgr:hasTitle "Biographisches" ; # 1.2
+  ] ; # 1
+  xisadgr:hasMaterialExpression [ a xisadgr:MaterialExpression ;
+    xisadgr:hasAccessConditions stabs:pa-633-AccessConditions ; # 4.1
+  ] ;
+  xisadgr:hasArchivalDescription stabs:pa-633c-a-11-fasc-1 ;
+  xisadgr:hasArchivalDescription stabs:pa-633c-a-11-fasc-2 ;
+  xisadgr:hasArchivalDescription stabs:pa-633c-a-11-fasc-3 ;
+.
+
+###  http://query.staatsarchiv.bs.ch/query/detail.aspx?ID=587462
+stabs:pa-633c-a-11-fasc-1 a xisadgr:Item ; # 1.4
+  xisadgr:hasIdentity [ a xisadgr:Identity ; # 1
+    xisadgr:hasReferenceCode "PA 633c A 1.1, fasc. 1" ; # 1.1
+    xisadgr:hasTitle "Mon extrait baptistaire" ; # 1.2
+    xisadgr:hasCreatedDatePoint [ a xisadgr:DatePoint ; # 1.3
+      xisadgr:hasDatePoint "1756-08-05"^^xisadgr:datePointType ; # Schutzfristende: 31.12.1786
+    ] ; # 1.3
+  ] ; # 1
+  xisadgr:hasContentStructure [ a xisadgr:ContentStructure ; # 3
+    xisadgr:hasScope "text" ; # 3.1
+    xisadgr:hasScope "Handschrift" ; # 3.1 Dokumentart
+    xisadgr:hasContent "Auszug aus dem Taufbuch" ; # 3.1
+  ] ; # 3
+  xisadgr:hasNotes [ a xisadgr:Notes ; # 6
+    xisadgr:hasNote "'Extrait du livre des Baptemes de l'Eglise françoise de Basle': undatierte Abschrift mit Siegel des Pfarrers Osterwald aus dem Kirchenbuch der französischen Gemeinde in Basel (S.156). Umschlag: 'Mon extrait baptistaire. 5 Août 1756.' Undatierter Auszug aus dem Taufbuch mit Siegel. Briefumschlag. Transkript." ; # 6.1
+  ] ; #6
+  xisadgr:hasMaterialExpression [ a xisadgr:MaterialExpression ;
+    xisadgr:hasExtentMedium [ a xisadgr:ExtentMedium ; # 1.5
+      xisadgr:hasMediaType kostceco-mt:Paper ;
+    ] ; # 1.5
+    xisadgr:hasAccessConditions stabs:pa-633-AccessConditions ; # 4.1
+    xisadgr:hasPhysTech "analog" ; # 4.4
+  ] ;
+.
+
+###  http://query.staatsarchiv.bs.ch/query/detail.aspx?ID=587463
+stabs:pa-633c-a-11-fasc-2 a xisadgr:Item ; # 1.4
+  xisadgr:hasIdentity [ a xisadgr:Identity ; # 1
+    xisadgr:hasReferenceCode "PA 633c A 1.1, fasc. 2" ; # 1.1
+    xisadgr:hasTitle "Diplom der philosophischen Fakultät der Universität Basel" ; # 1.2
+    xisadgr:hasCreatedDatePoint [ a xisadgr:DatePoint ; # 1.3
+      xisadgr:hasDatePoint "1775-06-27"^^xisadgr:datePointType ; # Schutzfristende: 31.12.1805
+    ] ; # 1.3
+  ] ; # 1
+  xisadgr:hasContext [ a xisadgr:Context ; # 2
+    xisadgr:hasCreator [ a xisadgr:Agent ;
+      xisadgr:hasAgentName "Baslerus, Jacobus, Decanus" ; # 2.1
+    ] ; 
+  ] ; # 2
+  xisadgr:hasContentStructure [ a xisadgr:ContentStructure ; # 3
+    xisadgr:hasScope "text" ; # 3.1
+    xisadgr:hasScope "Handschrift" ; # 3.1 Dokumentart
+    xisadgr:hasScope "Urkunde" ; # 3.1 Gattung
+    xisadgr:hasContent "Doktor- bzw. Magisterdiplom der freien Künste: '(...) ut ego [Baslerus] ipsi Gradum Doctoris Philosophiae seu Magistri Artium liberalium conferrem (...).'" ; # 3.1
+  ] ; # 3
+  xisadgr:hasNotes [ a xisadgr:Notes ; # 6
+    xisadgr:hasNote "Empfänger:	Ochs, Peter" ; # 6.1
+  ] ; #6
+  xisadgr:hasMaterialExpression [ a xisadgr:MaterialExpression ;
+    xisadgr:hasExtentMedium [ a xisadgr:ExtentMedium ; # 1.5
+      xisadgr:hasMediaType kostceco-mt:Paper ;
+    ] ; # 1.5
+    xisadgr:hasAccessConditions stabs:pa-633-AccessConditions ; # 4.1
+    xisadgr:hasPhysTech "analog" ; # 4.4
+  ] ;
+.
+
+###  http://query.staatsarchiv.bs.ch/query/detail.aspx?ID=587464
+stabs:pa-633c-a-11-fasc-3 a xisadgr:Item ; # 1.4
+  xisadgr:hasIdentity [ a xisadgr:Identity ; # 1
+    xisadgr:hasReferenceCode "PA 633c A 1.1, fasc. 3" ; # 1.1
+    xisadgr:hasTitle "Plan raisonné de mes études actuelles" ; # 1.2
+    xisadgr:hasCreatedDatePoint [ a xisadgr:DatePoint ; # 1.3
+      xisadgr:hasDatePoint "1776"^^xisadgr:datePointType ; # Schutzfristende: 31.12.1806
+    ] ; # 1.3
+  ] ; # 1
+  xisadgr:hasContext [ a xisadgr:Context ; # 2
+    xisadgr:hasCreator [ a xisadgr:Agent ;
+      xisadgr:hasAgentName "Ochs, Peter" ; # 2.1
+    ] ; 
+  ] ; # 2
+  xisadgr:hasContentStructure [ a xisadgr:ContentStructure ; # 3
+    xisadgr:hasScope "text" ; # 3.1
+    xisadgr:hasScope "Handschrift" ; # 3.1 Dokumentart
+    xisadgr:hasContent "Peter Ochs' Stundenplan von Leyden 1776" ; # 3.1
+  ] ; # 3
+  xisadgr:hasMaterialExpression [ a xisadgr:MaterialExpression ;
+    xisadgr:hasExtentMedium [ a xisadgr:ExtentMedium ; # 1.5
+      xisadgr:hasMediaType kostceco-mt:Paper ;
+    ] ; # 1.5
+    xisadgr:hasAccessConditions stabs:pa-633-AccessConditions ; # 4.1
+    xisadgr:hasPhysTech "analog" ; # 4.4
+  ] ;
+.
