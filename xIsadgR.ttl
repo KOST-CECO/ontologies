@@ -3,7 +3,7 @@
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix xisadgr: <https://github.com/KOST-CECO/ontologies/blob/master/xisadgr#> .
+@prefix xisadgr: <https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR.ttl#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 @prefix sh: <http://www.w3.org/ns/shacl#> .
@@ -34,7 +34,7 @@
 ###########################################################################
 
 # ========== ArchivalDescription ========== #
-###  https://github.com/KOST-CECO/ontologies/blob/master/xisadgr#ArchivalDescription
+###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR.ttl#ArchivalDescription
 xisadgr:ArchivalDescription a rdfs:Class ; 
   rdfs:comment 
     "Globales Element für die Beschreibung einer Verzeichnungseinheit"@de ,
@@ -43,13 +43,13 @@ xisadgr:ArchivalDescription a rdfs:Class ;
   .
 
   # ---------- hasArchivalDescription ---------- #
-  ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadgr#hasArchivalDescription
+  ###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR.ttl#hasArchivalDescription
   xisadgr:hasArchivalDescription a rdf:Property ;
     a owl:IrreflexiveProperty ;
     rdfs:domain xisadgr:ArchivalDescription ;
     rdfs:range xisadgr:ArchivalDescription ;
   .
-    ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadgr#Archive
+    ###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR.ttl#Archive
     xisadgr:Archive a rdfs:Class ; 
       rdfs:comment 
         "Verzeichnungsstufe: Archiv"@de ,
@@ -58,7 +58,7 @@ xisadgr:ArchivalDescription a rdfs:Class ;
         "Livello di descrizione: Archivio"@it ;
       rdfs:subClassOf xisadgr:ArchivalDescription ;
     .
-    ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadgr#ArchivalGroup
+    ###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR.ttl#ArchivalGroup
     xisadgr:ArchivalGroup a rdfs:Class ; 
       rdfs:comment 
         "Verzeichnungsstufe: Archivgruppe"@de ,
@@ -67,7 +67,7 @@ xisadgr:ArchivalDescription a rdfs:Class ;
         "Livello di descrizione: Gruppo d'archivio"@it ;
       rdfs:subClassOf xisadgr:ArchivalDescription ;
     .
-    ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadgr#Fonds
+    ###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR.ttl#Fonds
     xisadgr:Fonds a rdfs:Class ; 
       rdfs:comment 
         "Verzeichnungsstufe: Bestand (Menge aller Ablieferungen einer Provenienz)"@de ,
@@ -76,7 +76,7 @@ xisadgr:ArchivalDescription a rdfs:Class ;
         "Livello di descrizione: Fondo"@it ;
       rdfs:subClassOf xisadgr:ArchivalDescription ;
     .
-    ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadgr#Series
+    ###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR.ttl#Series
     xisadgr:Series a rdfs:Class ;
       rdfs:comment 
         "Verzeichnungsstufe: Serie (Entspricht einer Ordnungssystemposition resp. einer Rubrik im Ordnungssystem)"@de ,
@@ -85,7 +85,7 @@ xisadgr:ArchivalDescription a rdfs:Class ;
         "Livello di descrizione: Serie"@it ;
       rdfs:subClassOf xisadgr:ArchivalDescription ;
     .
-    ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadgr#File
+    ###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR.ttl#File
     xisadgr:File a rdfs:Class ; 
       rdfs:comment 
         "Verzeichnungsstufe: Dossier (Einer Rubrik im Ordnungssystem zugeordnete sachliche Einheit, die im Geschäftsgang entstanden ist)"@de ,
@@ -94,7 +94,7 @@ xisadgr:ArchivalDescription a rdfs:Class ;
         "Livello di descrizione: Fascicolo"@it ;
       rdfs:subClassOf xisadgr:ArchivalDescription ;
     .
-    ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadgr#Item
+    ###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR.ttl#Item
     xisadgr:Item a rdfs:Class ;
       rdfs:comment 
         "Verzeichnungsstufe: Dokument (Bestandteil eines Dossiers oder Teildossiers und diesem untergeordnet)"@de ,
@@ -105,7 +105,7 @@ xisadgr:ArchivalDescription a rdfs:Class ;
     .
 
   #---------- 1) hasIdentity ----------#
-  ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadgr#hasIdentity
+  ###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR.ttl#hasIdentity
   xisadgr:hasIdentity a rdf:Property ;
     rdfs:comment 
       "1) Identifikation"@de ,
@@ -115,7 +115,7 @@ xisadgr:ArchivalDescription a rdfs:Class ;
     rdfs:domain xisadgr:ArchivalDescription ;
     rdfs:range xisadgr:Identity ;
   .
-    ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadgr#Identity
+    ###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR.ttl#Identity
     xisadgr:Identity a rdfs:Class ;
       rdfs:comment 
         "1) Identifikation"@de ,
@@ -123,7 +123,7 @@ xisadgr:ArchivalDescription a rdfs:Class ;
         "1) identity statement area"@en ,
         "1) Area dell'identificazione"@it ;
     .
-      ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadgr#hasReferenceCode
+      ###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR.ttl#hasReferenceCode
       xisadgr:hasReferenceCode a rdf:Property ;
         rdfs:label "hasReferenceCode [dct:identifier]" ;
         rdfs:comment  
@@ -134,7 +134,7 @@ xisadgr:ArchivalDescription a rdfs:Class ;
         rdfs:domain xisadgr:Identity ;
         rdfs:range xsd:anyURI ; 
       .
-      ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadgr#hasReferenceCodeOld
+      ###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR.ttl#hasReferenceCodeOld
       xisadgr:hasReferenceCodeOld a rdf:Property ;
         rdfs:label "hasReferenceCodeOld [dct:identifier]" ;
         rdfs:comment  
@@ -145,7 +145,7 @@ xisadgr:ArchivalDescription a rdfs:Class ;
         rdfs:domain xisadgr:Identity ;
         rdfs:range xsd:string ; 
       .
-      ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadgr#hasTitle
+      ###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR.ttl#hasTitle
       xisadgr:hasTitle a rdf:Property ;
         rdfs:label "hasTitle [dct:title]" ;
         rdfs:comment 
@@ -157,7 +157,7 @@ xisadgr:ArchivalDescription a rdfs:Class ;
         rdfs:range xsd:string ; 
         rdfs:subPropertyOf dct:title ;
       .
-      ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadgr#hasCreatedDateRange
+      ###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR.ttl#hasCreatedDateRange
       xisadgr:hasCreatedDateRange a rdf:Property ;
         rdfs:label "hasCreatedDateRange [dct:date, dct:created]" ;
         rdfs:comment 
@@ -169,7 +169,7 @@ xisadgr:ArchivalDescription a rdfs:Class ;
         rdfs:range xisadgr:DateRange ; 
         rdfs:subPropertyOf dct:date, dct:created ;
       .
-      ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadgr#hasCreatedDatePoint
+      ###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR.ttl#hasCreatedDatePoint
       xisadgr:hasCreatedDatePoint a rdf:Property ;
         rdfs:label "hasCreatedDatePoint [dct:created]" ;
         rdfs:comment 
@@ -183,7 +183,7 @@ xisadgr:ArchivalDescription a rdfs:Class ;
       .
 
   #---------- 2) Context ----------#
-  ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadgr#hasContext
+  ###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR.ttl#hasContext
   xisadgr:hasContext a rdf:Property ;
     rdfs:comment 
       "2) Kontext"@de ,
@@ -193,7 +193,7 @@ xisadgr:ArchivalDescription a rdfs:Class ;
     rdfs:domain xisadgr:ArchivalDescription ;
     rdfs:range xisadgr:Context ;
   .
-    ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadgr#Context
+    ###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR.ttl#Context
     xisadgr:Context a rdfs:Class ;
       rdfs:comment 
         "2) Kontext"@de ,
@@ -201,7 +201,7 @@ xisadgr:ArchivalDescription a rdfs:Class ;
         "2) context area"@en ,
         "2) Area delle informazioni sul contesto"@it ;
     .
-      ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadgr#hasCreator
+      ###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR.ttl#hasCreator
       xisadgr:hasCreator a rdf:Property ;
         rdfs:label "hasCreator [dct:creator]" ;
 		rdfs:comment 
@@ -213,31 +213,31 @@ xisadgr:ArchivalDescription a rdfs:Class ;
         rdfs:range xisadgr:Agent ; 
         rdfs:subPropertyOf dct:creator ;
       .
-        ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadgr#Agent
+        ###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR.ttl#Agent
         xisadgr:Agent a rdfs:Class ;
           rdfs:label "Agent [dct:Agent]" ;
 		  rdfs:comment "Agent include person, organization, and software"@en ;
           rdfs:subClassOf dct:Agent ;
         .
-          ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadgr#hasAgentName
+          ###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR.ttl#hasAgentName
           xisadgr:hasAgentName a rdf:Property ;
             rdfs:comment "Agent Name"@de ;
             rdfs:domain xisadgr:Agent ; 
             rdfs:range xsd:string ; 
           .
-          ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadgr#hasAgentId
+          ###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR.ttl#hasAgentId
           xisadgr:hasAgentId a rdf:Property ;
             rdfs:comment "Agent ID"@de ;
             rdfs:domain xisadgr:Agent ; 
             rdfs:range xsd:anyURI ; 
           .
-          ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadgr#hasAgentCv
+          ###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR.ttl#hasAgentCv
           xisadgr:hasAgentCv a rdf:Property ;
             rdfs:comment "Agent CV"@de ;
             rdfs:domain xisadgr:Agent ; 
             rdfs:range xisadgr:AgentCv ; 
           .
-      ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadgr#hasAdminBioHistory
+      ###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR.ttl#hasAdminBioHistory
       xisadgr:hasAdminBioHistory a rdf:Property ;
         rdfs:comment 
           "2.2) Verwaltungsgeschichte/Biographische Angaben: Information über Verwaltungsgeschichte der Provenienzstelle bzw. die Biographie, wenn es sich um natürliche Personen handelt, zum besseren Verständnis des zur Verzeichnungseinheit gehörenden Kontextes"@de ,
@@ -247,7 +247,7 @@ xisadgr:ArchivalDescription a rdfs:Class ;
         rdfs:domain xisadgr:Context ;
         rdfs:range xisadgr:AgentCv ; 
       .
-        ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadgr#AgentCv
+        ###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR.ttl#AgentCv
         xisadgr:AgentCv a rdfs:Class ;
           rdfs:comment 
             "2.2) Verwaltungsgeschichte/Biographische Angaben: Information über Verwaltungsgeschichte der Provenienzstelle bzw. die Biographie, wenn es sich um natürliche Personen handelt, zum besseren Verständnis des zur Verzeichnungseinheit gehörenden Kontextes"@de ,
@@ -255,7 +255,7 @@ xisadgr:ArchivalDescription a rdfs:Class ;
             "2.2) Administrative / Biographical history: To provide an administrative history of, or biographical details on, the creator (or creators) of the unit of description to place the material in context and make it better understood"@en ,
             "2.2) Stori istituzionale/amministrativa, nota biografica: Fornire una storia istituzionale/amministrativa o un profilo biografico del soggetto produttore (o i soggetti produttori), per collocare la documentazione nel proprio contesto e facilitarne la comprensione"@it ;
         .
-          ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadgr#hasAgentCvEntry
+          ###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR.ttl#hasAgentCvEntry
           xisadgr:hasAgentCvEntry a rdf:Property ;
             rdfs:comment 
               "2.2) Verwaltungsgeschichte/Biographische Angaben: "@de ,
@@ -265,7 +265,7 @@ xisadgr:ArchivalDescription a rdfs:Class ;
             rdfs:domain xisadgr:AgentCv ;
             rdfs:range xisadgr:AgentCvEntry ; 
           .
-            ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadgr#AgentCvEntry
+            ###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR.ttl#AgentCvEntry
             xisadgr:AgentCvEntry a rdfs:Class ;
             rdfs:comment 
               "2.2) Verwaltungsgeschichte/Biographische Angaben: "@de ,
@@ -273,7 +273,7 @@ xisadgr:ArchivalDescription a rdfs:Class ;
               "2.2) Administrative / Biographical history: "@en ,
               "2.2) Stori istituzionale/amministrativa, nota biografica: "@it ;
             .
-              ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadgr#hasAgentCvDatesComment
+              ###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR.ttl#hasAgentCvDatesComment
               xisadgr:hasAgentCvDatesComment a rdf:Property ;
               rdfs:comment 
                 "2.2) Verwaltungsgeschichte/Biographische Angaben: Anmerkungen, Notiz, Kommentar"@de ,
@@ -283,7 +283,7 @@ xisadgr:ArchivalDescription a rdfs:Class ;
                 rdfs:domain xisadgr:AgentCvEntry ;
                 rdfs:range xsd:string ;
               .
-              ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadgr#hasAgentCvDateRange
+              ###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR.ttl#hasAgentCvDateRange
               xisadgr:hasAgentCvDateRange a rdf:Property ;
                 rdfs:comment 
                   "2.2) Verwaltungsgeschichte/Biographische Angaben: Zeitraum"@de ,
@@ -293,7 +293,7 @@ xisadgr:ArchivalDescription a rdfs:Class ;
                 rdfs:domain xisadgr:AgentCvEntry ; 
                 rdfs:range xisadgr:DateRange ; 
               .
-              ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadgr#hasAgentCvDatePoint
+              ###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR.ttl#hasAgentCvDatePoint
               xisadgr:hasAgentCvDatePoint a rdf:Property ;
                 rdfs:comment 
                   "2.2) Verwaltungsgeschichte/Biographische Angaben: Datum, Zeitpunkt"@de ,
@@ -303,13 +303,13 @@ xisadgr:ArchivalDescription a rdfs:Class ;
                 rdfs:domain xisadgr:AgentCvEntry ; 
                 rdfs:range xisadgr:DatePoint ; 
               .
-          ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadgr#hasAgentCvId
+          ###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR.ttl#hasAgentCvId
           xisadgr:hasAgentCvId a rdf:Property ;
             rdfs:comment "CV ID"@en ;
             rdfs:domain xisadgr:AgentCv ;
             rdfs:range xsd:anyURI ;
           .
-      ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadgr#hasArchivalHistory
+      ###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR.ttl#hasArchivalHistory
       xisadgr:hasArchivalHistory a rdf:Property ;
         rdfs:comment 
           "2.3) Bestandesgeschichte: Information über den Wechsel der Eigentums- und Besitzverhältnisse der Verzeichnungseinheit, die für deren Authentizität, Integrität, Vollständigkeit und Interpretation von wesentlicher Bedeutung sind"@de ,
@@ -319,7 +319,7 @@ xisadgr:ArchivalDescription a rdfs:Class ;
         rdfs:domain xisadgr:Context ;
         rdfs:range xsd:string ; 
       .
-      ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadgr#hasAcqInfo
+      ###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR.ttl#hasAcqInfo
       xisadgr:hasAcqInfo a rdf:Property ;
         rdfs:comment 
           "2.4) Abgebende Stelle: Darstellung der Umstände, die mit der direkten Übernahme der Verzeichnungseinheit von der abgebenden Stelle verbunden sind"@de ,
@@ -331,7 +331,7 @@ xisadgr:ArchivalDescription a rdfs:Class ;
       .
 
   #---------- 3) hasContentStructure ----------#
-  ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadgr#hasContentStructure
+  ###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR.ttl#hasContentStructure
   xisadgr:hasContentStructure a rdf:Property ;
     rdfs:comment 
       "3) Inhalt und innere Ordnung"@de ,
@@ -341,7 +341,7 @@ xisadgr:ArchivalDescription a rdfs:Class ;
     rdfs:domain xisadgr:ArchivalDescription ;
     rdfs:range xisadgr:ContentStructure ;
   .
-    ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadgr#ContentStructure
+    ###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR.ttl#ContentStructure
     xisadgr:ContentStructure a rdfs:Class ;
       rdfs:comment 
         "3) Inhalt und innere Ordnung"@de ,
@@ -351,7 +351,7 @@ xisadgr:ArchivalDescription a rdfs:Class ;
     .
       ###  3.1 Form und Inhalt wurde auseinander genommen
       ###  **********************************************
-      ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadgr#hasScope
+      ###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR.ttl#hasScope
       xisadgr:hasScope a rdf:Property ;
         # TODO: comment anpassen (Trennung)
         rdfs:comment 
@@ -363,7 +363,7 @@ xisadgr:ArchivalDescription a rdfs:Class ;
         rdfs:domain xisadgr:ContentStructure ;
         rdfs:range xsd:string ; 
       .
-      ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadgr#hasContent
+      ###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR.ttl#hasContent
       xisadgr:hasContent a rdf:Property ;
         # TODO: comment anpassen (Trennung)
         rdfs:comment 
@@ -374,7 +374,7 @@ xisadgr:ArchivalDescription a rdfs:Class ;
         rdfs:domain xisadgr:ContentStructure ;
         rdfs:range xsd:string ;
       .
-      ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadgr#hasAppraisalDestruction
+      ###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR.ttl#hasAppraisalDestruction
       xisadgr:hasAppraisalDestruction a rdf:Property ;
         rdfs:comment 
           "3.2) Bewertung und Kassation: Bereitstellung von Informationen über jede vorgenommene Bewertung und Kassation"@de ,
@@ -384,7 +384,7 @@ xisadgr:ArchivalDescription a rdfs:Class ;
         rdfs:domain xisadgr:ContentStructure ;
         rdfs:range xsd:string ; 
       .
-      ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadgr#hasAccruals
+      ###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR.ttl#hasAccruals
       xisadgr:hasAccruals a rdf:Property ;
         rdfs:comment 
           "3.3) Neuzugänge: Angaben für den Benutzer über mögliche Veränderungen im Umfang der Verzeichnungseinheit"@de ,
@@ -394,7 +394,7 @@ xisadgr:ArchivalDescription a rdfs:Class ;
         rdfs:domain xisadgr:ContentStructure ;
         rdfs:range xsd:string ; 
       .
-      ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadgr#hasArrangement
+      ###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR.ttl#hasArrangement
       xisadgr:hasArrangement a rdf:Property ;
         rdfs:comment 
           "3.4) Ordnung und Klassifikation: Bereitstellung von Informationen über die Ordnung und Klassifikation der Verzeichnungseinheit"@de ,
@@ -404,7 +404,7 @@ xisadgr:ArchivalDescription a rdfs:Class ;
         rdfs:domain xisadgr:ContentStructure ;
         rdfs:range xisadgr:Arrangement ; 
       .
-        ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadgr#Arrangement
+        ###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR.ttl#Arrangement
         xisadgr:Arrangement a rdfs:Class ;
           rdfs:comment 
             "3.4) Ordnung und Klassifikation: Bereitstellung von Informationen über die Ordnung und Klassifikation der Verzeichnungseinheit"@de ,
@@ -412,7 +412,7 @@ xisadgr:ArchivalDescription a rdfs:Class ;
             "3.4) System of arrangement: To provide information on the internal structure, the order and/or the system of classification of the unit of description"@en ,
             "3.4) Criteri di ordinamento: Fornire informazioni sulla struttura interna, l'organizzazione e/o il sistema di classificazione dell'unità di descrizione"@it ;
         .
-          ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadgr#hasArrangementComment
+          ###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR.ttl#hasArrangementComment
           xisadgr:hasArrangementComment a rdf:Property ;
             rdfs:comment 
               "3.4) Ordnung und Klassifikation: Anmerkungen, Notiz, Kommentar"@de ,
@@ -422,7 +422,7 @@ xisadgr:ArchivalDescription a rdfs:Class ;
             rdfs:domain xisadgr:Arrangement ;
             rdfs:range xsd:string ;
           .
-          ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadgr#hasArrangementDateRange
+          ###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR.ttl#hasArrangementDateRange
           xisadgr:hasArrangementDateRange a rdf:Property ;
             rdfs:comment 
               "3.4) Ordnung und Klassifikation: Zeitraum"@de ,
@@ -432,7 +432,7 @@ xisadgr:ArchivalDescription a rdfs:Class ;
             rdfs:domain xisadgr:Arrangement ; 
             rdfs:range xisadgr:DateRange ; 
           .
-          ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadgr#hasArrangementDatePoint
+          ###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR.ttl#hasArrangementDatePoint
           xisadgr:hasArrangementDatePoint a rdf:Property ;
             rdfs:comment 
               "3.4) Ordnung und Klassifikation: Datum, Zeitpunkt"@de ,
@@ -444,7 +444,7 @@ xisadgr:ArchivalDescription a rdfs:Class ;
           .
 
   #---------- 4) ConditionsAccessUse ----------#
-  ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadgr#hasConditionsAccessUse
+  ###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR.ttl#hasConditionsAccessUse
   xisadgr:hasConditionsAccessUse a rdf:Property ;
     rdfs:comment 
       "4) Zugangs- und Benutzungsbestimmungen"@de ,
@@ -454,7 +454,7 @@ xisadgr:ArchivalDescription a rdfs:Class ;
     rdfs:domain xisadgr:ArchivalDescription ;
     rdfs:range xisadgr:ConditionsAccessUse ;
   .
-    ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadgr#ConditionsAccessUse
+    ###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR.ttl#ConditionsAccessUse
     xisadgr:ConditionsAccessUse a rdfs:Class ;
       rdfs:comment 
         "4) Zugangs- und Benutzungsbestimmungen"@de ,
@@ -462,7 +462,7 @@ xisadgr:ArchivalDescription a rdfs:Class ;
         "4) conditions of access and use area"@en ,
         "4) Area delle informazioni relative alle condizioni di accesso ed utilizzazione"@it ;
     .
-	  ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadgr#hasReproConditions
+	  ###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR.ttl#hasReproConditions
 	  xisadgr:hasReproConditionsUri a rdf:Property ;
 		rdfs:label "hasReproConditionsUri [dct:rights]" ;
 		rdfs:comment 
@@ -474,7 +474,7 @@ xisadgr:ArchivalDescription a rdfs:Class ;
 		rdfs:range xsd:anyURI ; 
 		rdfs:subPropertyOf dct:rights ;
 	  .
-	  ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadgr#hasLanguageScripts
+	  ###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR.ttl#hasLanguageScripts
 	  xisadgr:hasLanguageScripts a rdf:Property ;
 		rdfs:label "hasLanguageScripts [dc:language]" ;
 		rdfs:comment 
@@ -488,7 +488,7 @@ xisadgr:ArchivalDescription a rdfs:Class ;
 		# hasLanguageScripts ist KEINE rdfs:subPropertyOf dct:language ;
 		# Dies weil bei dct:language der range eine Ressource ist und nicht ein Literal
 	  .
-	  ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadgr#hasFindingAids
+	  ###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR.ttl#hasFindingAids
 	  xisadgr:hasFindingAids a rdf:Property ;
 		rdfs:comment 
 		  "4.5) Findhilfsmittel: Identifizierung aller für die Verzeichnungseinheit vorhandenen Findhilfsmittel"@de ,
@@ -500,7 +500,7 @@ xisadgr:ArchivalDescription a rdfs:Class ;
 	  .
 
   # ---------- 5) AlliedMaterials ---------- #
-  ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadgr#hasAlliedMaterials
+  ###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR.ttl#hasAlliedMaterials
   xisadgr:hasAlliedMaterials a rdf:Property ;
     rdfs:comment 
       "5) Sachverwandte Unterlagen"@de ,
@@ -510,7 +510,7 @@ xisadgr:ArchivalDescription a rdfs:Class ;
     rdfs:domain xisadgr:ArchivalDescription ;
     rdfs:range xisadgr:AlliedMaterials ;
   .
-    ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadgr#AlliedMaterials
+    ###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR.ttl#AlliedMaterials
     xisadgr:AlliedMaterials a rdfs:Class ;
     rdfs:comment 
       "5) Sachverwandte Unterlagen"@de ,
@@ -518,7 +518,7 @@ xisadgr:ArchivalDescription a rdfs:Class ;
       "5) allied materials area"@en ,
       "5) Area delle informazioni relative a documentazione collegata"@it ;
     .
-	  ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadgr#hasRelatedUnitsUri
+	  ###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR.ttl#hasRelatedUnitsUri
 	  xisadgr:hasRelatedUnitsUri a rdf:Property ;
 		rdfs:comment 
 		  "5.3) Verwandte Verzeichnungseinheiten: Ermittlung von verwandten Verzeichnungseinheiten im selben Archiv oder in anderen Archiven"@de ,
@@ -528,7 +528,7 @@ xisadgr:ArchivalDescription a rdfs:Class ;
 		rdfs:domain xisadgr:AlliedMaterials ;
 		rdfs:range xsd:anyURI ;
 	  .
-	  ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadgr#hasRelatedUnitsAd
+	  ###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR.ttl#hasRelatedUnitsAd
 	  xisadgr:hasRelatedUnitsAd a rdf:Property ;
 	    a owl:IrreflexiveProperty ;
 		rdfs:comment 
@@ -539,7 +539,7 @@ xisadgr:ArchivalDescription a rdfs:Class ;
 		rdfs:domain xisadgr:AlliedMaterials ;
 		rdfs:range xisadgr:ArchivalDescription ;
 	  .
-	  ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadgr#hasRelatedUnits
+	  ###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR.ttl#hasRelatedUnits
 	  xisadgr:hasRelatedUnits a rdf:Property;
 		rdfs:comment 
 		  "5.3) Verwandte Verzeichnungseinheiten: Ermittlung von verwandten Verzeichnungseinheiten im selben Archiv oder in anderen Archiven"@de ,
@@ -549,7 +549,7 @@ xisadgr:ArchivalDescription a rdfs:Class ;
 		rdfs:domain xisadgr:AlliedMaterials ;
 		rdfs:range xsd:string ;
 	  .
-	  ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadgr#hasPublicationUri
+	  ###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR.ttl#hasPublicationUri
 	  xisadgr:hasPublicationUri a rdf:Property ;
 		rdfs:comment 
 		  "5.4) Veröffentlichungen: Ermittlung von Veröffentlichungen, die unter Benutzung oder Auswertung der Verzeichnungseinheit entstanden sind"@de ,
@@ -559,7 +559,7 @@ xisadgr:ArchivalDescription a rdfs:Class ;
 		rdfs:domain xisadgr:AlliedMaterials ;
 		rdfs:range xsd:anyURI ; 
 	  .
-	  ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadgr#hasPublication
+	  ###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR.ttl#hasPublication
 	  xisadgr:hasPublication a rdf:Property ;
 		rdfs:comment 
 		  "5.4) Veröffentlichungen: Ermittlung von Veröffentlichungen, die unter Benutzung oder Auswertung der Verzeichnungseinheit entstanden sind"@de ,
@@ -571,7 +571,7 @@ xisadgr:ArchivalDescription a rdfs:Class ;
 	  .
 
   # ---------- 6) hasNotes ---------- #
-  ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadgr#hasNotes
+  ###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR.ttl#hasNotes
   xisadgr:hasNotes a rdf:Property ;
     rdfs:comment 
       "6) Allgemeine Anmerkungen: Bereitstellung von Spezialinformationen und Angaben, die in keinem der anderen Bereiche angebracht werden können"@de ,
@@ -581,7 +581,7 @@ xisadgr:ArchivalDescription a rdfs:Class ;
     rdfs:domain xisadgr:ArchivalDescription ;
     rdfs:range xisadgr:Notes ;
   .
-    ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadgr#Notes
+    ###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR.ttl#Notes
     xisadgr:Notes a rdfs:Class ;
       rdfs:comment 
         "6) Anmerkungen"@de ,
@@ -589,7 +589,7 @@ xisadgr:ArchivalDescription a rdfs:Class ;
         "6) notes area"@en ,
         "6) Area delle note"@it ;
     .
-      ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadgr#hasNote
+      ###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR.ttl#hasNote
       xisadgr:hasNote a rdf:Property ;
         rdfs:comment 
           "6.1) Anmerkungen"@de ,
@@ -601,7 +601,7 @@ xisadgr:ArchivalDescription a rdfs:Class ;
       .
 
   # ---------- 7) DescriptionControl ---------- #
-  ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadgr#hasDescriptionControl
+  ###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR.ttl#hasDescriptionControl
   xisadgr:hasDescriptionControl a rdf:Property ;
     rdfs:comment 
       "7) Verzeichnungskontrolle"@de ,
@@ -611,7 +611,7 @@ xisadgr:ArchivalDescription a rdfs:Class ;
     rdfs:domain xisadgr:ArchivalDescription ;
     rdfs:range xisadgr:DescriptionControl ; 
   .
-    ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadgr#DescriptionControl
+    ###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR.ttl#DescriptionControl
     xisadgr:DescriptionControl a rdfs:Class ;
       rdfs:comment 
         "7) Verzeichnungskontrolle"@de ,
@@ -619,7 +619,7 @@ xisadgr:ArchivalDescription a rdfs:Class ;
         "7) description control area"@en ,
         "7) Area di controllo della descrizione"@it ;
    .
-      ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadgr#hasArchivistsNote
+      ###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR.ttl#hasArchivistsNote
       xisadgr:hasArchivistsNote a rdf:Property ;
         rdfs:comment 
           "7.1) Informationen des Bearbeiters: Erläuterungen zur Verzeichnung und über den oder die Bearbeiter"@de ,
@@ -629,7 +629,7 @@ xisadgr:ArchivalDescription a rdfs:Class ;
         rdfs:domain xisadgr:DescriptionControl ;
         rdfs:range xsd:string ; 
       .
-      ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadgr#hasRulesConventions
+      ###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR.ttl#hasRulesConventions
       xisadgr:hasRulesConventions a rdf:Property ;
         rdfs:comment 
           "7.2) Verzeichnungsgrundsätze: Benennung der bei der Verzeichnung angewandten Normen, Regeln und Grundsätze"@de ,
@@ -639,7 +639,7 @@ xisadgr:ArchivalDescription a rdfs:Class ;
         rdfs:domain xisadgr:DescriptionControl ;
         rdfs:range xsd:string ; 
       .
-      ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadgr#hasDescriptionDates
+      ###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR.ttl#hasDescriptionDates
       xisadgr:hasDescriptionDates a rdf:Property ;
         rdfs:comment 
           "7.3) Datum oder Zeitraum der Verzeichung: Alle Daten, die sich auf die Erstellung oder Veränderung der Verzeichnung beziehen, sind anzugeben"@de ,
@@ -651,7 +651,7 @@ xisadgr:ArchivalDescription a rdfs:Class ;
       .
 
   # ---------- Additional) Reference ---------- #
-  ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadgr#hasAdditionalReference
+  ###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR.ttl#hasAdditionalReference
   xisadgr:hasAdditionalReference a rdf:Property ;
     rdfs:comment 
       "Zusätzliche Referenzierungen und Identifikatoren"@de ,
@@ -660,14 +660,14 @@ xisadgr:ArchivalDescription a rdfs:Class ;
     rdfs:domain xisadgr:ArchivalDescription ;
     rdfs:range xisadgr:AdditionalReference ; 
   .
-    ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadgr#AdditionalReference
+    ###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR.ttl#AdditionalReference
     xisadgr:AdditionalReference a rdfs:Class ;
       rdfs:comment 
         "Zusätzliche Referenzierungen und Identifikatoren"@de ,
         "Zone des réferences supplémentaires"@fr ,
         "additional reference area"@en ;
     .
-      ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadgr#hasRecordReference
+      ###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR.ttl#hasRecordReference
       xisadgr:hasRecordReference a rdf:Property ;
         rdfs:comment "Name der Provenienzsteinheit entstanden ist"@de ;
         rdfs:domain xisadgr:AdditionalReference ;
@@ -675,7 +675,7 @@ xisadgr:ArchivalDescription a rdfs:Class ;
       .
 
   # ---------- Additional) Data ---------- #
-  ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadgr#hasAdditionalData
+  ###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR.ttl#hasAdditionalData
   xisadgr:hasAdditionalData a rdf:Property ;
     rdfs:comment 
       "Zusatzdaten"@de ,
@@ -684,14 +684,14 @@ xisadgr:ArchivalDescription a rdfs:Class ;
     rdfs:domain xisadgr:ArchivalDescription ;
     rdfs:range xisadgr:AdditionalData ; 
   .
-    ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadgr#AdditionalData
+    ###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR.ttl#AdditionalData
     xisadgr:AdditionalData a rdfs:Class ;
       rdfs:comment 
         "Zusatzdaten"@de ,
         "Zone des données supplémentaires"@fr ,
         "additional data area"@en ;
     .
-      ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadgr#hasMdWrap
+      ###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR.ttl#hasMdWrap
       xisadgr:hasMdWrap a rdf:Property ;
         rdfs:comment 
           "Zusätzliche Metadaten in Form eines Schlüssel-Werte-Paares."@de ,
@@ -699,7 +699,7 @@ xisadgr:ArchivalDescription a rdfs:Class ;
         rdfs:domain xisadgr:AdditionalData ;
         rdfs:range xsd:string ; 
       .
-      ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadgr#hasXmlData
+      ###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR.ttl#hasXmlData
       xisadgr:hasXmlData a rdf:Property ;
         rdfs:comment 
           "zusätzliche Metadaten gemäss einer externen Metadatendefinition in Form eines XML-Schemas."@de ,
@@ -709,17 +709,17 @@ xisadgr:ArchivalDescription a rdfs:Class ;
       .
 
 # ========== DateRange ========== #
-###  https://github.com/KOST-CECO/ontologies/blob/master/xisadgr#DateRange
+###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR.ttl#DateRange
 xisadgr:DateRange a rdfs:Class ;
   rdfs:comment "From Date, To Date"@en ;
 .
-  ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadgr#hasDateFrom
+  ###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR.ttl#hasDateFrom
   xisadgr:hasFromDate a rdf:Property ;
     rdfs:comment "From Date"@en ;
     rdfs:domain xisadgr:DateRange ;
     rdfs:range xisadgr:DatePoint ;
   .
-  ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadgr#hasDateTo
+  ###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR.ttl#hasDateTo
   xisadgr:hasToDate a rdf:Property ;
     rdfs:comment "To Date"@en ;
     rdfs:domain xisadgr:DateRange ;
@@ -727,23 +727,23 @@ xisadgr:DateRange a rdfs:Class ;
   .
 
 # ========== DatePoint ========== #
-###  https://github.com/KOST-CECO/ontologies/blob/master/xisadgr#DatePoint
+###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR.ttl#DatePoint
 xisadgr:DatePoint a rdfs:Class ;
   rdfs:comment "Date Point"@en ;
 .
-  ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadgr#hasDatePoint
+  ###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR.ttl#hasDatePoint
   xisadgr:hasDatePoint a rdf:Property ;
     rdfs:comment "Date Point"@en ;
     rdfs:domain xisadgr:DatePoint ;
     rdfs:range xisadgr:datePointType ;
   .
-  ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadgr#hasDatePointNote
+  ###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR.ttl#hasDatePointNote
   xisadgr:hasDatePointNote a rdf:Property ;
     rdfs:comment "Date Point Note"@en ;
     rdfs:domain xisadgr:DatePoint ;
     rdfs:range xsd:string ;
   .
-  ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadgr#hasDatePointApprox
+  ###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR.ttl#hasDatePointApprox
   xisadgr:hasDatePointApprox a rdf:Property ;
     rdfs:comment "approximately"@en ;
     rdfs:domain xisadgr:DatePoint ;
@@ -759,38 +759,38 @@ xisadgr:DatePoint a rdfs:Class ;
 ###########################################################################
 
 # ========== MaterialExpression ========== #
-###  https://github.com/KOST-CECO/ontologies/blob/master/xisadgr#hasMaterialExpression
+###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR.ttl#hasMaterialExpression
 xisadgr:hasMaterialExpression a rdf:Property ;
   rdfs:domain xisadgr:ArchivalDescription ; 
   rdfs:range xisadgr:MaterialExpression ;
 .
-  ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadgr#MaterialExpression
+  ###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR.ttl#MaterialExpression
   xisadgr:MaterialExpression a rdfs:Class ; 
     rdfs:comment 
       "Globales Element für die Beschreibung einer materiellen Ausprägung"@de ,
       "élément global pour la description d'une expression matérielle"@fr ,
       "global element for a description of a material expression"@en ;
   .
-    ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadgr#hasMaterialExpressionRepresentation
+    ###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR.ttl#hasMaterialExpressionRepresentation
     xisadgr:hasMaterialExpressionRepresentation a rdf:Property ; 
       a owl:IrreflexiveProperty ;
       rdfs:domain xisadgr:MaterialExpression ; 
       rdfs:range xisadgr:MaterialExpression ;
     .
-    ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadgr#hasMaterialExpressionVersion
+    ###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR.ttl#hasMaterialExpressionVersion
     xisadgr:hasMaterialExpressionVersion a rdf:Property ; 
       a owl:IrreflexiveProperty ;
       rdfs:domain xisadgr:MaterialExpression ; 
       rdfs:range xisadgr:MaterialExpression ;
     .
-    ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadgr#hasMaterialExpressionDate
+    ###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR.ttl#hasMaterialExpressionDate
     xisadgr:hasMaterialExpressionDate a rdf:Property ;
       rdfs:comment 
         "Datum der Materiellen Ausprägung"@de ;
       rdfs:domain xisadgr:MaterialExpression ;
       rdfs:range xisadgr:DatePoint ; 
     .
-    ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadgr#hasExtentMediumSt
+    ###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR.ttl#hasExtentMediumSt
     xisadgr:hasExtentMediumSt a rdf:Property ;
       rdfs:comment 
         "1.5) Umfang (Menge oder Abmessungen): Identifizierung (a) des physischen Umfangs und (b) der Art des Materials der Verzeichnungseinheit"@de ,
@@ -800,7 +800,7 @@ xisadgr:hasMaterialExpression a rdf:Property ;
       rdfs:domain xisadgr:MaterialExpression ;
       rdfs:range xsd:string ; 
     .
-    ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadgr#hasExtentMedium
+    ###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR.ttl#hasExtentMedium
     xisadgr:hasExtentMedium a rdf:Property ;
       rdfs:comment 
         "1.5) Umfang (Menge oder Abmessungen): Identifizierung (a) des physischen Umfangs und (b) der Art des Materials der Verzeichnungseinheit"@de ,
@@ -810,7 +810,7 @@ xisadgr:hasMaterialExpression a rdf:Property ;
       rdfs:domain xisadgr:MaterialExpression ;
       rdfs:range xisadgr:ExtentMedium ; 
     .
-      ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadgr#ExtentMedium
+      ###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR.ttl#ExtentMedium
       xisadgr:ExtentMedium a rdfs:Class ; 
         rdfs:label "ExtentMedium [dct:MediaTypeOrExtent]" ;
         rdfs:comment 
@@ -820,7 +820,7 @@ xisadgr:hasMaterialExpression a rdf:Property ;
           "1.5) Consistenza e supporto dell'unità di descrizione (quantità, volume, dimensione fisica): Identificare e descrivere (a) la consistenza materiale o logica, (b) il supporto dell'unità di descrizione"@it ;
         rdfs:subClassOf dct:MediaTypeOrExtent ;
       .
-        ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadgr#hasExtentMediumDataSize
+        ###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR.ttl#hasExtentMediumDataSize
         xisadgr:hasExtentMediumDataSize a rdf:Property ;
           rdfs:comment 
             "KB, MB, GB, TB, cm, lm, g, kg, m3, vol, pcs, box (Freitext erlaubt)" ,
@@ -828,37 +828,37 @@ xisadgr:hasMaterialExpression a rdf:Property ;
           rdfs:domain xisadgr:ExtentMedium ;
           rdfs:range xsd:string ;  
         .
-        ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadgr#hasExtentMediumDataQuantity
+        ###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR.ttl#hasExtentMediumDataQuantity
         xisadgr:hasExtentMediumDataQuantity a rdf:Property ;
           rdfs:comment "1.5) Umfang (a): Identifizierung des physischen Umfangs (Menge und Abmessung). Anzahl der Dateien oder Anzahl Archivalien gemäss isad:medium"@de ;
           rdfs:domain xisadgr:ExtentMedium ;
           rdfs:range xsd:integer ;
         .
-        ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadgr#hasExtentMediumMedium
+        ###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR.ttl#hasExtentMediumMedium
         xisadgr:hasExtentMediumMedium a rdf:Property ;
           rdfs:comment "1.5) Archivalienart (b): Identifizierung der Art des Materials der Materiellen Ausprägung (Freitext)"@de ;
           rdfs:domain xisadgr:ExtentMedium ;
           rdfs:range xsd:string ;
         .
-        ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadgr#hasMediaType
+        ###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR.ttl#hasMediaType
         xisadgr:hasMediaType a rdf:Property ;
           rdfs:comment "1.5) Archivalienart (b): MediaType dieser Materiellen Ausprägung"@de ;
           rdfs:domain xisadgr:MaterialExpression ;
           rdfs:range xisadgr:MediaType ; 
         .
-          ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadgr#MediaType
+          ###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR.ttl#MediaType
           xisadgr:MediaType a rdf:Class ;
             rdfs:label "MediaType [dct:MediaType]" ;
             rdfs:comment "1.5) Archivalienart (b): MediaType dieser Materiellen Ausprägung"@de ;
             owl:equivalentClass dct:MediaType ;            
           .
-        ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadgr#hasExtentMediumDescription
+        ###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR.ttl#hasExtentMediumDescription
         xisadgr:hasExtentMediumDescription a rdf:Property ;
           rdfs:comment "1.5) Umfang als Freitext (c): wie in eCH-0160 im Element Umfang definiert, kann hier übernommen werden"@de ;
           rdfs:domain xisadgr:ExtentMedium ;
           rdfs:range xsd:string ;
         .
-	###  https://github.com/KOST-CECO/ontologies/blob/master/xisadgr#hasAccessConditions
+	###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR.ttl#hasAccessConditions
 	xisadgr:hasAccessConditions a rdf:Property ;
 	  rdfs:label "hasAccessConditions [dct:accessRights]" ;
 	  rdfs:comment 
@@ -870,7 +870,7 @@ xisadgr:hasMaterialExpression a rdf:Property ;
 	  rdfs:range xisadgr:AccessConditions ; 
 	  rdfs:subPropertyOf dct:accessRights ;
 	.
-	  ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadgr#AccessConditions
+	  ###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR.ttl#AccessConditions
 	  xisadgr:AccessConditions a rdfs:Class ;
 		rdfs:label "AccessConditions [dct:RightsStatement]" ;
 		rdfs:comment 
@@ -880,7 +880,7 @@ xisadgr:hasMaterialExpression a rdf:Property ;
 		  "4.1) Condizioni che regolano l'accesso: Fornire informazioni sulla condizione giuridica e su altre forme di regolamentazione che limitano o condizionano l'acesso all'unità di descrizione"@it ;
 	    rdfs:subClassOf dct:RightsStatement ;
 	  .
-		###  https://github.com/KOST-CECO/ontologies/blob/master/xisadgr#hasPrivacyProtection
+		###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR.ttl#hasPrivacyProtection
 		xisadgr:hasPrivacyProtection a rdf:Property ;
 		  rdfs:comment 
 		    "Zugangsbestimmungen: Datenschutz (Angabe, ob in der Verzeichnungseinheit besonders schützenswerte Personendaten vorhanden sind oder nicht)"@de ,
@@ -890,7 +890,7 @@ xisadgr:hasMaterialExpression a rdf:Property ;
 		  rdfs:domain xisadgr:AccessConditions ;
 		  rdfs:range xsd:boolean ; 
 		.
-		###  https://github.com/KOST-CECO/ontologies/blob/master/xisadgr#hasMetadataPrivacyProtection
+		###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR.ttl#hasMetadataPrivacyProtection
 		xisadgr:hasMetadataPrivacyProtection a rdf:Property ;
 		  rdfs:comment 
 		    "Zugangsbestimmungen: Datenschutz (Angabe, ob in den Metadaten besonders schützenswerte Personendaten vorhanden sind oder nicht und ob die Metadaten für die OnlineRecherche freigegeben wird oder nicht)"@de ,
@@ -900,7 +900,7 @@ xisadgr:hasMaterialExpression a rdf:Property ;
 		  rdfs:domain xisadgr:AccessConditions ;
 		  rdfs:range xsd:boolean ; 
 		.
-		###  https://github.com/KOST-CECO/ontologies/blob/master/xisadgr#hasOpenToThePublic
+		###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR.ttl#hasOpenToThePublic
 		xisadgr:hasOpenToThePublic a rdf:Property ;
 		  rdfs:comment 
 		    "Zugangsbestimmungen: Öffentlichkeitsstatus (Angabe über die Zugänglichkeit der Verzeichnungseinheit gemäss den geltenden Informationsfreiheits- resp. Öffentlichkeitsgesetzen)"@de ,
@@ -911,7 +911,7 @@ xisadgr:hasMaterialExpression a rdf:Property ;
 		  rdfs:range xsd:string ;
 		  # SHACL sh:pattern "^undefined|public|not_public$" ;
 		.
-		###  https://github.com/KOST-CECO/ontologies/blob/master/xisadgr#hasClassification
+		###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR.ttl#hasClassification
 		xisadgr:hasClassification a rdf:Property ;
 		  rdfs:comment 
 		    "Zugangsbestimmungen: Klassifizierungskategorie (Angabe zur Geheimhaltung/Klassifikation der Verzeichnungseinheit)"@de ,
@@ -922,7 +922,7 @@ xisadgr:hasMaterialExpression a rdf:Property ;
 		  rdfs:range xsd:string ; 
 		  # SHACL sh:pattern "^unclassified|confidential|secret|in_house|other$" ;
 		.
-		###  https://github.com/KOST-CECO/ontologies/blob/master/xisadgr#hasOtherAccessConditions
+		###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR.ttl#hasOtherAccessConditions
 		xisadgr:hasOtherAccessConditions a rdf:Property ;
 		  rdfs:comment 
 		    "Zugangsbestimmungen: Weitere Zugangs- und Nutzungsbedingungen (Angabe über weitere Zugangs- und Nutzungsbedingungen; NICHT Repro-Bestimmungen)"@de ,
@@ -932,7 +932,7 @@ xisadgr:hasMaterialExpression a rdf:Property ;
 		  rdfs:domain xisadgr:AccessConditions ;
 		  rdfs:range xsd:string ; 
 		.
-		###  https://github.com/KOST-CECO/ontologies/blob/master/xisadgr#hasIntelectualPropertyRight
+		###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR.ttl#hasIntelectualPropertyRight
 		xisadgr:hasIntelectualPropertyRight a rdf:Property ;
 		  rdfs:comment 
 		    "Zugangsbestimmungen: Angaben zum Urherberrecht"@de ,
@@ -942,7 +942,7 @@ xisadgr:hasMaterialExpression a rdf:Property ;
 		  rdfs:domain xisadgr:AccessConditions ;
 		  rdfs:range xsd:string ; 
 		.
-		###  https://github.com/KOST-CECO/ontologies/blob/master/xisadgr#hasAccessConditionsNotes
+		###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR.ttl#hasAccessConditionsNotes
 		xisadgr:hasAccessConditionsNotes a rdf:Property ;
 		  rdfs:comment 
 		    "Zugangsbestimmungen: Bemerkungen zu Zugangs- und Nutzungsbedingungen"@de ,
@@ -952,7 +952,7 @@ xisadgr:hasMaterialExpression a rdf:Property ;
 		  rdfs:domain xisadgr:AccessConditions ;
 		  rdfs:range xsd:string ; 
 		.
-		###  https://github.com/KOST-CECO/ontologies/blob/master/xisadgr#hasRetentionPeriod
+		###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR.ttl#hasRetentionPeriod
 		xisadgr:hasRetentionPeriod a rdf:Property ;
 		  rdfs:comment 
 		    "Zugangsbestimmungen: Schutzfrist (Dauer der Schutzfrist in Jahren)"@de ,
@@ -962,7 +962,7 @@ xisadgr:hasMaterialExpression a rdf:Property ;
 		  rdfs:domain xisadgr:AccessConditions ;
 		  rdfs:range xsd:integer ; 
 		.
-		###  https://github.com/KOST-CECO/ontologies/blob/master/xisadgr#hasRetentionPeriodConditions
+		###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR.ttl#hasRetentionPeriodConditions
 		xisadgr:hasRetentionPeriodConditions a rdf:Property ;
 		  rdfs:comment 
 		    "Zugangsbestimmungen: Schutzfristenkategorie bzw. Artikel der gesetzlichen Grundlage für die Schutzfrist festhält"@de ,
@@ -972,7 +972,7 @@ xisadgr:hasMaterialExpression a rdf:Property ;
 		  rdfs:domain xisadgr:AccessConditions ;
 		  rdfs:range xsd:string ; 
 		.
-		###  https://github.com/KOST-CECO/ontologies/blob/master/xisadgr#hasRetentionPeriodNotes
+		###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR.ttl#hasRetentionPeriodNotes
 		xisadgr:hasRetentionPeriodNotes a rdf:Property ;
 		  rdfs:comment 
 		    "Zugangsbestimmungen: Weiter Informationen zur Schutzfrist, z.B. Aktenzeichen des Formulars „Meldung von Unterlagen mit besonderer Schutzfrist und öffentlich zugänglichen Unterlagen“, in dem die für die Ablieferung vereinbarten Schutzfristen festgehalten sind"@de ,
@@ -982,7 +982,7 @@ xisadgr:hasMaterialExpression a rdf:Property ;
 		  rdfs:domain xisadgr:AccessConditions ;
 		  rdfs:range xsd:string ; 
 		.
-    ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadgr#hasPhysTech
+    ###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR.ttl#hasPhysTech
     xisadgr:hasPhysTech a rdf:Property ;
       rdfs:comment 
         "4.4) Physische Beschaffenheit und technische Anforderungen: Bereitstellung von Informationen über wichtige physische Besonderheiten oder technische Anforderungen, die die Benutzung der Verzeichnungseinheit beeinflussen"@de ,
@@ -993,7 +993,7 @@ xisadgr:hasMaterialExpression a rdf:Property ;
       rdfs:range xsd:string ; 
       # SHACL sh:pattern "^digital|analog|hybrid|not_defined$" ;
     .
-    ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadgr#hasExistenceLocationOriginalsSt
+    ###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR.ttl#hasExistenceLocationOriginalsSt
     xisadgr:hasExistenceLocationOriginalsSt a rdf:Property ;
       rdfs:comment 
         "5.1) Aufbewahrungsort der Orginale: Nachweise über die aufbewahrende Institution, die Zugänglichkeit oder die Vernichtung der Originale, falls es sich bei der Verzeichnungseinheit um eine Reproduktion handelt"@de ,
@@ -1003,7 +1003,7 @@ xisadgr:hasMaterialExpression a rdf:Property ;
       rdfs:domain xisadgr:MaterialExpression ;
       rdfs:range xsd:string ; 
     .
-    ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadgr#hasExistenceLocationOriginals
+    ###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR.ttl#hasExistenceLocationOriginals
     xisadgr:hasExistenceLocationOriginals a rdf:Property ;
       rdfs:comment 
         "5.1) Aufbewahrungsort der Orginale: Nachweise über die aufbewahrende Institution, die Zugänglichkeit oder die Vernichtung der Originale, falls es sich bei der Verzeichnungseinheit um eine Reproduktion handelt"@de ,
@@ -1013,11 +1013,11 @@ xisadgr:hasMaterialExpression a rdf:Property ;
       rdfs:domain xisadgr:MaterialExpression ;
       rdfs:range xisadgr:StorageLocation ; 
     .
-      ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadgr#StorageLocation
+      ###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR.ttl#StorageLocation
       xisadgr:StorageLocation a rdfs:Class ;
         # TODO rdfs:comment ""@it , ""@de , ""@en , ""@fr ;
       .
-    ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadgr#hasExistenceLocationCopies
+    ###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR.ttl#hasExistenceLocationCopies
     xisadgr:hasExistenceLocationCopies a rdf:Property ;
       a owl:IrreflexiveProperty ;
       rdfs:comment 
@@ -1028,7 +1028,7 @@ xisadgr:hasMaterialExpression a rdf:Property ;
       rdfs:domain xisadgr:MaterialExpression ;
       rdfs:range xisadgr:MaterialExpression ; 
     .
-    ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadgr#hasExistenceLocationCopiesSt
+    ###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR.ttl#hasExistenceLocationCopiesSt
     xisadgr:hasExistenceLocationCopiesSt a rdf:Property ;
       rdfs:comment 
         "5.2) Kopien bzw. Reproduktionen: Notiz zum Verweis auf Kopien bzw. Reproduktionen der Verzeichnungseinheit und ihre Verfügbarkeit. Zum Beispiel Framenummer"@de ,
@@ -1038,59 +1038,59 @@ xisadgr:hasMaterialExpression a rdf:Property ;
       rdfs:domain xisadgr:MaterialExpression ;
       rdfs:range xsd:string ; 
     .
-    ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadgr#hasAipReferenceUri
+    ###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR.ttl#hasAipReferenceUri
     xisadgr:hasAipReferenceUri a rdf:Property ;
       rdfs:comment "AIP-Referenz: Eindeutiger Identifikator des AIP im digitalen Magazin des Archivs"@de ;
       rdfs:domain xisadgr:MaterialExpression ;
       rdfs:range xsd:anyURI ; 
     .
-    ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadgr#hasAipReference
+    ###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR.ttl#hasAipReference
     xisadgr:hasAipReference a rdf:Property ;
       rdfs:comment "AIP-Referenz: Eindeutiger Identifikator des AIP im digitalen Magazin des Archivs"@de ;
       rdfs:domain xisadgr:MaterialExpression ;
       rdfs:range xsd:string ; 
     .
-    ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadgr#hasPrimaryDataLocatorUri
+    ###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR.ttl#hasPrimaryDataLocatorUri
     xisadgr:hasPrimaryDataLocatorUri a rdf:Property ;
       rdfs:comment "Referenz auf eine Primärdatei in Form einer URL - auch relativer Pfad ist möglich."@de ;
       rdfs:domain xisadgr:MaterialExpression ;
       rdfs:range xsd:anyURI ; 
     .
-    ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadgr#hasPrimaryDataLocator
+    ###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR.ttl#hasPrimaryDataLocator
     xisadgr:hasPrimaryDataLocator a rdf:Property ;
       rdfs:comment "Referenz auf eine Primärdatei in Form einer URL - auch relativer Pfad ist möglich."@de ;
       rdfs:domain xisadgr:MaterialExpression ;
       rdfs:range xsd:string ; 
     .
-    ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadgr#hasSecondaryDataLocatorUri
+    ###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR.ttl#hasSecondaryDataLocatorUri
     xisadgr:hasSecondaryDataLocatorUri a rdf:Property ;
       rdfs:comment "Referenz auf einen Objekteintrag in der premis- oder lmer-Datei des AIP, damit von dort auf die Primärdatei zugegriffen werden kann, in Form eines xpointer-Eintrags"@de ;
       rdfs:domain xisadgr:MaterialExpression ;
       rdfs:range xsd:anyURI ; 
     .
-    ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadgr#hasSecondaryDataLocator
+    ###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR.ttl#hasSecondaryDataLocator
     xisadgr:hasSecondaryDataLocator a rdf:Property ;
       rdfs:comment "Referenz auf einen Objekteintrag in der premis- oder lmer-Datei des AIP, damit von dort auf die Primärdatei zugegriffen werden kann, in Form eines xpointer-Eintrags"@de ;
       rdfs:domain xisadgr:MaterialExpression ;
       rdfs:range xsd:string ; 
     .
-    ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadgr#hasSecondaryDataLocatorPremis
+    ###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR.ttl#hasSecondaryDataLocatorPremis
     xisadgr:hasSecondaryDataLocatorPremis a rdf:Property ;
       rdfs:comment "Referenz auf eine premis-Datei des AIP"@de ;
       rdfs:domain xisadgr:MaterialExpression ;
       rdfs:range xisadgr:Premis ; 
     .
-      ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadgr#hasSecondaryDataLocatorPremis
+      ###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR.ttl#hasSecondaryDataLocatorPremis
       xisadgr:Premis a rdfs:Class ;
         rdfs:comment "Referenz auf eine premis-Datei des AIP"@de ;
       .
-        ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadgr#hasPremisObject
+        ###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR.ttl#hasPremisObject
         xisadgr:hasPremisObject a rdf:Property ;
           rdfs:comment "Referenz auf einen Objekteintrag in der premis-Datei"@de ;
           rdfs:domain xisadgr:Premis ;
           rdfs:range xsd:string ; 
         .
-    ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadgr#hasSecondaryDataLocatorPremisObject
+    ###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR.ttl#hasSecondaryDataLocatorPremisObject
     xisadgr:hasSecondaryDataLocatorPremisObject a rdf:Property ;
       rdfs:comment "Referenz auf einen Objekteintrag in der premis-Datei des AIP, damit von dort auf die Primärdatei zugegriffen werden kann, in Form eines xpointer-Eintrags"@de ;
       rdfs:domain xisadgr:MaterialExpression ;
@@ -1102,19 +1102,19 @@ xisadgr:hasMaterialExpression a rdf:Property ;
 ###########################################################################
 
 # ========== datePointType ========== #
-###  https://github.com/KOST-CECO/ontologies/blob/master/xisadgr#datePointType
+###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR.ttl#datePointType
 xisadgr:datePointType a owl:DatatypeProperty ;
   rdfs:label "datePointType" ;
   rdfs:comment "CC (Century); YYYY-MM-DDThh:mm; YYYY-MM-DDThh:mm:ss; YYYY; YYYY-MM; YYYY-MM-DD; unknown" ;
   owl:oneOf ( xsd:dateTime xsd:gYear xsd:gYearMonth xsd:date "unknown" xisadgr:centuryType xisadgr:dateTimeReducedType ) ;
 .
-  ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadgr#centuryType
+  ###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR.ttl#centuryType
   xisadgr:centuryType a owl:DatatypeProperty ;
     rdfs:label "centuryType" ;
     rdfs:comment "CC (Century)" ;
     owl:withRestrictions ( [ xsd:pattern "^[0-9]{2}$"^^xsd:string ] ) ;
   .
-  ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadgr#dateTimeReducedType
+  ###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR.ttl#dateTimeReducedType
   xisadgr:dateTimeReducedType a owl:DatatypeProperty ;
     rdfs:label "dateTimeReducedType" ;
     rdfs:comment "YYYY-MM-DDThh:mm" ;
@@ -1150,7 +1150,7 @@ dct:title a rdf:Property .
 #    SHACL (Shapes Constraint Language)                                   #
 ###########################################################################
 
-###  https://github.com/KOST-CECO/ontologies/blob/master/xisadgr#ArchivalDescriptionShape
+###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR.ttl#ArchivalDescriptionShape
 xisadgr:ArchivalDescriptionShape a sh:NodeShape ; 
   sh:targetClass xisadgr:ArchivalDescription ;
   sh:property [ 
@@ -1209,7 +1209,7 @@ xisadgr:ArchivalDescriptionShape a sh:NodeShape ;
     sh:minCount 0 ; 
   ] ;
   .
-    ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadgr#ArchiveShape
+    ###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR.ttl#ArchiveShape
     xisadgr:ArchiveShape a sh:NodeShape ; 
       sh:targetClass xisadgr:Archive ;
       sh:property [
@@ -1221,7 +1221,7 @@ xisadgr:ArchivalDescriptionShape a sh:NodeShape ;
         ) ;
       ] ;
     .
-    ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadgr#ArchivalGroupShape
+    ###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR.ttl#ArchivalGroupShape
     xisadgr:ArchivalGroupShape a sh:NodeShape ; 
       sh:targetClass xisadgr:ArchivalGroup ;
       sh:property [
@@ -1232,7 +1232,7 @@ xisadgr:ArchivalDescriptionShape a sh:NodeShape ;
         ) ;
       ] ;
     .
-    ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadgr#FondsShape
+    ###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR.ttl#FondsShape
     xisadgr:FondsShape a sh:NodeShape ; 
       sh:targetClass xisadgr:Fonds ;
       sh:property [
@@ -1245,7 +1245,7 @@ xisadgr:ArchivalDescriptionShape a sh:NodeShape ;
         ) ;
       ] ;
     .
-    ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadgr#SeriesShape
+    ###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR.ttl#SeriesShape
     xisadgr:SeriesShape a sh:NodeShape ; 
       sh:targetClass xisadgr:Series ;
       sh:property [
@@ -1257,7 +1257,7 @@ xisadgr:ArchivalDescriptionShape a sh:NodeShape ;
         ) ;
       ] ;
     .
-    ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadgr#FileShape
+    ###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR.ttl#FileShape
     xisadgr:FileShape a sh:NodeShape ; 
       sh:targetClass xisadgr:File ;
       sh:property [
@@ -1268,7 +1268,7 @@ xisadgr:ArchivalDescriptionShape a sh:NodeShape ;
         ) ;
       ] ;
     .
-    ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadgr#ItemShape
+    ###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR.ttl#ItemShape
     xisadgr:ItemShape a sh:NodeShape ; 
       sh:targetClass xisadgr:Item ;
       sh:property [
@@ -1276,7 +1276,7 @@ xisadgr:ArchivalDescriptionShape a sh:NodeShape ;
           sh:minCount 0 ; sh:maxCount 0 ;
         ] ;
     .
-    ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadgr#IdentityShape
+    ###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR.ttl#IdentityShape
     xisadgr:IdentityShape a sh:NodeShape ; 
       sh:targetClass xisadgr:Identity ;
       sh:property [ 
@@ -1307,7 +1307,7 @@ xisadgr:ArchivalDescriptionShape a sh:NodeShape ;
         ] ] 
       )
     .
-    ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadgr#ContextShape
+    ###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR.ttl#ContextShape
     xisadgr:ContextShape a sh:NodeShape ; 
       sh:targetClass xisadgr:Context ;
       sh:property [ 
@@ -1331,7 +1331,7 @@ xisadgr:ArchivalDescriptionShape a sh:NodeShape ;
         sh:minCount 0 ; 
       ] ;
     .
-        ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadgr#AgentShape
+        ###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR.ttl#AgentShape
         xisadgr:AgentShape a sh:NodeShape ; 
           sh:targetClass xisadgr:Agent ;
           sh:property [ 
@@ -1350,7 +1350,7 @@ xisadgr:ArchivalDescriptionShape a sh:NodeShape ;
             sh:minCount 0 ; 
           ] ;
         .
-        ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadgr#AgentCvShape
+        ###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR.ttl#AgentCvShape
         xisadgr:AgentCvShape a sh:NodeShape ; 
           sh:targetClass xisadgr:AgentCv ;
           sh:property [ 
@@ -1364,7 +1364,7 @@ xisadgr:ArchivalDescriptionShape a sh:NodeShape ;
             sh:minCount 0 ; 
           ] ;
         .
-            ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadgr#AgentCvEntryShape
+            ###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR.ttl#AgentCvEntryShape
             xisadgr:AgentCvEntryShape a sh:NodeShape ; 
               sh:targetClass xisadgr:AgentCvEntry ;
               sh:property [ 
@@ -1385,7 +1385,7 @@ xisadgr:ArchivalDescriptionShape a sh:NodeShape ;
                 ] ] 
               )
             .
-    ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadgr#ContentStructureShape
+    ###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR.ttl#ContentStructureShape
     xisadgr:ContentStructureShape a sh:NodeShape ; 
       sh:targetClass xisadgr:ContentStructure ;
       sh:property [ 
@@ -1414,7 +1414,7 @@ xisadgr:ArchivalDescriptionShape a sh:NodeShape ;
 		sh:minCount 0 ; 
       ] ;
     .
-        ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadgr#ArrangementShape
+        ###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR.ttl#ArrangementShape
         xisadgr:ArrangementShape a sh:NodeShape ; 
           sh:targetClass xisadgr:Arrangement ;
           sh:property [ 
@@ -1435,7 +1435,7 @@ xisadgr:ArchivalDescriptionShape a sh:NodeShape ;
             ] ] 
           )
         .
-    ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadgr#ConditionsAccessUseShape
+    ###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR.ttl#ConditionsAccessUseShape
     xisadgr:ConditionsAccessUseShape a sh:NodeShape ; 
       sh:targetClass xisadgr:ConditionsAccessUse ;
       sh:property [ 
@@ -1454,7 +1454,7 @@ xisadgr:ArchivalDescriptionShape a sh:NodeShape ;
         sh:minCount 0 ; 
       ] ;
     .
-    ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadgr#AlliedMaterialsShape
+    ###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR.ttl#AlliedMaterialsShape
     xisadgr:AlliedMaterialsShape a sh:NodeShape ; 
       sh:targetClass xisadgr:AlliedMaterials ;
       sh:property [ 
@@ -1483,7 +1483,7 @@ xisadgr:ArchivalDescriptionShape a sh:NodeShape ;
         sh:minCount 0 ; 
       ] ;
     .
-    ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadgr#NotesShape
+    ###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR.ttl#NotesShape
     xisadgr:NotesShape a sh:NodeShape ; 
       sh:targetClass xisadgr:Notes ;
       sh:property [ 
@@ -1492,7 +1492,7 @@ xisadgr:ArchivalDescriptionShape a sh:NodeShape ;
         sh:minCount 0 ; 
       ] ;
     .
-    ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadgr#DescriptionControlShape
+    ###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR.ttl#DescriptionControlShape
     xisadgr:DescriptionControlShape a sh:NodeShape ; 
       sh:targetClass xisadgr:DescriptionControl ;
       sh:property [ 
@@ -1511,7 +1511,7 @@ xisadgr:ArchivalDescriptionShape a sh:NodeShape ;
         sh:minCount 0 ; 
       ] ;
    .
-    ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadgr#AdditionalReferenceShape
+    ###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR.ttl#AdditionalReferenceShape
     xisadgr:AdditionalReferenceShape a sh:NodeShape ; 
       sh:targetClass xisadgr:AdditionalReference ;
       sh:property [ 
@@ -1520,7 +1520,7 @@ xisadgr:ArchivalDescriptionShape a sh:NodeShape ;
         sh:minCount 0 ; 
       ] ;
     .
-    ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadgr#AdditionalDataShape
+    ###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR.ttl#AdditionalDataShape
     xisadgr:AdditionalDataShape a sh:NodeShape ; 
       sh:targetClass xisadgr:AdditionalData ;
       sh:property [ 
@@ -1534,7 +1534,7 @@ xisadgr:ArchivalDescriptionShape a sh:NodeShape ;
         sh:minCount 0 ; 
       ] ;
     .
-  ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadgr#MaterialExpressionShape
+  ###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR.ttl#MaterialExpressionShape
   xisadgr:MaterialExpressionShape a sh:NodeShape ; 
     sh:targetClass xisadgr:MaterialExpression ;
     sh:property [ 
@@ -1631,7 +1631,7 @@ xisadgr:ArchivalDescriptionShape a sh:NodeShape ;
       ] ] 
     )
   .
-      ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadgr#ExtentMediumShape
+      ###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR.ttl#ExtentMediumShape
       xisadgr:ExtentMediumShape a sh:NodeShape ; 
         sh:targetClass xisadgr:ExtentMedium ;
         sh:property [ 
@@ -1660,7 +1660,7 @@ xisadgr:ArchivalDescriptionShape a sh:NodeShape ;
           sh:minCount 0 ; 
         ] ;
       .
-	  ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadgr#AccessConditionsShape
+	  ###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR.ttl#AccessConditionsShape
 	  xisadgr:AccessConditionsShape a sh:NodeShape ; 
         sh:targetClass xisadgr:AccessConditions ;
         sh:property [ 
@@ -1716,7 +1716,7 @@ xisadgr:ArchivalDescriptionShape a sh:NodeShape ;
           sh:minCount 0 ; 
         ] ;
 	  .
-      ###  https://github.com/KOST-CECO/ontologies/blob/master/xisadgr#PremisShape
+      ###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR.ttl#PremisShape
       xisadgr:PremisShape a sh:NodeShape ; 
         sh:targetClass xisadgr:Premis ;
         sh:property [ 
@@ -1725,7 +1725,7 @@ xisadgr:ArchivalDescriptionShape a sh:NodeShape ;
           sh:minCount 0 ; 
         ] ;
       .
-###  https://github.com/KOST-CECO/ontologies/blob/master/xisadgr#DateRangeShape
+###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR.ttl#DateRangeShape
 xisadgr:DateRangeShape a sh:NodeShape ; 
   sh:targetClass xisadgr:DateRange ;
   sh:and (
@@ -1741,7 +1741,7 @@ xisadgr:DateRangeShape a sh:NodeShape ;
     ] ] 
   )
 .
-###  https://github.com/KOST-CECO/ontologies/blob/master/xisadgr#DatePointShape
+###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR.ttl#DatePointShape
 xisadgr:DatePointShape a sh:NodeShape ;
   sh:targetClass xisadgr:DatePoint ;
   sh:property [ 
