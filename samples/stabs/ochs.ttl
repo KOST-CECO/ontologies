@@ -1,5 +1,5 @@
 @prefix stabs: <https://github.com/KOST-CECO/ontologies/raw/master/samples/stabs/> .
-@prefix kostceco-mt: <https://github.com/KOST-CECO/ontologies/raw/samples/mediatype/> .
+@prefix kostceco-mt: <https://github.com/KOST-CECO/ontologies/raw/master/samples/mediatype/> .
 @prefix xisadgr: <https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR.ttl#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
