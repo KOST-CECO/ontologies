@@ -1,7 +1,7 @@
 @prefix dct: <http://purl.org/dc/terms/> .
-@prefix kostceco-mt: <https://github.com/KOST-CECO/RDF/blob/master/samples/mediatype/> .
+@prefix kostceco-mt: <https://github.com/KOST-CECO/ontologies/raw/master/samples/mediatype/> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix xisadgr: <https://github.com/KOST-CECO/ontologies/blob/master/xisadgr#> .
+@prefix xisadgr: <https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR.ttl#> .
 
 kostceco-mt:Paper a dct:PhysicalMedium;
   a xisadgr:MediaType ;
