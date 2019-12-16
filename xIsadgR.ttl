@@ -205,10 +205,10 @@ xisadgr:ArchivalDescription a rdfs:Class ;
       xisadgr:hasCreator a rdf:Property ;
         rdfs:label "hasCreator [dct:creator]" ;
 		rdfs:comment 
-          "2.1) Name der Provenienzstelle: Identifizierung der Provenienzstelle(n), bei der (denen) die Verzeichnungseinheit entstanden ist"@de ,
-          "2.1) Name of creator(s): To identify the creator (or creators) of the unit of description"@en ,
-          "2.1) Nom du producteur: Identifier le ou les producteurs de l'unité de description"@fr ,
-		  "2.1) Denominazione del/dei soggetto/i produttore/i: Identificare il soggetto (o i soggetti) produttori dell'unità di descrizione"@it ;
+          "2.1) Provenienzstelle: Identifizierung der Provenienzstelle(n), bei der (denen) die Verzeichnungseinheit entstanden ist"@de ,
+          "2.1) Creator(s): To identify the creator (or creators) of the unit of description"@en ,
+          "2.1) Producteur: Identifier le ou les producteurs de l'unité de description"@fr ,
+		  "2.1) Soggetto/i produttore/i: Identificare il soggetto (o i soggetti) produttori dell'unità di descrizione"@it ;
         rdfs:domain xisadgr:Context ;
         rdfs:range xisadgr:Agent ; 
         rdfs:subPropertyOf dct:creator ;
@@ -221,7 +221,11 @@ xisadgr:ArchivalDescription a rdfs:Class ;
         .
           ###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR.ttl#hasAgentName
           xisadgr:hasAgentName a rdf:Property ;
-            rdfs:comment "Agent Name"@de ;
+		    rdfs:comment 
+              "2.1) Name des Agent"@de ,
+              "2.1) Name of the agent"@en ,
+              "2.1) Nom de l'agent"@fr ,
+	    	  "2.1) Nome dell'agente"@it ;
             rdfs:domain xisadgr:Agent ; 
             rdfs:range xsd:string ; 
           .
@@ -463,8 +467,8 @@ xisadgr:ArchivalDescription a rdfs:Class ;
         "4) Area delle informazioni relative alle condizioni di accesso ed utilizzazione"@it ;
     .
 	  ###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR.ttl#hasReproConditions
-	  xisadgr:hasReproConditionsUri a rdf:Property ;
-		rdfs:label "hasReproConditionsUri [dct:rights]" ;
+	  xisadgr:hasReproConditions a rdf:Property ;
+		rdfs:label "hasReproConditions [dct:rights]" ;
 		rdfs:comment 
 		  "4.2) Reproduktionsbestimmungen: Information über Beschränkungen bei der Reproduktion der Verzeichnungseinheit."@de ,
 		  "4.2) Conditions de reproduction: Signaler toute restriction relative à la reproduction de l'unité de description"@fr ,
@@ -574,10 +578,10 @@ xisadgr:ArchivalDescription a rdfs:Class ;
   ###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR.ttl#hasNotes
   xisadgr:hasNotes a rdf:Property ;
     rdfs:comment 
-      "6) Allgemeine Anmerkungen: Bereitstellung von Spezialinformationen und Angaben, die in keinem der anderen Bereiche angebracht werden können"@de ,
-      "6) Notes: Fournir des renseignements qui ne peuvent pas être donnés dans aucune des autres zones"@fr ,
-      "6) Note: To provide information that cannot be accommodated in any of the other areas"@en ,
-      "6) Note: Fornire informazioni particolari ed informazioni che non possono essere inserite in nessuna delle altre aree"@it ;
+      "6) Anmerkungen"@de ,
+      "6) Zone de note"@fr ,
+      "6) notes area"@en ,
+      "6) Area delle note"@it ;
     rdfs:domain xisadgr:ArchivalDescription ;
     rdfs:range xisadgr:Notes ;
   .
@@ -592,10 +596,10 @@ xisadgr:ArchivalDescription a rdfs:Class ;
       ###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR.ttl#hasNote
       xisadgr:hasNote a rdf:Property ;
         rdfs:comment 
-          "6.1) Anmerkungen"@de ,
-          "6.1) Zone de note"@fr ,
-          "6.1) notes area"@en ,
-          "6.1) Area delle note"@it ;
+          "6) Allgemeine Anmerkungen: Bereitstellung von Spezialinformationen und Angaben, die in keinem der anderen Bereiche angebracht werden können"@de ,
+          "6) Notes: Fournir des renseignements qui ne peuvent pas être donnés dans aucune des autres zones"@fr ,
+          "6) Note: To provide information that cannot be accommodated in any of the other areas"@en ,
+          "6) Note: Fornire informazioni particolari ed informazioni che non possono essere inserite in nessuna delle altre aree"@it ;
         rdfs:domain xisadgr:Notes ;
         rdfs:range xsd:string ; 
       .
@@ -822,6 +826,13 @@ xisadgr:hasMaterialExpression a rdf:Property ;
       .
         ###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR.ttl#hasExtentMediumDataSize
         xisadgr:hasExtentMediumDataSize a rdf:Property ;
+          rdfs:comment 
+            "1.5) Umfang (a): Gesamtes Datenvolumen, Laufmeter oder Umfang (decimal)"@de ;
+          rdfs:domain xisadgr:ExtentMedium ;
+          rdfs:range xsd:decimal ;  
+        .
+        ###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR.ttl#hasExtentMediumDataUnit
+        xisadgr:hasExtentMediumDataUnit a rdf:Property ;
           rdfs:comment 
             "KB, MB, GB, TB, cm, lm, g, kg, m3, vol, pcs, box (Freitext erlaubt)" ,
             "1.5) Umfang (a): Identifizierung des physischen Umfangs (Einheit). Kilobyte (kB), Megabyte (MB), Gigabyte (GB), Terabyte (TB), Centimeter (cm), Laufmeter (lm), Gramm (g), Kilogramm (kg), Kubikmeter (m3), Band Volume (vol), Stücke (pcs), Schachtel (box), andere als Freitext"@de ;
@@ -1281,7 +1292,7 @@ xisadgr:ArchivalDescriptionShape a sh:NodeShape ;
       sh:targetClass xisadgr:Identity ;
       sh:property [ 
         sh:path xisadgr:hasReferenceCode ;
-        sh:datatype xsd:string ;
+        sh:datatype xsd:anyURI ;
         sh:minCount 1 ; sh:maxCount 1 ;
       ] ;
       sh:property [ 
@@ -1584,6 +1595,11 @@ xisadgr:ArchivalDescriptionShape a sh:NodeShape ;
       sh:minCount 0 ; 
     ] ;
     sh:property [ 
+      sh:path xisadgr:hasExistenceLocationCopiesSt ;
+      sh:datatype xsd:string ;
+      sh:minCount 0 ; 
+    ] ;
+    sh:property [ 
       sh:path xisadgr:hasExistenceLocationCopies ;
       sh:class xisadgr:MaterialExpression ;
       sh:minCount 0 ; 
@@ -1636,12 +1652,17 @@ xisadgr:ArchivalDescriptionShape a sh:NodeShape ;
         sh:targetClass xisadgr:ExtentMedium ;
         sh:property [ 
           sh:path xisadgr:hasExtentMediumDataSize ;
+          sh:datatype xsd:decimal ;
+          sh:minCount 0 ; sh:maxCount 1;
+        ] ;
+        sh:property [ 
+          sh:path xisadgr:hasExtentMediumDataUnit ;
           sh:datatype xsd:string ;
           sh:minCount 0 ; sh:maxCount 1;
         ] ;
         sh:property [ 
           sh:path xisadgr:hasExtentMediumDataQuantity ;
-          sh:datatype xsd:string ;
+          sh:datatype xsd:integer ;
           sh:minCount 0 ; sh:maxCount 1;
         ] ;
         sh:property [ 
