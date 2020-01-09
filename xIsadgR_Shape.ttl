@@ -141,6 +141,11 @@ xisadgr:ArchivalDescriptionShape a sh:NodeShape ;
         sh:minCount 1 ; sh:maxCount 1 ;
       ] ;
       sh:property [ 
+        sh:path xisadgr:hasReferenceCodeSt ;
+        sh:datatype xsd:string ;
+        sh:minCount 1 ; sh:maxCount 1 ;
+      ] ;
+      sh:property [ 
         sh:path xisadgr:hasReferenceCodeOld ;
         sh:datatype xsd:string ;
         sh:minCount 0 ;

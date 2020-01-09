@@ -127,6 +127,17 @@ xisadgr:ArchivalDescription a rdfs:Class ;
         rdfs:domain xisadgr:Identity ;
         rdfs:range xsd:anyURI ; 
       .
+      ###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR.ttl#hasReferenceCodeSt
+      xisadgr:hasReferenceCodeSt a rdf:Property ;
+        rdfs:label "hasReferenceCodeSt [dct:identifier]" ;
+        rdfs:comment  
+          "1.1) Signatur(en): Identifizierung des Archivs und Verknüpfung des Archivguts mit der zugehörigen Verzeichnung"@de ,
+          "1.1) Référence: identifier de manière unique l'unité de description et établir un lien avec la description qui la représente"@fr ,
+          "1.1) Reference code(s): To identify uniquely the unit of description and to provide a link to the description that represents it"@en ,
+          "1.1) Segnatura/e o codice/i identificativo/i: Identificare univocamente l'unità di descrizione e stabilire un collegamento con la descrizione che la rappresenta"@it ;
+        rdfs:domain xisadgr:Identity ;
+        rdfs:range xsd:string ; 
+      .
       ###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR.ttl#hasReferenceCodeOld
       xisadgr:hasReferenceCodeOld a rdf:Property ;
         rdfs:label "hasReferenceCodeOld [dct:identifier]" ;
