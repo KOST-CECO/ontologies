@@ -1,0 +1,628 @@
+@prefix xisadgr: <https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR.ttl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+
+###########################################################################
+#    SHACL (Shapes Constraint Language)                                   #
+###########################################################################
+
+###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR.ttl#ArchivalDescriptionShape
+xisadgr:ArchivalDescriptionShape a sh:NodeShape ; 
+  sh:targetClass xisadgr:ArchivalDescription ;
+  sh:property [ 
+    sh:path xisadgr:hasIdentity ;
+    sh:class xisadgr:Identity ;
+    sh:minCount 1 ; sh:maxCount 1 ;
+  ] ;
+  sh:property [ 
+    sh:path xisadgr:hasContext ;
+    sh:class xisadgr:Context ;
+    sh:minCount 0 ; sh:maxCount 1 ;
+  ] ;
+  sh:property [ 
+    sh:path xisadgr:hasContentStructure ;
+    sh:class xisadgr:ContentStructure ;
+    sh:minCount 0 ; sh:maxCount 1 ;
+  ] ;
+  sh:property [ 
+    sh:path xisadgr:hasConditionsAccessUse ;
+    sh:class xisadgr:ConditionsAccessUse ;
+    sh:minCount 0 ; sh:maxCount 1 ;
+  ] ;
+  sh:property [ 
+    sh:path xisadgr:hasAlliedMaterials ;
+    sh:class xisadgr:AlliedMaterials ;
+    sh:minCount 0 ; sh:maxCount 1 ;
+  ] ;
+  sh:property [ 
+    sh:path xisadgr:hasNotes ;
+    sh:class xisadgr:Notes ;
+    sh:minCount 0 ; sh:maxCount 1 ;
+  ] ;
+  sh:property [ 
+    sh:path xisadgr:hasDescriptionControl ;
+    sh:class xisadgr:DescriptionControl ;
+    sh:minCount 0 ; 
+  ] ;
+  sh:property [ 
+    sh:path xisadgr:hasAdditionalReference ;
+    sh:class xisadgr:AdditionalReference ;
+    sh:minCount 0 ; sh:maxCount 1 ;
+  ] ;
+  sh:property [ 
+    sh:path xisadgr:hasAdditionalData ;
+    sh:class xisadgr:AdditionalData ;
+    sh:minCount 0 ; sh:maxCount 1 ;
+  ] ;
+  sh:property [ 
+    sh:path xisadgr:hasMaterialExpression ;
+    sh:class xisadgr:MaterialExpression ;
+    sh:minCount 0 ; 
+  ] ;
+  sh:property [ 
+    sh:path xisadgr:hasArchivalDescription ;
+    sh:class xisadgr:ArchivalDescription ;
+    sh:minCount 0 ; 
+  ] ;
+  .
+    ###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR.ttl#ArchiveShape
+    xisadgr:ArchiveShape a sh:NodeShape ; 
+      sh:targetClass xisadgr:Archive ;
+      sh:property [
+        sh:path xisadgr:hasArchivalDescription ;
+        sh:or (
+          [ sh:class xisadgr:Fonds ; ]
+          [ sh:class xisadgr:ArchivalGroup ; ]
+          [ sh:class xisadgr:Archive ; ]
+        ) ;
+      ] ;
+    .
+    ###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR.ttl#ArchivalGroupShape
+    xisadgr:ArchivalGroupShape a sh:NodeShape ; 
+      sh:targetClass xisadgr:ArchivalGroup ;
+      sh:property [
+        sh:path xisadgr:hasArchivalDescription ;
+        sh:or (
+          [ sh:class xisadgr:Fonds ; ]
+          [ sh:class xisadgr:ArchivalGroup ; ]
+        ) ;
+      ] ;
+    .
+    ###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR.ttl#FondsShape
+    xisadgr:FondsShape a sh:NodeShape ; 
+      sh:targetClass xisadgr:Fonds ;
+      sh:property [
+        sh:path xisadgr:hasArchivalDescription ;
+        sh:or (
+          [ sh:class xisadgr:File ; ]
+          [ sh:class xisadgr:Item ; ]
+          [ sh:class xisadgr:Series ; ]
+          [ sh:class xisadgr:Fonds ; ]
+        ) ;
+      ] ;
+    .
+    ###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR.ttl#SeriesShape
+    xisadgr:SeriesShape a sh:NodeShape ; 
+      sh:targetClass xisadgr:Series ;
+      sh:property [
+        sh:path xisadgr:hasArchivalDescription ;
+        sh:or (
+          [ sh:class xisadgr:File ; ]
+          [ sh:class xisadgr:Item ; ]
+          [ sh:class xisadgr:Series ; ]
+        ) ;
+      ] ;
+    .
+    ###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR.ttl#FileShape
+    xisadgr:FileShape a sh:NodeShape ; 
+      sh:targetClass xisadgr:File ;
+      sh:property [
+        sh:path xisadgr:hasArchivalDescription ;
+        sh:or (
+          [ sh:class xisadgr:Item ; ]
+          [ sh:class xisadgr:File ; ]
+        ) ;
+      ] ;
+    .
+    ###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR.ttl#ItemShape
+    xisadgr:ItemShape a sh:NodeShape ; 
+      sh:targetClass xisadgr:Item ;
+      sh:property [
+          sh:path xisadgr:hasArchivalDescription ;
+          sh:minCount 0 ; sh:maxCount 0 ;
+        ] ;
+    .
+    ###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR.ttl#IdentityShape
+    xisadgr:IdentityShape a sh:NodeShape ; 
+      sh:targetClass xisadgr:Identity ;
+      sh:property [ 
+        sh:path xisadgr:hasReferenceCode ;
+        sh:datatype xsd:anyURI ;
+        sh:minCount 1 ; sh:maxCount 1 ;
+      ] ;
+      sh:property [ 
+        sh:path xisadgr:hasReferenceCodeOld ;
+        sh:datatype xsd:string ;
+        sh:minCount 0 ;
+      ] ;
+      sh:property [ 
+        sh:path xisadgr:hasTitle ;
+        sh:datatype xsd:string ;
+        sh:minCount 1 ; 
+      ] ;
+      sh:or (
+        [ sh:property [ 
+          sh:path xisadgr:hasCreatedDateRange ;
+          sh:class xisadgr:DateRange ;
+          sh:minCount 0 ; sh:maxCount 1 ; 
+        ] ] 
+        [ sh:property [ 
+          sh:path xisadgr:hasCreatedDatePoint ;
+          sh:class xisadgr:DatePoint ;
+          sh:minCount 0 ; sh:maxCount 1 ; 
+        ] ] 
+      )
+    .
+    ###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR.ttl#ContextShape
+    xisadgr:ContextShape a sh:NodeShape ; 
+      sh:targetClass xisadgr:Context ;
+      sh:property [ 
+        sh:path xisadgr:hasCreator ;
+        sh:class xisadgr:Agent ;
+        sh:minCount 0 ; 
+      ] ;
+      sh:property [ 
+        sh:path xisadgr:hasAdminBioHistory ;
+        sh:class xisadgr:AgentCv ;
+        sh:minCount 0 ; 
+      ] ;
+      sh:property [ 
+        sh:path xisadgr:hasArchivalHistory ;
+        sh:datatype xsd:string ;
+        sh:minCount 0 ; 
+      ] ;
+      sh:property [ 
+        sh:path xisadgr:hasAcqInfo ;
+         sh:class xisadgr:Agent ;
+        sh:minCount 0 ; 
+      ] ;
+    .
+        ###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR.ttl#AgentShape
+        xisadgr:AgentShape a sh:NodeShape ; 
+          sh:targetClass xisadgr:Agent ;
+          sh:property [ 
+            sh:path xisadgr:hasAgentName ;
+            sh:datatype xsd:string ;
+            sh:minCount 1 ; 
+          ] ;
+          sh:property [ 
+            sh:path xisadgr:hasAgentId ;
+            sh:nodeKinde sh:IRI ;
+            sh:minCount 0 ; 
+          ] ;
+          sh:property [ 
+            sh:path xisadgr:hasAgentCv ;
+            sh:class xisadgr:AgentCv ;
+            sh:minCount 0 ; 
+          ] ;
+        .
+        ###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR.ttl#AgentCvShape
+        xisadgr:AgentCvShape a sh:NodeShape ; 
+          sh:targetClass xisadgr:AgentCv ;
+          sh:property [ 
+            sh:path xisadgr:hasAgentCvEntry ;
+            sh:class xisadgr:AgentCvEntry ;
+            sh:minCount 0 ; 
+          ] ;
+          sh:property [ 
+            sh:path xisadgr:hasAgentCvId ;
+            sh:nodeKinde sh:IRI ;
+            sh:minCount 0 ; 
+          ] ;
+        .
+            ###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR.ttl#AgentCvEntryShape
+            xisadgr:AgentCvEntryShape a sh:NodeShape ; 
+              sh:targetClass xisadgr:AgentCvEntry ;
+              sh:property [ 
+                sh:path xisadgr:hasAgentCvDatesComment ;
+                sh:datatype xsd:string ;
+                sh:minCount 1 ; 
+              ] ;
+              sh:or (
+                [ sh:property [ 
+                  sh:path xisadgr:hasAgentCvDateRange ;
+                  sh:class xisadgr:DateRange ;
+                  sh:minCount 0 ; sh:maxCount 1 ; 
+                ] ] 
+                [ sh:property [ 
+                  sh:path xisadgr:hasAgentCvDatePoint ;
+                  sh:class xisadgr:DatePoint ;
+                  sh:minCount 0 ; sh:maxCount 1 ; 
+                ] ] 
+              )
+            .
+    ###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR.ttl#ContentStructureShape
+    xisadgr:ContentStructureShape a sh:NodeShape ; 
+      sh:targetClass xisadgr:ContentStructure ;
+      sh:property [ 
+        sh:path xisadgr:hasScope ;
+        sh:datatype xsd:string ;
+        sh:minCount 0 ; 
+      ] ;
+      sh:property [ 
+        sh:path xisadgr:hasContent ;
+        sh:datatype xsd:string ;
+        sh:minCount 0 ; 
+      ] ;
+      sh:property [ 
+        sh:path xisadgr:hasAppraisalDestruction ;
+        sh:datatype xsd:string ;
+        sh:minCount 0 ; 
+      ] ;
+      sh:property [ 
+        sh:path xisadgr:hasAccruals ;
+        sh:datatype xsd:string ;
+        sh:minCount 0 ; 
+      ] ;
+      sh:property [ 
+        sh:path xisadgr:hasArrangement ;
+        sh:class xisadgr:Arrangement ;
+		sh:minCount 0 ; 
+      ] ;
+    .
+        ###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR.ttl#ArrangementShape
+        xisadgr:ArrangementShape a sh:NodeShape ; 
+          sh:targetClass xisadgr:Arrangement ;
+          sh:property [ 
+            sh:path xisadgr:hasArrangementComment ;
+            sh:datatype xsd:string ;
+            sh:minCount 0 ; 
+          ] ;
+          sh:or (
+            [ sh:property [ 
+              sh:path xisadgr:hasArrangementDateRange ;
+              sh:class xisadgr:DateRange ;
+              sh:minCount 0 ; sh:maxCount 1 ; 
+            ] ] 
+            [ sh:property [ 
+              sh:path xisadgr:hasArrangementDatePoint ;
+              sh:class xisadgr:DatePoint ;
+              sh:minCount 0 ; sh:maxCount 1 ; 
+            ] ] 
+          )
+        .
+    ###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR.ttl#ConditionsAccessUseShape
+    xisadgr:ConditionsAccessUseShape a sh:NodeShape ; 
+      sh:targetClass xisadgr:ConditionsAccessUse ;
+      sh:property [ 
+        sh:path xisadgr:hasReproConditions ;
+        sh:nodeKind sh:IRI ;
+        sh:minCount 0 ; 
+      ] ;
+      sh:property [ 
+        sh:path xisadgr:hasLanguageScripts ;
+        sh:datatype xsd:string ;
+        sh:minCount 0 ; 
+      ] ;
+      sh:property [ 
+        sh:path xisadgr:hasFindingAids ;
+        sh:datatype xsd:string ;
+        sh:minCount 0 ; 
+      ] ;
+    .
+    ###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR.ttl#AlliedMaterialsShape
+    xisadgr:AlliedMaterialsShape a sh:NodeShape ; 
+      sh:targetClass xisadgr:AlliedMaterials ;
+      sh:property [ 
+        sh:path xisadgr:hasRelatedUnitsUri ;
+        sh:nodeKind sh:BlankNodeOrIRI ;
+        sh:minCount 0 ; 
+      ] ;
+      sh:property [ 
+        sh:path xisadgr:hasRelatedUnitsAd ;
+        sh:class xisadgr:ArchivalDescription ;
+        sh:minCount 0 ; 
+      ] ;
+      sh:property [ 
+        sh:path xisadgr:hasRelatedUnits ;
+        sh:datatype xsd:string ;
+        sh:minCount 0 ; 
+      ] ;
+      sh:property [ 
+        sh:path xisadgr:hasPublicationUri ;
+        sh:nodeKind sh:IRI ;
+        sh:minCount 0 ; 
+      ] ;
+      sh:property [ 
+        sh:path xisadgr:hasPublicationUri ;
+        sh:datatype xsd:string ;
+        sh:minCount 0 ; 
+      ] ;
+    .
+    ###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR.ttl#NotesShape
+    xisadgr:NotesShape a sh:NodeShape ; 
+      sh:targetClass xisadgr:Notes ;
+      sh:property [ 
+        sh:path xisadgr:hasNote ;
+        sh:datatype xsd:string ;
+        sh:minCount 0 ; 
+      ] ;
+    .
+    ###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR.ttl#DescriptionControlShape
+    xisadgr:DescriptionControlShape a sh:NodeShape ; 
+      sh:targetClass xisadgr:DescriptionControl ;
+      sh:property [ 
+        sh:path xisadgr:hasArchivistsNote ;
+        sh:datatype xsd:string ;
+        sh:minCount 0 ; 
+      ] ;
+      sh:property [ 
+        sh:path xisadgr:hasRulesConventions ;
+        sh:datatype xsd:string ;
+        sh:minCount 0 ; 
+      ] ;
+      sh:property [ 
+        sh:path xisadgr:hasDescriptionDates ;
+        sh:datatype xsd:date ;
+        sh:minCount 0 ; 
+      ] ;
+   .
+    ###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR.ttl#AdditionalReferenceShape
+    xisadgr:AdditionalReferenceShape a sh:NodeShape ; 
+      sh:targetClass xisadgr:AdditionalReference ;
+      sh:property [ 
+        sh:path xisadgr:hasRecordReference ;
+        sh:datatype xsd:string ;
+        sh:minCount 0 ; 
+      ] ;
+    .
+    ###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR.ttl#AdditionalDataShape
+    xisadgr:AdditionalDataShape a sh:NodeShape ; 
+      sh:targetClass xisadgr:AdditionalData ;
+      sh:property [ 
+        sh:path xisadgr:hasMdWrap ;
+        sh:datatype xsd:string ;
+        sh:minCount 0 ; 
+      ] ;
+      sh:property [ 
+        sh:path xisadgr:hasXmlData ;
+        sh:datatype xsd:string ;
+        sh:minCount 0 ; 
+      ] ;
+    .
+  ###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR.ttl#MaterialExpressionShape
+  xisadgr:MaterialExpressionShape a sh:NodeShape ; 
+    sh:targetClass xisadgr:MaterialExpression ;
+    sh:property [ 
+      sh:path xisadgr:hasMaterialExpressionRepresentation ;
+      sh:class xisadgr:MaterialExpression ;
+      sh:minCount 0 ; 
+    ] ;
+    sh:property [ 
+      sh:path xisadgr:hasMaterialExpressionVersion ;
+      sh:class xisadgr:MaterialExpression ;
+      sh:minCount 0 ; 
+    ] ;
+    sh:property [ 
+      sh:path xisadgr:hasMaterialExpressionDate ;
+      sh:class xisadgr:DatePoint ;
+      sh:minCount 0 ; 
+    ] ;
+    sh:property [ 
+      sh:path xisadgr:hasExtentMediumSt ;
+      sh:datatype xsd:string ;
+      sh:minCount 0 ; sh:maxCount 1;
+    ] ;
+    sh:property [ 
+      sh:path xisadgr:hasExtentMedium ;
+      sh:class xisadgr:ExtentMedium ;
+      sh:minCount 0 ; sh:maxCount 1;
+    ] ;
+    sh:property [ 
+      sh:path xisadgr:hasAccessConditions ;
+      sh:class xisadgr:AccessConditions ;
+      sh:minCount 0 ; sh:maxCount 1;
+    ] ;
+    sh:property [ 
+      sh:path xisadgr:hasPhysTech ;
+      sh:datatype xsd:string ;
+      sh:pattern "^digital|analog|hybrid|not_defined$" ;
+      sh:minCount 0 ; 
+    ] ;
+    sh:property [ 
+      sh:path xisadgr:hasExistenceLocationOriginalsSt ;
+      sh:datatype xsd:string ;
+      sh:minCount 0 ; 
+    ] ;
+    sh:property [ 
+      sh:path xisadgr:hasExistenceLocationOriginals ;
+      sh:class xisadgr:StorageLocation ;
+      sh:minCount 0 ; 
+    ] ;
+    sh:property [ 
+      sh:path xisadgr:hasExistenceLocationCopiesSt ;
+      sh:datatype xsd:string ;
+      sh:minCount 0 ; 
+    ] ;
+    sh:property [ 
+      sh:path xisadgr:hasExistenceLocationCopies ;
+      sh:class xisadgr:MaterialExpression ;
+      sh:minCount 0 ; 
+    ] ;
+    sh:property [ 
+      sh:path xisadgr:hasAipReferenceUri ;
+      sh:class xisadgr:MaterialExpression ;
+      sh:minCount 0 ; sh:maxCount 1;
+    ] ;
+    sh:property [ 
+      sh:path xisadgr:hasAipReference ;
+      sh:datatype xsd:string ;
+      sh:minCount 0 ; sh:maxCount 1;
+    ] ;
+    sh:or (
+      [ sh:property [ 
+        sh:path xisadgr:hasPrimaryDataLocatorUri ;
+        sh:class xisadgr:MaterialExpression ;
+        sh:minCount 0 ;  
+      ] ] 
+      [ sh:property [ 
+        sh:path xisadgr:hasPrimaryDataLocator ;
+        sh:datatype xsd:string ;
+        sh:minCount 0 ;  
+      ] ] 
+      [ sh:property [ 
+        sh:path xisadgr:hasSecondaryDataLocatorUri ;
+        sh:class xisadgr:MaterialExpression ;
+        sh:minCount 0 ;  
+      ] ] 
+      [ sh:property [ 
+        sh:path xisadgr:hasSecondaryDataLocator ;
+        sh:datatype xsd:string ;
+        sh:minCount 0 ;  
+      ] ] 
+      [ sh:property [ 
+        sh:path xisadgr:hasSecondaryDataLocatorPremis ;
+        sh:nodekind xisadgr:Premis ;
+        sh:minCount 0 ;  
+      ] ] 
+      [ sh:property [ 
+        sh:path xisadgr:hasSecondaryDataLocatorPremisObject ;
+        sh:datatype xsd:string ;
+        sh:minCount 0 ;  
+      ] ] 
+    )
+  .
+      ###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR.ttl#ExtentMediumShape
+      xisadgr:ExtentMediumShape a sh:NodeShape ; 
+        sh:targetClass xisadgr:ExtentMedium ;
+        sh:property [ 
+          sh:path xisadgr:hasExtentMediumDataSize ;
+          sh:datatype xsd:decimal ;
+          sh:minCount 0 ; sh:maxCount 1;
+        ] ;
+        sh:property [ 
+          sh:path xisadgr:hasExtentMediumDataUnit ;
+          sh:datatype xsd:string ;
+          sh:minCount 0 ; sh:maxCount 1;
+        ] ;
+        sh:property [ 
+          sh:path xisadgr:hasExtentMediumDataQuantity ;
+          sh:datatype xsd:integer ;
+          sh:minCount 0 ; sh:maxCount 1;
+        ] ;
+        sh:property [ 
+          sh:path xisadgr:hasExtentMediumMedium ;
+          sh:datatype xsd:string ;
+          sh:minCount 0 ; 
+        ] ;
+        sh:property [ 
+          sh:path xisadgr:hasMediaType ;
+          sh:class xisadgr:MediaType ;
+          sh:minCount 0 ; 
+        ] ;
+        sh:property [ 
+          sh:path xisadgr:hasExtentMediumDescription ;
+          sh:datatype xsd:string ;
+          sh:minCount 0 ; 
+        ] ;
+      .
+	  ###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR.ttl#AccessConditionsShape
+	  xisadgr:AccessConditionsShape a sh:NodeShape ; 
+        sh:targetClass xisadgr:AccessConditions ;
+        sh:property [ 
+          sh:path xisadgr:hasPrivacyProtection ;
+          sh:datatype xsd:boolean ;
+          sh:minCount 0 ; sh:maxCount 1;
+        ] ;
+        sh:property [ 
+          sh:path xisadgr:hasMetadataPrivacyProtection ;
+          sh:datatype xsd:boolean ;
+          sh:minCount 0 ; sh:maxCount 1;
+        ] ;
+        sh:property [ 
+          sh:path xisadgr:hasOpenToThePublic ;
+          sh:datatype xsd:string ;
+          sh:pattern "^undefined|public|not_public$" ;
+          sh:minCount 0 ; sh:maxCount 1;
+        ] ;
+        sh:property [ 
+          sh:path xisadgr:hasClassification ;
+          sh:datatype xsd:string ;
+          sh:pattern "^unclassified|confidential|secret|in_house|other$" ;
+          sh:minCount 0 ; sh:maxCount 1;
+        ] ;
+        sh:property [ 
+          sh:path xisadgr:hasOtherAccessConditions ;
+          sh:datatype xsd:string ;
+          sh:minCount 0 ; 
+        ] ;
+        sh:property [ 
+          sh:path xisadgr:hasIntelectualPropertyRight ;
+          sh:datatype xsd:string ;
+          sh:minCount 0 ; 
+        ] ;
+        sh:property [ 
+          sh:path xisadgr:hasAccessConditionsNotes ;
+          sh:datatype xsd:string ;
+          sh:minCount 0 ; 
+        ] ;
+        sh:property [ 
+          sh:path xisadgr:hasRetentionPeriod ;
+          sh:datatype xsd:integer ;
+          sh:minCount 0 ; sh:maxCount 1;
+        ] ;
+        sh:property [ 
+          sh:path xisadgr:hasRetentionPeriodConditions ;
+          sh:datatype xsd:string ;
+          sh:minCount 0 ; 
+        ] ;
+        sh:property [ 
+          sh:path xisadgr:hasRetentionPeriodNotes ;
+          sh:datatype xsd:string ;
+          sh:minCount 0 ; 
+        ] ;
+	  .
+      ###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR.ttl#PremisShape
+      xisadgr:PremisShape a sh:NodeShape ; 
+        sh:targetClass xisadgr:Premis ;
+        sh:property [ 
+          sh:path xisadgr:hasPremisObject ;
+          sh:datatype xsd:string ;
+          sh:minCount 0 ; 
+        ] ;
+      .
+###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR.ttl#DateRangeShape
+xisadgr:DateRangeShape a sh:NodeShape ; 
+  sh:targetClass xisadgr:DateRange ;
+  sh:and (
+    [ sh:property [ 
+      sh:path xisadgr:hasFromDate ;
+      sh:class xisadgr:DatePoint ;
+      sh:minCount 1 ; sh:maxCount 1 ; 
+    ] ] 
+    [ sh:property [ 
+      sh:path xisadgr:hasToDate ;
+      sh:class xisadgr:DatePoint ;
+      sh:minCount 1 ; sh:maxCount 1 ; 
+    ] ] 
+  )
+.
+###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR.ttl#DatePointShape
+xisadgr:DatePointShape a sh:NodeShape ;
+  sh:targetClass xisadgr:DatePoint ;
+  sh:property [ 
+    sh:path xisadgr:hasDatePoint ;
+    sh:datatype xisadgr:datePointType ;
+    sh:minCount 1 ; sh:maxCount 1 ; 
+  ] ; 
+  sh:property [ 
+    sh:path xisadgr:hasDatePointNote ;
+    sh:datatype xsd:string ;
+    sh:minCount 0 ; 
+  ] ; 
+  sh:property [ 
+    sh:path xisadgr:hasDatePointApprox ;
+    sh:datatype xsd:boolean ;
+    sh:minCount 0 ; sh:maxCount 1 ; 
+  ] ; 
+.
