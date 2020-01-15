@@ -1,4 +1,5 @@
-@prefix xisadgr: <https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR.ttl#> .
+@prefix xisadgr: <https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR_Ontology.owl#> .
+@prefix xisadgrshape: <https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR_Shape.ttl#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix sh: <http://www.w3.org/ns/shacl#> .
 
@@ -6,8 +7,8 @@
 #    SHACL (Shapes Constraint Language)                                   #
 ###########################################################################
 
-###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR.ttl#ArchivalDescriptionShape
-xisadgr:ArchivalDescriptionShape a sh:NodeShape ; 
+###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR_Shape.ttl#ArchivalDescriptionShape
+xisadgrshape:ArchivalDescriptionShape a sh:NodeShape ; 
   sh:targetClass xisadgr:ArchivalDescription ;
   sh:property [ 
     sh:path xisadgr:hasIdentity ;
@@ -65,8 +66,8 @@ xisadgr:ArchivalDescriptionShape a sh:NodeShape ;
     sh:minCount 0 ; 
   ] ;
   .
-    ###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR.ttl#ArchiveShape
-    xisadgr:ArchiveShape a sh:NodeShape ; 
+    ###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR_Shape.ttl#ArchiveShape
+    xisadgrshape:ArchiveShape a sh:NodeShape ; 
       sh:targetClass xisadgr:Archive ;
       sh:property [
         sh:path xisadgr:hasArchivalDescription ;
@@ -77,8 +78,8 @@ xisadgr:ArchivalDescriptionShape a sh:NodeShape ;
         ) ;
       ] ;
     .
-    ###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR.ttl#ArchivalGroupShape
-    xisadgr:ArchivalGroupShape a sh:NodeShape ; 
+    ###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR_Shape.ttl#ArchivalGroupShape
+    xisadgrshape:ArchivalGroupShape a sh:NodeShape ; 
       sh:targetClass xisadgr:ArchivalGroup ;
       sh:property [
         sh:path xisadgr:hasArchivalDescription ;
@@ -88,8 +89,8 @@ xisadgr:ArchivalDescriptionShape a sh:NodeShape ;
         ) ;
       ] ;
     .
-    ###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR.ttl#FondsShape
-    xisadgr:FondsShape a sh:NodeShape ; 
+    ###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR_Shape.ttl#FondsShape
+    xisadgrshape:FondsShape a sh:NodeShape ; 
       sh:targetClass xisadgr:Fonds ;
       sh:property [
         sh:path xisadgr:hasArchivalDescription ;
@@ -101,8 +102,8 @@ xisadgr:ArchivalDescriptionShape a sh:NodeShape ;
         ) ;
       ] ;
     .
-    ###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR.ttl#SeriesShape
-    xisadgr:SeriesShape a sh:NodeShape ; 
+    ###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR_Shape.ttl#SeriesShape
+    xisadgrshape:SeriesShape a sh:NodeShape ; 
       sh:targetClass xisadgr:Series ;
       sh:property [
         sh:path xisadgr:hasArchivalDescription ;
@@ -113,8 +114,8 @@ xisadgr:ArchivalDescriptionShape a sh:NodeShape ;
         ) ;
       ] ;
     .
-    ###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR.ttl#FileShape
-    xisadgr:FileShape a sh:NodeShape ; 
+    ###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR_Shape.ttl#FileShape
+    xisadgrshape:FileShape a sh:NodeShape ; 
       sh:targetClass xisadgr:File ;
       sh:property [
         sh:path xisadgr:hasArchivalDescription ;
@@ -124,16 +125,16 @@ xisadgr:ArchivalDescriptionShape a sh:NodeShape ;
         ) ;
       ] ;
     .
-    ###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR.ttl#ItemShape
-    xisadgr:ItemShape a sh:NodeShape ; 
+    ###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR_Shape.ttl#ItemShape
+    xisadgrshape:ItemShape a sh:NodeShape ; 
       sh:targetClass xisadgr:Item ;
       sh:property [
           sh:path xisadgr:hasArchivalDescription ;
           sh:minCount 0 ; sh:maxCount 0 ;
         ] ;
     .
-    ###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR.ttl#IdentityShape
-    xisadgr:IdentityShape a sh:NodeShape ; 
+    ###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR_Shape.ttl#IdentityShape
+    xisadgrshape:IdentityShape a sh:NodeShape ; 
       sh:targetClass xisadgr:Identity ;
       sh:property [ 
         sh:path xisadgr:hasReferenceCode ;
@@ -168,8 +169,8 @@ xisadgr:ArchivalDescriptionShape a sh:NodeShape ;
         ] ] 
       )
     .
-    ###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR.ttl#ContextShape
-    xisadgr:ContextShape a sh:NodeShape ; 
+    ###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR_Shape.ttl#ContextShape
+    xisadgrshape:ContextShape a sh:NodeShape ; 
       sh:targetClass xisadgr:Context ;
       sh:property [ 
         sh:path xisadgr:hasCreator ;
@@ -192,8 +193,8 @@ xisadgr:ArchivalDescriptionShape a sh:NodeShape ;
         sh:minCount 0 ; 
       ] ;
     .
-        ###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR.ttl#AgentShape
-        xisadgr:AgentShape a sh:NodeShape ; 
+        ###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR_Shape.ttl#AgentShape
+        xisadgrshape:AgentShape a sh:NodeShape ; 
           sh:targetClass xisadgr:Agent ;
           sh:property [ 
             sh:path xisadgr:hasAgentName ;
@@ -211,8 +212,8 @@ xisadgr:ArchivalDescriptionShape a sh:NodeShape ;
             sh:minCount 0 ; 
           ] ;
         .
-        ###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR.ttl#AgentCvShape
-        xisadgr:AgentCvShape a sh:NodeShape ; 
+        ###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR_Shape.ttl#AgentCvShape
+        xisadgrshape:AgentCvShape a sh:NodeShape ; 
           sh:targetClass xisadgr:AgentCv ;
           sh:property [ 
             sh:path xisadgr:hasAgentCvEntry ;
@@ -225,8 +226,8 @@ xisadgr:ArchivalDescriptionShape a sh:NodeShape ;
             sh:minCount 0 ; 
           ] ;
         .
-            ###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR.ttl#AgentCvEntryShape
-            xisadgr:AgentCvEntryShape a sh:NodeShape ; 
+            ###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR_Shape.ttl#AgentCvEntryShape
+            xisadgrshape:AgentCvEntryShape a sh:NodeShape ; 
               sh:targetClass xisadgr:AgentCvEntry ;
               sh:property [ 
                 sh:path xisadgr:hasAgentCvDatesComment ;
@@ -246,8 +247,8 @@ xisadgr:ArchivalDescriptionShape a sh:NodeShape ;
                 ] ] 
               )
             .
-    ###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR.ttl#ContentStructureShape
-    xisadgr:ContentStructureShape a sh:NodeShape ; 
+    ###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR_Shape.ttl#ContentStructureShape
+    xisadgrshape:ContentStructureShape a sh:NodeShape ; 
       sh:targetClass xisadgr:ContentStructure ;
       sh:property [ 
         sh:path xisadgr:hasScope ;
@@ -275,8 +276,8 @@ xisadgr:ArchivalDescriptionShape a sh:NodeShape ;
 		sh:minCount 0 ; 
       ] ;
     .
-        ###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR.ttl#ArrangementShape
-        xisadgr:ArrangementShape a sh:NodeShape ; 
+        ###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR_Shape.ttl#ArrangementShape
+        xisadgrshape:ArrangementShape a sh:NodeShape ; 
           sh:targetClass xisadgr:Arrangement ;
           sh:property [ 
             sh:path xisadgr:hasArrangementComment ;
@@ -296,8 +297,8 @@ xisadgr:ArchivalDescriptionShape a sh:NodeShape ;
             ] ] 
           )
         .
-    ###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR.ttl#ConditionsAccessUseShape
-    xisadgr:ConditionsAccessUseShape a sh:NodeShape ; 
+    ###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR_Shape.ttl#ConditionsAccessUseShape
+    xisadgrshape:ConditionsAccessUseShape a sh:NodeShape ; 
       sh:targetClass xisadgr:ConditionsAccessUse ;
       sh:property [ 
         sh:path xisadgr:hasReproConditions ;
@@ -315,8 +316,8 @@ xisadgr:ArchivalDescriptionShape a sh:NodeShape ;
         sh:minCount 0 ; 
       ] ;
     .
-    ###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR.ttl#AlliedMaterialsShape
-    xisadgr:AlliedMaterialsShape a sh:NodeShape ; 
+    ###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR_Shape.ttl#AlliedMaterialsShape
+    xisadgrshape:AlliedMaterialsShape a sh:NodeShape ; 
       sh:targetClass xisadgr:AlliedMaterials ;
       sh:property [ 
         sh:path xisadgr:hasRelatedUnitsUri ;
@@ -344,8 +345,8 @@ xisadgr:ArchivalDescriptionShape a sh:NodeShape ;
         sh:minCount 0 ; 
       ] ;
     .
-    ###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR.ttl#NotesShape
-    xisadgr:NotesShape a sh:NodeShape ; 
+    ###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR_Shape.ttl#NotesShape
+    xisadgrshape:NotesShape a sh:NodeShape ; 
       sh:targetClass xisadgr:Notes ;
       sh:property [ 
         sh:path xisadgr:hasNote ;
@@ -353,8 +354,8 @@ xisadgr:ArchivalDescriptionShape a sh:NodeShape ;
         sh:minCount 0 ; 
       ] ;
     .
-    ###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR.ttl#DescriptionControlShape
-    xisadgr:DescriptionControlShape a sh:NodeShape ; 
+    ###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR_Shape.ttl#DescriptionControlShape
+    xisadgrshape:DescriptionControlShape a sh:NodeShape ; 
       sh:targetClass xisadgr:DescriptionControl ;
       sh:property [ 
         sh:path xisadgr:hasArchivistsNote ;
@@ -372,8 +373,8 @@ xisadgr:ArchivalDescriptionShape a sh:NodeShape ;
         sh:minCount 0 ; 
       ] ;
    .
-    ###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR.ttl#AdditionalReferenceShape
-    xisadgr:AdditionalReferenceShape a sh:NodeShape ; 
+    ###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR_Shape.ttl#AdditionalReferenceShape
+    xisadgrshape:AdditionalReferenceShape a sh:NodeShape ; 
       sh:targetClass xisadgr:AdditionalReference ;
       sh:property [ 
         sh:path xisadgr:hasRecordReference ;
@@ -381,8 +382,8 @@ xisadgr:ArchivalDescriptionShape a sh:NodeShape ;
         sh:minCount 0 ; 
       ] ;
     .
-    ###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR.ttl#AdditionalDataShape
-    xisadgr:AdditionalDataShape a sh:NodeShape ; 
+    ###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR_Shape.ttl#AdditionalDataShape
+    xisadgrshape:AdditionalDataShape a sh:NodeShape ; 
       sh:targetClass xisadgr:AdditionalData ;
       sh:property [ 
         sh:path xisadgr:hasMdWrap ;
@@ -395,8 +396,8 @@ xisadgr:ArchivalDescriptionShape a sh:NodeShape ;
         sh:minCount 0 ; 
       ] ;
     .
-  ###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR.ttl#MaterialExpressionShape
-  xisadgr:MaterialExpressionShape a sh:NodeShape ; 
+  ###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR_Shape.ttl#MaterialExpressionShape
+  xisadgrshape:MaterialExpressionShape a sh:NodeShape ; 
     sh:targetClass xisadgr:MaterialExpression ;
     sh:property [ 
       sh:path xisadgr:hasMaterialExpressionRepresentation ;
@@ -497,8 +498,8 @@ xisadgr:ArchivalDescriptionShape a sh:NodeShape ;
       ] ] 
     )
   .
-      ###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR.ttl#ExtentMediumShape
-      xisadgr:ExtentMediumShape a sh:NodeShape ; 
+      ###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR_Shape.ttl#ExtentMediumShape
+      xisadgrshape:ExtentMediumShape a sh:NodeShape ; 
         sh:targetClass xisadgr:ExtentMedium ;
         sh:property [ 
           sh:path xisadgr:hasExtentMediumDataSize ;
@@ -531,8 +532,8 @@ xisadgr:ArchivalDescriptionShape a sh:NodeShape ;
           sh:minCount 0 ; 
         ] ;
       .
-	  ###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR.ttl#AccessConditionsShape
-	  xisadgr:AccessConditionsShape a sh:NodeShape ; 
+	  ###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR_Shape.ttl#AccessConditionsShape
+	  xisadgrshape:AccessConditionsShape a sh:NodeShape ; 
         sh:targetClass xisadgr:AccessConditions ;
         sh:property [ 
           sh:path xisadgr:hasPrivacyProtection ;
@@ -587,8 +588,8 @@ xisadgr:ArchivalDescriptionShape a sh:NodeShape ;
           sh:minCount 0 ; 
         ] ;
 	  .
-      ###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR.ttl#PremisShape
-      xisadgr:PremisShape a sh:NodeShape ; 
+      ###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR_Shape.ttl#PremisShape
+      xisadgrshape:PremisShape a sh:NodeShape ; 
         sh:targetClass xisadgr:Premis ;
         sh:property [ 
           sh:path xisadgr:hasPremisObject ;
@@ -596,8 +597,8 @@ xisadgr:ArchivalDescriptionShape a sh:NodeShape ;
           sh:minCount 0 ; 
         ] ;
       .
-###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR.ttl#DateRangeShape
-xisadgr:DateRangeShape a sh:NodeShape ; 
+###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR_Shape.ttl#DateRangeShape
+xisadgrshape:DateRangeShape a sh:NodeShape ; 
   sh:targetClass xisadgr:DateRange ;
   sh:and (
     [ sh:property [ 
@@ -612,8 +613,8 @@ xisadgr:DateRangeShape a sh:NodeShape ;
     ] ] 
   )
 .
-###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR.ttl#DatePointShape
-xisadgr:DatePointShape a sh:NodeShape ;
+###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR_Shape.ttl#DatePointShape
+xisadgrshape:DatePointShape a sh:NodeShape ;
   sh:targetClass xisadgr:DatePoint ;
   sh:property [ 
     sh:path xisadgr:hasDatePoint ;

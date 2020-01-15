@@ -3,10 +3,11 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xisadgr: <https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR_Ontology.owl#> .
 
-kostceco-mt:Paper a dct:PhysicalMedium;
+kostceco-mt:Pdfa1b a dct:PhysicalMedium;
   a xisadgr:MediaType ;
-  rdfs:comment "Papier"@de ,
-    "papier"@fr ,
-    "paper"@en ;
-  dct:description <http://fileformats.archiveteam.org/wiki/Paper> ;
+  rdfs:comment "PDF/A-1b"@de ,
+    "PDF/A-1b"@fr ,
+    "PDF/A-1b"@en ;
+  dct:description <http://fileformats.archiveteam.org/wiki/PDF> ;
+  dct:description <https://www.iso.org/standard/38920.html> ;
 .

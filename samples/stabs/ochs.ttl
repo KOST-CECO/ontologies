@@ -1,6 +1,6 @@
 @prefix stabs: <https://github.com/KOST-CECO/ontologies/raw/master/samples/stabs/> .
 @prefix kostceco-mt: <https://github.com/KOST-CECO/ontologies/raw/master/samples/mediatype/> .
-@prefix xisadgr: <https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR.ttl#> .
+@prefix xisadgr: <https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR_Ontology.owl#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 ###########################################################################
@@ -11,7 +11,7 @@
 stabs:pa-633 a xisadgr:Fonds ; #1.4
   xisadgr:hasIdentity [ a xisadgr:Identity ; # 1
     xisadgr:hasReferenceCode "http://query.staatsarchiv.bs.ch/query/detail.aspx?ID=128060"^^xsd:anyURI ; # 1.1
-    xisadgr:hasReferenceCodeOld "PA 633" ; # 1.1
+    xisadgr:hasReferenceCodeSt "PA 633" ; # 1.1
     xisadgr:hasTitle "Archiv der Familie Ochs genannt His" ; # 1.2
     xisadgr:hasCreatedDateRange [ a xisadgr:DateRange ; # 1.3 
       xisadgr:hasFromDate [ a xisadgr:DatePoint ;
@@ -56,7 +56,7 @@ stabs:pa-633-AccessConditions a xisadgr:AccessConditions ; # 4.1
 stabs:pa-633c a xisadgr:Fonds ; # 1.4
   xisadgr:hasIdentity [ a xisadgr:Identity ; # 1
     xisadgr:hasReferenceCode "http://query.staatsarchiv.bs.ch/query/detail.aspx?ID=128063"^^xsd:anyURI ; # 1.1
-    xisadgr:hasReferenceCodeOld "PA 633c" ; # 1.1
+    xisadgr:hasReferenceCodeSt "PA 633c" ; # 1.1
     xisadgr:hasTitle "Nachlass Peter Ochs-Vischer (1752-1821)" ; # 1.2
     xisadgr:hasCreatedDateRange [ a xisadgr:DateRange ; # 1.3
       xisadgr:hasFromDate [ a xisadgr:DatePoint ;
@@ -92,7 +92,7 @@ stabs:pa-633c a xisadgr:Fonds ; # 1.4
 stabs:pa-633c-a a xisadgr:Series ; # 1.4
   xisadgr:hasIdentity [ a xisadgr:Identity ; # 1
     xisadgr:hasReferenceCode "http://query.staatsarchiv.bs.ch/query/detail.aspx?ID=587138"^^xsd:anyURI ; # 1.1
-    xisadgr:hasReferenceCodeOld "PA 633c A" ; # 1.1
+    xisadgr:hasReferenceCodeSt "PA 633c A" ; # 1.1
     xisadgr:hasTitle "Peter Ochs" ; # 1.2
   ] ; # 1
   xisadgr:hasMaterialExpression [ a xisadgr:MaterialExpression ;
@@ -105,7 +105,7 @@ stabs:pa-633c-a a xisadgr:Series ; # 1.4
 stabs:pa-633c-a-1 a xisadgr:Series ; # 1.4
   xisadgr:hasIdentity [ a xisadgr:Identity ; # 1
     xisadgr:hasReferenceCode "http://query.staatsarchiv.bs.ch/query/detail.aspx?ID=587139"^^xsd:anyURI ; # 1.1
-    xisadgr:hasReferenceCodeOld "PA 633c A 1" ; # 1.1
+    xisadgr:hasReferenceCodeSt "PA 633c A 1" ; # 1.1
     xisadgr:hasTitle "Biographisches/Privates" ; # 1.2
   ] ; # 1
   xisadgr:hasMaterialExpression [ a xisadgr:MaterialExpression ;
@@ -118,7 +118,7 @@ stabs:pa-633c-a-1 a xisadgr:Series ; # 1.4
 stabs:pa-633c-a-11 a xisadgr:Series ; # 1.4
   xisadgr:hasIdentity [ a xisadgr:Identity ; # 1
     xisadgr:hasReferenceCode "http://query.staatsarchiv.bs.ch/query/detail.aspx?ID=587140"^^xsd:anyURI ; # 1.1
-    xisadgr:hasReferenceCodeOld "PA 633c A 1.1" ; # 1.1
+    xisadgr:hasReferenceCodeSt "PA 633c A 1.1" ; # 1.1
     xisadgr:hasTitle "Biographisches" ; # 1.2
   ] ; # 1
   xisadgr:hasMaterialExpression [ a xisadgr:MaterialExpression ;
@@ -133,7 +133,7 @@ stabs:pa-633c-a-11 a xisadgr:Series ; # 1.4
 stabs:pa-633c-a-11-fasc-1 a xisadgr:Item ; # 1.4
   xisadgr:hasIdentity [ a xisadgr:Identity ; # 1
     xisadgr:hasReferenceCode "http://query.staatsarchiv.bs.ch/query/detail.aspx?ID=587462"^^xsd:anyURI ; # 1.1
-    xisadgr:hasReferenceCodeOld "PA 633c A 1.1, fasc. 1" ; # 1.1
+    xisadgr:hasReferenceCodeSt "PA 633c A 1.1, fasc. 1" ; # 1.1
     xisadgr:hasTitle "Mon extrait baptistaire" ; # 1.2
     xisadgr:hasCreatedDatePoint [ a xisadgr:DatePoint ; # 1.3
       xisadgr:hasDatePoint "1756-08-05"^^xisadgr:datePointType ; # Schutzfristende: 31.12.1786
@@ -160,7 +160,7 @@ stabs:pa-633c-a-11-fasc-1 a xisadgr:Item ; # 1.4
 stabs:pa-633c-a-11-fasc-2 a xisadgr:Item ; # 1.4
   xisadgr:hasIdentity [ a xisadgr:Identity ; # 1
     xisadgr:hasReferenceCode "http://query.staatsarchiv.bs.ch/query/detail.aspx?ID=587463"^^xsd:anyURI ; # 1.1
-    xisadgr:hasReferenceCodeOld "PA 633c A 1.1, fasc. 2" ; # 1.1
+    xisadgr:hasReferenceCodeSt "PA 633c A 1.1, fasc. 2" ; # 1.1
     xisadgr:hasTitle "Diplom der philosophischen Fakultät der Universität Basel" ; # 1.2
     xisadgr:hasCreatedDatePoint [ a xisadgr:DatePoint ; # 1.3
       xisadgr:hasDatePoint "1775-06-27"^^xisadgr:datePointType ; # Schutzfristende: 31.12.1805
@@ -193,7 +193,7 @@ stabs:pa-633c-a-11-fasc-2 a xisadgr:Item ; # 1.4
 stabs:pa-633c-a-11-fasc-3 a xisadgr:Item ; # 1.4
   xisadgr:hasIdentity [ a xisadgr:Identity ; # 1
     xisadgr:hasReferenceCode "http://query.staatsarchiv.bs.ch/query/detail.aspx?ID=587464"^^xsd:anyURI ; # 1.1
-    xisadgr:hasReferenceCodeOld "PA 633c A 1.1, fasc. 3" ; 
+    xisadgr:hasReferenceCodeSt "PA 633c A 1.1, fasc. 3" ; 
     xisadgr:hasTitle "Plan raisonné de mes études actuelles" ; # 1.2
     xisadgr:hasCreatedDatePoint [ a xisadgr:DatePoint ; # 1.3
       xisadgr:hasDatePoint "1776"^^xisadgr:datePointType ; # Schutzfristende: 31.12.1806

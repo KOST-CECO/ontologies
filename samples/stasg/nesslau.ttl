@@ -1,0 +1,180 @@
+@prefix stasg: <https://github.com/KOST-CECO/ontologies/raw/master/samples/stasg/> .
+@prefix kostceco-mt: <https://github.com/KOST-CECO/ontologies/raw/master/samples/mediatype/> .
+@prefix xisadgr: <https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR_Ontology.owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+###########################################################################
+#    xIsadgR Beispiel:  Bürgerregister (fingiert)                         #
+###########################################################################
+
+###  http://scope.staatsarchiv.sg.ch/detail.aspx?ID=17030
+stasg:ZVB a xisadgr:Fonds ; #1.4
+  xisadgr:hasIdentity [ a xisadgr:Identity ; # 1
+    xisadgr:hasReferenceCode "http://scope.staatsarchiv.sg.ch/detail.aspx?ID=17030"^^xsd:anyURI ; # 1.1
+    xisadgr:hasReferenceCodeSt "ZVB" ; # 1.1
+    xisadgr:hasTitle "Bürgerregister" ; # 1.2
+    xisadgr:hasCreatedDateRange [ a xisadgr:DateRange ; # 1.3 
+      xisadgr:hasFromDate [ a xisadgr:DatePoint ;
+        xisadgr:hasDatePoint "1750"^^xisadgr:datePointType ;
+        xisadgr:hasDatePointNote "Einführung durch kantonale Verordnung über die Bürgerregister vom 20.10.1834" ;
+      ] ;
+      xisadgr:hasToDate [ a xisadgr:DatePoint ;
+        xisadgr:hasDatePoint "1989"^^xisadgr:datePointType ;
+        xisadgr:hasDatePointNote "Ablösung des Bürgerregister durch die Familienregister ab 1929." ;
+      ] ;
+    ] ; # 1.3
+  ] ; # 1
+  xisadgr:hasContentStructure [ a xisadgr:ContentStructure ; # 3
+    xisadgr:hasScope "text" ; # 3.1
+    xisadgr:hasContent "Bürgerregister enthält Eheeinträge 1780-1848" ; # 3.1
+  ] ; # 3
+  xisadgr:hasNotes [ a xisadgr:Notes ; # 6
+    xisadgr:hasNote "Einzelne Gemeinden führten bereits ab 1803 Bürgerregister." ; # 6.1
+    xisadgr:hasNote "Ab 1610: Namenregister zum Bürgerregister Tablat: siehe ZVB 64.2" ; # 6.1
+  ] ; # 6
+  xisadgr:hasMaterialExpression stasg:ZVB_17030 ; 
+  xisadgr:hasArchivalDescription stasg:ZVB_01 ;
+  xisadgr:hasArchivalDescription stasg:ZVB_48 ;
+  xisadgr:hasArchivalDescription stasg:ZVB_90 ;
+.  
+
+###  http://scope.staatsarchiv.sg.ch/detail.aspx?ID=17030
+stasg:ZVB_17030 a xisadgr:MaterialExpression ;
+  xisadgr:hasExtentMedium [ a xisadgr:ExtentMedium ; # 1.5
+    xisadgr:hasMediaType kostceco-mt:Microfilm ;
+  ] ; # 1.5
+  xisadgr:hasAccessConditions [ a xisadgr:AccessConditions ; # 4.1
+    xisadgr:hasAccessConditionsNotes "Zugänglichkeit: Archivmitarbeiter/-innen" ; 
+    xisadgr:hasAccessConditionsNotes "Erforderliche Bewilligung: Staatsarchiv" ; 
+    xisadgr:hasAccessConditionsNotes "Physische Benützbarkeit: Uneingeschränkt" ;
+    xisadgr:hasRetentionPeriod "100"^^xsd:integer ;
+    xisadgr:hasRetentionPeriodNotes "Schutzfristende: 31.12.2089" ;
+  ] ; # 4.1
+  xisadgr:hasPhysTech "analog" ; # 4.4
+  xisadgr:hasMaterialExpressionDate [ a xisadgr:DatePoint ;
+    xisadgr:hasDatePoint "1999"^^xisadgr:datePointType ;  # TODO
+    xisadgr:hasDatePointApprox "true"^^xsd:boolean ;
+  ] ; 
+.
+
+###  http://scope.staatsarchiv.sg.ch/detail.aspx?ID=605656
+stasg:ZVB_48 a xisadgr:Series ; # 1.4
+  xisadgr:hasIdentity [ a xisadgr:Identity ; # 1
+    xisadgr:hasReferenceCode "http://scope.staatsarchiv.sg.ch/detail.aspx?ID=605656"^^xsd:anyURI ; # 1.1
+    xisadgr:hasReferenceCodeSt "ZVB 48" ; # 1.1
+    xisadgr:hasTitle "Nesslau: Bürgerregister" ; # 1.2
+    xisadgr:hasCreatedDateRange [ a xisadgr:DateRange ; # 1.3
+      xisadgr:hasFromDate [ a xisadgr:DatePoint ;
+        xisadgr:hasDatePoint "1780"^^xisadgr:datePointType ;
+        xisadgr:hasDatePointNote "Die Daten beziehen sich auf die älteste in den Bänden vermerkte Eheschliessung." ;
+      ] ;
+      xisadgr:hasToDate [ a xisadgr:DatePoint ;
+        xisadgr:hasDatePoint "1894"^^xisadgr:datePointType ;
+        xisadgr:hasDatePointNote "Die Daten beziehen sich auf die jüngste in den Bänden vermerkte Eheschliessung." ;
+      ] ;
+    ] ; # 1.3
+  ] ; # 1
+  xisadgr:hasContentStructure [ a xisadgr:ContentStructure ; # 3
+    xisadgr:hasScope "text" ; # 3.1
+    xisadgr:hasContent "Bürgerregister enthält Eheeinträge 1780-1848" ; # 3.1
+  ] ; # 3
+  xisadgr:hasNotes [ a xisadgr:Notes ; # 6
+    xisadgr:hasNote "3 Bde." ; # 6.1
+  ] ; # 6
+  xisadgr:hasMaterialExpression stasg:ZVB_48_605656 ; 
+  xisadgr:hasArchivalDescription stasg:ZVB_48-01 ;
+  xisadgr:hasArchivalDescription stasg:ZVB_48-02 ;
+  xisadgr:hasArchivalDescription stasg:ZVB_48-03 ;
+  xisadgr:hasArchivalDescription stasg:ZVB_48-07 ;
+.  
+
+###  http://scope.staatsarchiv.sg.ch/detail.aspx?ID=605656
+stasg:ZVB_48_605656 a xisadgr:MaterialExpression ;
+  xisadgr:hasAccessConditions [ a xisadgr:AccessConditions ; # 4.1
+    xisadgr:hasAccessConditionsNotes "Zugänglichkeit: Archivmitarbeiter/-innen" ; 
+    xisadgr:hasAccessConditionsNotes "Erforderliche Bewilligung: Staatsarchiv" ; 
+    xisadgr:hasAccessConditionsNotes "Physische Benützbarkeit: Uneingeschränkt" ;
+    xisadgr:hasRetentionPeriod "100"^^xsd:integer ;
+    xisadgr:hasRetentionPeriodNotes "Schutzfristende: 31.12.1994" ;
+  ] ; # 4.1
+  xisadgr:hasExistenceLocationCopies stasg:ZVB_17030 ;
+  xisadgr:hasExistenceLocationCopiesSt "Im Film Nr. 243/1996 des Kulturgüterschutz-Mikrofilm des Fonds" ; # TODO
+.
+
+###  http://scope.staatsarchiv.sg.ch/detail.aspx?ID=605901
+stasg:ZVB_48-01 a xisadgr:Item ; #1.4
+  xisadgr:hasIdentity [ a xisadgr:Identity ; # 1
+    xisadgr:hasReferenceCode "http://scope.staatsarchiv.sg.ch/detail.aspx?ID=605901"^^xsd:anyURI ; # 1.1
+    xisadgr:hasReferenceCodeSt "ZVB 48.01" ; # 1.1
+    xisadgr:hasTitle "Nesslau: Bürgerregister Bd. A" ; # 1.2
+    xisadgr:hasCreatedDateRange [ a xisadgr:DateRange ; # 1.3
+      xisadgr:hasFromDate [ a xisadgr:DatePoint ;
+        xisadgr:hasDatePoint "1780"^^xisadgr:datePointType ;
+        xisadgr:hasDatePointNote "Eheeinträge 1780-1848" ;
+      ] ;
+      xisadgr:hasToDate [ a xisadgr:DatePoint ;
+        xisadgr:hasDatePoint "1848"^^xisadgr:datePointType ;
+        xisadgr:hasDatePointNote "Eheeinträge 1780-1848" ;
+      ] ;
+    ] ; # 1.3
+  ] ; # 1
+  xisadgr:hasContentStructure [ a xisadgr:ContentStructure ; # 3
+    xisadgr:hasScope "text" ; # 3.1
+    xisadgr:hasContent "Bürgerregister enthält Eheeinträge 1780-1848" ; # 3.1
+  ] ; # 3
+  xisadgr:hasMaterialExpression stasg:ZVB_48-01_605901 ; # Buch (Original)
+  xisadgr:hasMaterialExpression stasg:ZVB_48-01_35430 ; # Mikrofilm-Nutzungskopie
+  xisadgr:hasMaterialExpression stasg:ZVB_48-01_979436 ; # Digitalisat des Mikrofilms
+.  
+  
+###  http://scope.staatsarchiv.sg.ch/detail.aspx?ID=605901
+stasg:ZVB_48-01_605901 a xisadgr:MaterialExpression ;
+  xisadgr:hasExtentMedium [ a xisadgr:ExtentMedium ; # 1.5
+    xisadgr:hasMediaType kostceco-mt:Book ;
+  ] ; # 1.5
+  xisadgr:hasAccessConditions [ a xisadgr:AccessConditions ; # 4.1
+    xisadgr:hasOpenToThePublic "not_public" ;  
+    xisadgr:hasAccessConditionsNotes "Zugänglichkeit: Archivmitarbeiter/-innen" ; 
+    xisadgr:hasAccessConditionsNotes "Erforderliche Bewilligung: Staatsarchiv" ; 
+    xisadgr:hasAccessConditionsNotes "Physische Benützbarkeit: Uneingeschränkt" ;
+    xisadgr:hasRetentionPeriod "100"^^xsd:integer ;
+    xisadgr:hasRetentionPeriodNotes "Schutzfristende: 31.12.1948" ;
+  ] ; # 4.1
+  xisadgr:hasPhysTech "analog" ; # 4.4
+  xisadgr:hasMaterialExpressionRepresentation stasg:ZVB_48-01_35430 ; # Mikrofilm des Buchs
+  xisadgr:hasExistenceLocationCopies stasg:ZVB_17030 ;
+  xisadgr:hasExistenceLocationCopiesSt "Im Frame XYZ des Kulturgüterschutz-Mikrofilm des Fonds" ;
+.
+###  http://scope.staatsarchiv.sg.ch/detail.aspx?ID=35430
+stasg:ZVB_48-01_35430 a xisadgr:MaterialExpression ;
+  xisadgr:hasExtentMedium [ a xisadgr:ExtentMedium ; # 1.5
+    xisadgr:hasMediaType kostceco-mt:Microfilm ;
+  ] ; # 1.5
+  xisadgr:hasAccessConditions [ a xisadgr:AccessConditions ; # 4.1
+    xisadgr:hasOpenToThePublic "undefined" ; # Anders als bei Buch 
+    # xisadgr:hasAccessConditionsNotes "Zugänglichkeit: ???" ; # Anders als bei Buch 
+    xisadgr:hasAccessConditionsNotes "Erforderliche Bewilligung: Staatsarchiv" ; 
+    xisadgr:hasAccessConditionsNotes "Physische Benützbarkeit: Uneingeschränkt" ;
+    # xisadgr:hasRetentionPeriodNotes "Schutzfristende: ???" ; # Anders als bei Buch
+  ] ; # 4.1
+  xisadgr:hasPhysTech "analog" ; # 4.4
+  xisadgr:hasMaterialExpressionDate [ a xisadgr:DatePoint ;
+    xisadgr:hasDatePoint "1999"^^xisadgr:datePointType ; # 
+    xisadgr:hasDatePointApprox "true"^^xsd:boolean ;
+  ] ; # Datum der Erstellung des Mikrofilms wurde für das Beispiel ca. 1999 angenommen
+  xisadgr:hasMaterialExpressionRepresentation stasg:ZVB_48-01_979436 ; # Digitalisat des Mikrofilms
+.
+###  http://scope.staatsarchiv.sg.ch/detail.aspx?ID=979436
+stasg:ZVB_48-01_979436 a xisadgr:MaterialExpression ;
+  xisadgr:hasExtentMedium [ a xisadgr:ExtentMedium ; # 1.5
+    xisadgr:hasMediaType kostceco-mt:Pdfa1b ;
+  ] ; # 1.5
+  xisadgr:hasAccessConditions [ a xisadgr:AccessConditions ; # 4.1
+    xisadgr:hasOpenToThePublic "public" ; # Anders als bei Buch 
+    xisadgr:hasAccessConditionsNotes "Zugänglichkeit: Öffentlich" ; # Anders als bei Buch 
+    xisadgr:hasAccessConditionsNotes "Erforderliche Bewilligung: keine" ; # Anders als bei Buch & Mikrofilm
+    xisadgr:hasAccessConditionsNotes "Physische Benützbarkeit: Uneingeschränkt" ;
+    xisadgr:hasRetentionPeriodNotes "Schutzfristende: 31.12.1980" ; # Anders als bei Buch & Wiederspricht auch der Serie
+  ] ; # 4.1
+  xisadgr:hasPhysTech "digital" ; # 4.4
+.
