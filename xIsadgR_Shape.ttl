@@ -73,19 +73,19 @@ xisadgrshape:ArchivalDescriptionShape a sh:NodeShape ;
         sh:path xisadgr:hasArchivalDescription ;
         sh:or (
           [ sh:class xisadgr:Fonds ; ]
-          [ sh:class xisadgr:ArchivalGroup ; ]
+          [ sh:class xisadgr:Group ; ]
           [ sh:class xisadgr:Archive ; ]
         ) ;
       ] ;
     .
-    ###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR_Shape.ttl#ArchivalGroupShape
-    xisadgrshape:ArchivalGroupShape a sh:NodeShape ; 
-      sh:targetClass xisadgr:ArchivalGroup ;
+    ###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR_Shape.ttl#GroupShape
+    xisadgrshape:GroupShape a sh:NodeShape ; 
+      sh:targetClass xisadgr:Group ;
       sh:property [
         sh:path xisadgr:hasArchivalDescription ;
         sh:or (
           [ sh:class xisadgr:Fonds ; ]
-          [ sh:class xisadgr:ArchivalGroup ; ]
+          [ sh:class xisadgr:Group ; ]
         ) ;
       ] ;
     .
@@ -412,7 +412,7 @@ xisadgrshape:ArchivalDescriptionShape a sh:NodeShape ;
     sh:property [ 
       sh:path xisadgr:hasMaterialExpressionDate ;
       sh:class xisadgr:DatePoint ;
-      sh:minCount 0 ; 
+      sh:minCount 0 ; sh:maxCount 1; 
     ] ;
     sh:property [ 
       sh:path xisadgr:hasExtentMediumSt ;

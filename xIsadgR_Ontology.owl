@@ -45,19 +45,19 @@ xisadgr:ArchivalDescription a rdfs:Class ;
     ###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR_Ontology.owl#Archive
     xisadgr:Archive a rdfs:Class ; 
       rdfs:comment 
-        "Verzeichnungsstufe: Archiv"@de ,
-        "Niveau de description: Archives"@fr ,
-        "Level of description: Archives"@en ,
-        "Livello di descrizione: Archivio"@it ;
+        "Verzeichnungsstufe: Archiv (Archive ist die oberste Verzeichnungsstufe und soll in der Regel für die Abbildung von «Archiv», «Institution» und «Archivlandschaft» verwendet werden.)"@de ,
+        "Niveau de description: Archives (Archive est le niveau de répertoire le plus élevé et doit généralement être utilisé pour cartographier «Archive», «Institution» et «Paysage d'archives».)"@fr ,
+        "Level of description: Archives (Archive is the highest directory level and should generally be used to map «Archive», «Institution» and «Archive Landscape».)"@en ,
+        "Livello di descrizione: Archivio (L'archivio è il livello di directory più alto e dovrebbe essere generalmente utilizzato per mappare «Archivio», «Istituzione» e «Archivio Paesaggio».)"@it ;
       rdfs:subClassOf xisadgr:ArchivalDescription ;
     .
-    ###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR_Ontology.owl#ArchivalGroup
-    xisadgr:ArchivalGroup a rdfs:Class ; 
+    ###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR_Ontology.owl#Group
+    xisadgr:Group a rdfs:Class ; 
       rdfs:comment 
-        "Verzeichnungsstufe: Archivgruppe"@de ,
-        "Niveau de description: Groupe d'archives"@fr ,
-        "Level of description: Archival group"@en ,
-        "Livello di descrizione: Gruppo d'archivio"@it ;
+        "Verzeichnungsstufe: Gruppe (Group ist die Verzeichnungsstufe zwischen Archive und Fonds. Diese Zwischenstufe wird bis anhin meist als «Abteilung», «Departement» oder «Tektonikgruppe» bezeichnet.)"@de ,
+        "Niveau de description: Groupe (Group est le niveau de répertoire entre Archive et Fonds. Ce niveau intermédiaire est généralement appelé «Département», «Service» ou «Groupe tectonique».)"@fr ,
+        "Level of description: Group (Group is the directory level between Archive and Fonds. This intermediate level is usually referred to as «Department» or «Tectonic Group».)"@en ,
+        "Livello di descrizione: Gruppo (Group è il livello di directory tra Archive e Fonds. Questo livello intermedio è solitamente indicato come «Reparto», «Reparto» o «Gruppo tettonico».)"@it ;
       rdfs:subClassOf xisadgr:ArchivalDescription ;
     .
     ###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR_Ontology.owl#Fonds
@@ -126,6 +126,7 @@ xisadgr:ArchivalDescription a rdfs:Class ;
           "1.1) Segnatura/e o codice/i identificativo/i: Identificare univocamente l'unità di descrizione e stabilire un collegamento con la descrizione che la rappresenta"@it ;
         rdfs:domain xisadgr:Identity ;
         rdfs:range xsd:anyURI ; 
+        rdfs:subPropertyOf dct:identifier ;
       .
       ###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR_Ontology.owl#hasReferenceCodeSt
       xisadgr:hasReferenceCodeSt a rdf:Property ;
@@ -137,6 +138,7 @@ xisadgr:ArchivalDescription a rdfs:Class ;
           "1.1) Segnatura/e o codice/i identificativo/i: Identificare univocamente l'unità di descrizione e stabilire un collegamento con la descrizione che la rappresenta"@it ;
         rdfs:domain xisadgr:Identity ;
         rdfs:range xsd:string ; 
+        rdfs:subPropertyOf dct:identifier ;
       .
       ###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR_Ontology.owl#hasReferenceCodeOld
       xisadgr:hasReferenceCodeOld a rdf:Property ;
@@ -148,6 +150,7 @@ xisadgr:ArchivalDescription a rdfs:Class ;
           "1.1) Vecchio Segnatura/e o codice/i identificativo/i: Identificare univocamente l'unità di descrizione e stabilire un collegamento con la descrizione che la rappresenta"@it ;
         rdfs:domain xisadgr:Identity ;
         rdfs:range xsd:string ; 
+        rdfs:subPropertyOf dct:identifier ;
       .
       ###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR_Ontology.owl#hasTitle
       xisadgr:hasTitle a rdf:Property ;
@@ -858,7 +861,7 @@ xisadgr:hasMaterialExpression a rdf:Property ;
         ###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR_Ontology.owl#hasMediaType
         xisadgr:hasMediaType a rdf:Property ;
           rdfs:comment "1.5) Archivalienart (b): MediaType dieser Materiellen Ausprägung"@de ;
-          rdfs:domain xisadgr:MaterialExpression ;
+          rdfs:domain xisadgr:ExtentMedium ;
           rdfs:range xisadgr:MediaType ; 
         .
           ###  https://github.com/KOST-CECO/ontologies/raw/master/xIsadgR_Ontology.owl#MediaType
